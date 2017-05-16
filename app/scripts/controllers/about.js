@@ -2,14 +2,15 @@
 
 /**
  * @ngdoc function
- * @name desAppGroupAFrontendApp.controller:AboutCtrl
+ * @name translateApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the desAppGroupAFrontendApp
+ * Controller of the translateApp
  */
-angular.module('desAppGroupAFrontendApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
+angular.module('translateApp')
+  .controller('AboutCtrl', function ($scope) {
+    // Yeoman part (for tests)
+    $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
