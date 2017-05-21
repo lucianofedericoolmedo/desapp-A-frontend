@@ -16,7 +16,8 @@
     "angular-translate-loader-static-files": "^2.15.1",
     "angular-translate-storage-local": "^2.15.1",
     "angular-dynamic-locale": "^0.1.32",
-    "angular-i18n": "^1.6.4"
+    "angular-i18n": "^1.6.4",
+    "ng-file-upload-shim": "^12.2.13"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

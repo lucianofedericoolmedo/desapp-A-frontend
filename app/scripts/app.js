@@ -10,6 +10,7 @@
  */
 angular
   .module('translateApp', [
+    'ngFileUpload',
     'ngAnimate',
     'ngCookies',
     'ngResource',
