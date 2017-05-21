@@ -10,7 +10,11 @@
  */
 angular
   .module('translateApp', [
+<<<<<<< HEAD
     'app',
+=======
+    'ngFileUpload',
+>>>>>>> edc8bb886df2f19b434b698349a63b07d4f74952
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -25,10 +29,10 @@ angular
   .constant('VERSION_TAG', /*VERSION_TAG_START*/new Date().getTime()/*VERSION_TAG_END*/)
   .constant('LOCALES', {
     'locales': {
-      'ru_RU': 'Русский',
+      'es_ES': 'Español',
       'en_US': 'English'
     },
-    'preferredLocale': 'en_US'
+    'preferredLocale': 'es_ES'
   })
   // Router
   .config(function ($routeProvider) {
