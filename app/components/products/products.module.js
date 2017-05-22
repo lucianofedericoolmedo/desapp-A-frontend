@@ -1,3 +1,5 @@
 'user strict';
 
-angular.module('app').requires.push('product');
+angular.module('product', []);
+
+angular.module('translateApp').requires.push('product');

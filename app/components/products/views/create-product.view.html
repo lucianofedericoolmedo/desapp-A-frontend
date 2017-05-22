@@ -1,0 +1,22 @@
+<section>
+
+	<form class="form-horizontal" ng-submit="saveOrUpdate()" ng-init="newInstance()">
+
+		<div ng-include="'components/products/views/crud-product.view.html'"></div>
+
+		<div class="clearfix"></div>
+
+		<div class="form-actions">
+			<div class="btn-group">
+				<button class="btn btn-primary" type="submit">
+					Crear
+				</div>
+				<div class="btn btn-danger" ng-click="">
+					Volver
+				</div>
+			</div>
+		</div>
+
+	</form>	
+
+</section>

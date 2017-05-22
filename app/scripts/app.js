@@ -10,11 +10,8 @@
  */
 angular
   .module('translateApp', [
-<<<<<<< HEAD
-    'app',
-=======
+    'ui.router',
     'ngFileUpload',
->>>>>>> edc8bb886df2f19b434b698349a63b07d4f74952
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -49,9 +46,17 @@ angular
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl'
       })
+      .when('/myroute', {
+        templateUrl: 'views/myroute.html',
+        controller: 'MyrouteCtrl',
+        controllerAs: 'myroute'
+      })
+      /*
       .otherwise({
         redirectTo: '/'
-      });
+      })
+      */
+      ;
   })
   // Angular debug info
   .config(function ($compileProvider, DEBUG_MODE) {

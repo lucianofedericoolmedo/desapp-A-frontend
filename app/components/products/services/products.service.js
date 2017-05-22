@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('product').service('Product', function($resource) {
-    return $resource('/product/:id', {'id': '@id'}, {
+    return $resource('localhost:8080/services/product/:id', {'id': '@id'}, {
 
         get : {
         	method: 'GET'

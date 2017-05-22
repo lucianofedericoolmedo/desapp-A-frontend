@@ -1,0 +1,20 @@
+<section>
+
+	<div class="form-group">
+		<label class="col-md-2 col-xs-12 control-label" for="name">Name</label>
+		<div class="col-md-5 col-xs-12">
+			<input class="full-width" type="text" name="name" ng-model="product.name">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-2 col-xs-12 control-label" for="brand">Brand</label>
+		<div class="col-md-5 col-xs-12">
+			<select class="full-width" name="brand" ng-model="product.brand"
+				ng-options="brand as brand.name for brand in brands track by brand.id">
+				<option value="">Select a brand</option>
+			</select>
+		</div>
+	</div>
+
+</section>

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParam', 'Product', 
-	function ($scope, $stateParam, Product) {
+angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 'Product', 
+	function ($scope, $stateParams, Product) {
 	
 		function manageErrorResponse (message) {
 			window.alert(message);
@@ -9,7 +9,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParam', '
 
 		$scope.newInstance = function () {
 			$scope.product = new Product({
-				name : 'undefined',
+				name : '',
 				categories : [],
 				brand : undefined,
 				prices : []
@@ -17,7 +17,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParam', '
 		};
 
 		$scope.get = function () {
-			Product.get( { id : $stateParam.id }, function (successResponse) {
+			Product.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.product = response;
 			}, manageErrorResponse);
 		}
