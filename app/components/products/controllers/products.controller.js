@@ -20,7 +20,16 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 			Product.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.product = response;
 			}, manageErrorResponse);
-		}
+		};
+
+		$scope.crudInit = function () {
+			var id = $stateParams.id;
+			if (id) {
+				$scope.get();
+			} else {
+				$scope.newInstance();
+			}
+		};
 
 		function sendEntityWithMethod (methodName) {
 			Product[methodName]($scope.product,
@@ -36,5 +45,19 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 				sendEntityWithMethod('save');
 			}
 		};
+
+		$scope.products = [ {
+			id : 1,
+			name : 'Pitusas',
+			imageUrl : 'http://www.santamariasa.com.ar/comercio/images/a00031359.jpg'
+		}, {
+			id : 2,
+			name : 'Surtidas',
+			imageUrl : 'https://www.latinando.de/media/images/org/Galletas-surtidas-DIVERSION-ARCOR-400g+_+78_0.jpg'
+		}, {
+			id : 3,
+			name : 'Opera',
+			imageUrl : 'http://www.aldo.com.uy/imagenes/img_contenido/productos/a/29266.jpg'
+		}];
 
 }]);

@@ -1,18 +1,18 @@
 <section>
 
-	<form class="form-horizontal" ng-submit="saveOrUpdate()" ng-init="get()">
+	<form class="form-horizontal" ng-submit="saveOrUpdate()" ng-init="crudInit()">
 
-		<div ng-include="'components/products/views/crud-product.view.html'"></div>
+		<div ng-include="'components/product-categories/views/crud-product-category.view.html'"></div>
 
 		<div class="clearfix"></div>
 
 		<div class="form-actions">
 			<div class="btn-group">
 				<button class="btn btn-primary" type="submit">
-					Guardar
+					{{:: productCategory.id ? 'Update' : 'Create' }}
 				</div>
 				<div class="btn btn-danger" ng-click="">
-					Volver
+					Back
 				</div>
 			</div>
 		</div>
