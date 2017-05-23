@@ -18,7 +18,8 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 
 		$scope.get = function () {
 			Product.get( { id : $stateParams.id }, function (successResponse) {
-				$scope.product = response;
+				$scope.product = successResponse;
+				console.log(successResponse);
 			}, manageErrorResponse);
 		};
 

@@ -15,7 +15,7 @@ angular.module('brand').controller('BrandCtrl', [ '$scope', '$stateParams', 'Bra
 
 		$scope.get = function () {
 			Brand.get( { id : $stateParams.id }, function (successResponse) {
-				$scope.brand = response;
+				$scope.brand = successResponse;
 			}, manageErrorResponse);
 		}
 

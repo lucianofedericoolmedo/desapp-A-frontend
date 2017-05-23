@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('brand').service('Brand', function($resource) {
-    return $resource('localhost:8080/services/brand/:id', {'id': '@id'}, {
+    return $resource('http://localhost:8080/services/brand/:id', {'id': '@id'}, {
 
         get : {
         	method: 'GET'
         },
         getAll : {
         	method: 'GET',
-        	url: '/brand/all',
+        	url: 'http://localhost:8080/services/brand/all',
         	isArray: true
         },
         update : {

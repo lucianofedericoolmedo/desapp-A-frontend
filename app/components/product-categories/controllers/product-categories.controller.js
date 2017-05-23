@@ -15,7 +15,7 @@ angular.module('product-category').controller('ProductCategoryCtrl', [ '$scope',
 
 		$scope.get = function () {
 			ProductCategory.get( { id : $stateParams.id }, function (successResponse) {
-				$scope.productCategory = response;
+				$scope.productCategory = successResponse;
 			}, manageErrorResponse);
 		}
 
