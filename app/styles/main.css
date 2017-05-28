@@ -62,9 +62,11 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
+  /*
   .container {
     max-width: 730px;
   }
+  */
 
   /* Remove the padding we set earlier */
   .header,
@@ -86,4 +88,9 @@ body {
 
 .full-width {
   width: 100%;
+}
+
+.no-padding-horizontal {
+  padding-left: 0px;
+  padding-right: 0px;
 }
