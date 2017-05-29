@@ -20,6 +20,11 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 		}
 
 		$scope.crudInit = function () {
+			var justCreatedCart = $stateParams.justCreatedCart;
+			if (justCreatedCart) {
+				$scope.cart = justCreatedCart;
+				return;
+			}
 			var id = $stateParams.id;
 			if (id) {
 				$scope.get();

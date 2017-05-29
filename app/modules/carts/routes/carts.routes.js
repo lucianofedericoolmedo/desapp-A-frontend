@@ -12,7 +12,11 @@ angular.module('cart').config(['$stateProvider',
 		state('edit-cart', {
 			url: '/cart/edit/:id',
 			templateUrl: 'modules/carts/views/crud-actions-cart.view.html',
-			controller: 'CartCtrl'
+			controller: 'CartCtrl',
+			params: {
+				id : undefined,
+				justCreatedCart : undefined
+			}
 		});
 
 }])

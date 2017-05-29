@@ -19,6 +19,11 @@ angular.module('cart').service('Cart', function($resource) {
         },
         remove : { 
         	method:'DELETE' 
+        },
+
+        createCartFromShoppingList : {
+            method: 'POST',
+            url: 'http://localhost:8080/services/carts/create-from-shopping-list-for-user/:shoppingListId/:userId'
         }
 
     });

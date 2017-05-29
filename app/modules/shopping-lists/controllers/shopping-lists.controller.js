@@ -1,10 +1,14 @@
 'use strict';
 
-angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$stateParams',
-	'ShoppingList', 'ItemManagementSrv', 'Product', 'PaginatedSearch',
-	function ($scope, $stateParams, ShoppingList, ItemManagementSrv, Product, PaginatedSearch) {
+angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$state', 
+	'$stateParams', '$location', 'ShoppingList', 'ItemManagementSrv', 'Product',
+	'PaginatedSearch', 'Cart',
+	function ($scope, $state, $stateParams, $location, ShoppingList, ItemManagementSrv, Product, 
+		PaginatedSearch, Cart) {
 	
 		$scope.shoppingLists = ShoppingList.getAll();
+
+		$scope.hardcodedUser = { id : 1 };
 
 		function manageErrorResponse (message) {
 			window.alert(message);
@@ -51,9 +55,19 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 				sendEntityWithMethod('update');
 			} else {
 				sendEntityWithMethod('save', function (successResponse) {
-					$scope.newInstance();
+					$location.path('/shopping-list/edit/'.concat(successResponse.id));
 				});
 			}
+		};
+
+		$scope.createCartFromShoppingList = function (shoppingList) {
+			var data = {
+				shoppingListId : { value : shoppingList.id },
+				userId : { value : $scope.hardcodedUser.id }
+			}
+			Cart.createCartFromShoppingList(data, function (successResponse) {
+				$state.go('edit-cart', { id : successResponse.id, justCreatedCart : successResponse });
+			}, manageErrorResponse);
 		};
 
 		//////////// ITEM MANAGEMENT /////////////
@@ -62,7 +76,13 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 		$scope.searchProductsNotInShoppingList = function () {
 			$scope.searchNotInShoppingList.queryData.shoppingListId = $scope.shoppingList.id;
 			$scope.searchNotInShoppingList.search('findNotInShoppingList');
-		}
+		};
+
+		$scope.initializeQuantity = function (product) {
+			if (product && product.quantity === undefined) {
+				product.quantity = 0;
+			}
+		};
 
 		$scope.decreaseQuantity = function (product) {
 			if (product && product.quantity) {
@@ -95,6 +115,15 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 				}, manageErrorResponse);
 				//ItemManagementSrv.setProductAndQuantity(product);
 			}
+		};
+
+		$scope.removeItem = function (item, index) {
+			var itemId = item.id;
+			var shoppingListId = $scope.shoppingList.id;
+			ShoppingList.removeItem({ itemId : itemId , shoppingListId : shoppingListId },
+				function (successResponse) {
+					$scope.shoppingList.splice(index, 1);
+			}, manageErrorResponse);
 		};
 
 }]);
