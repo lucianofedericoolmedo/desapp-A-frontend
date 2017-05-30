@@ -1,0 +1,49 @@
+<style type="text/css">
+	
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+</style>
+
+<section ng-init="queryAll()">
+
+	<div>
+		<a class="btn btn-info" href="#/product/create">
+			Create
+		</a>
+	</div>
+
+	<div class="container jumbotron">
+		<div ng-if="products.length > 0">
+			<div ng-repeat="product in products track by product.id">
+				<div class="col-md-3 col-sm-4 col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<!-- Product information -->
+							<div>
+								<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
+								<p>{{product.name }}</p>
+							</div>
+							<!-- Product actions -->
+							<div class="btn-group">
+								<a class="btn btn-xs btn-info"
+									href="/product/edit/{{product.id}}">
+									<small>EDIT</small>
+								</a>
+								<div class="btn btn-xs btn-danger" ng-click="delete(product.id)">
+									<small>REMOVE</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="products.length === 0">
+			<span>No product to show</span>
+		</div>
+	</div>
+
+</section>
