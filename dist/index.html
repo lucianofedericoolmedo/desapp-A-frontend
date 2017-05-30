@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Bootstrap 3 Admin</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<!-- SCROLLS -->
+		<!-- load bootstrap -->
+		 <style>
+			.dialog-open {
+			  display: block;
+			}
+			.dialog-close {
+			  display: none;
+			}
+		  </style>
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		
+		<link href="./css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+		
+		
+		
+		<!-- header -->
+		<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Comprando A Lo Loco</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+							<ul id="g-account-menu" class="dropdown-menu" role="menu">
+								<li><a href="#">My Profile</a></li>
+							</ul>
+						</li>
+						<li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /Header -->
+
+		<!-- Main -->
+		<div class="container-fluid">
+			<div class="row">
+				
+				
+				
+				<div class="col-sm-3">
+					<!-- Left column -->
+					<a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+
+					<hr>
+
+					<ul class="nav nav-stacked">
+						<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
+							<ul class="nav nav-stacked collapse in" id="userMenu">
+								<li class="active"> <a href="#"> Home</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-envelope"></i> Messages <span class="badge badge-info">4</span></a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-cog"></i> Options</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-comment"></i> Shoutbox</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-user"></i> Staff List</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-flag"></i> Transactions</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-exclamation-sign"></i> Rules</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
+							</ul>
+						</li>
+						<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#menu2"> Reports <i class="glyphicon glyphicon-chevron-right"></i></a>
+
+							<ul class="nav nav-stacked collapse" id="menu2">
+								<li><a href="#">Information &amp; Stats</a>
+								</li>
+								<li><a href="#">Views</a>
+								</li>
+								<li><a href="#">Requests</a>
+								</li>
+								<li><a href="#">Timetable</a>
+								</li>
+								<li><a href="#">Alerts</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-header">
+							<a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-right"></i></a>
+							<ul class="nav nav-stacked collapse" id="menu3">
+								<li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
+								<li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
+							</ul>
+						</li>
+					</ul>
+
+					<hr>
+
+					<a href="#"><strong><i class="glyphicon glyphicon-link"></i> Resources</strong></a>
+
+					<hr>
+
+					<ul class="nav nav-pills nav-stacked">
+						<li class="nav-header"></li>
+						<li><a href="#"><i class="glyphicon glyphicon-list"></i> Layouts &amp; Templates</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-briefcase"></i> Toolbox</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-link"></i> Widgets</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-book"></i> Pages</a></li>
+						<li><a href="#"><i class="glyphicon glyphicon-star"></i> Social Media</a></li>
+					</ul>
+
+					<hr>
+					<ul class="nav nav-stacked">
+						<li class="active"><a href="http://bootply.com" title="The Bootstrap Playground" target="ext">Playground</a></li>
+						<li><a href="/tagged/bootstrap-3">Bootstrap 3</a></li>
+						<li><a href="/61518" title="Bootstrap 3 Panel">Panels</a></li>
+						<li><a href="/61521" title="Bootstrap 3 Icons">Glyphicons</a></li>
+						<li><a href="/62603">Layout</a></li>
+					</ul>
+
+					<hr>
+
+					<a href="#"><strong><i class="glyphicon glyphicon-list"></i> More Templates</strong></a>
+
+					<hr>
+
+					<ul class="nav nav-stacked">
+						<li class="active"><a rel="nofollow" href="http://goo.gl/pQoXEh" target="ext">Premium Themes</a></li>
+						<li><a rel="nofollow" href="https://wrapbootstrap.com/?ref=bootply">Wrap Bootstrap</a></li>
+						<li><a rel="nofollow" href="http://bootstrapzero.com">BootstrapZero</a></li>
+					</ul>
+				</div>
+				
+				
+				<div class="col-sm-9">
+					
+					
+                    <h1>THE FINAL COUNTDOWN</h1>
+                        
+                    <div data-ui-view class="container-fluid"></div>
+
+					
+					
+				</div>
+				
+			
+			</div>
+		</div>
+		<!-- /Main -->
+
+		<footer class="text-center">2017- ComprandoALoLoco-GrupoA</footer>
+
+		<div class="modal" id="addWidgetModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title">Add Widget</h4>
+					</div>
+					<div class="modal-body">
+						<p>Add a widget stuff here..</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" data-dismiss="modal" class="btn">Close</a>
+						<a href="#" class="btn btn-primary">Save changes</a>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dalog -->
+		</div>
+		<!-- /.modal -->
+		
+		
+		
+		<!-- script references -->
+		
+		
+		<script src="bower_components/jquery/dist/jquery.js"></script>	
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.js"></script>
+		<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+		<script src="bower_components/angular-messages/angular-messages.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-resource/angular-resource.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>	
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="bower_components/angular-touch/angular-touch.js"></script>
+		<script src="bower_components/angular-translate/angular-translate.js"></script>
+		<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+		<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+		<script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+		<script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+		<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+		<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+
+
+		<script src="config.js"></script>		
+		<script src="application.js"></script>
+		<script src="baseModule/urlServer.js"></script>
+
+		
+		<script src="modules/app/app.client.module.js"></script>
+		<script src="modules/app/config/app.client.routes.js"></script>
+		<script src="modules/app/controllers/app.client.controller.js"></script>
+
+		<script src="modules/app2/app2.client.module.js"></script>
+		<script src="modules/app2/config/app2.client.routes.js"></script>
+		<script src="modules/app2/controllers/app2.client.controller.js"></script>
+
+
+		<!-- Brand scripts -->
+		<script src="modules/brands/brands.module.js"></script>
+		<script src="modules/brands/routes/brands.routes.js"></script>
+		<script src="modules/brands/services/brands.service.js"></script>
+		<script src="modules/brands/controllers/brands.controller.js"></script>
+
+		<!-- Cart scripts -->
+		<script src="modules/carts/carts.module.js"></script>
+		<script src="modules/carts/routes/carts.routes.js"></script>
+		<script src="modules/carts/services/carts.service.js"></script>
+		<script src="modules/carts/controllers/carts.controller.js"></script>
+
+		<!-- Core scripts -->
+		<script src="modules/core/core.module.js"></script>
+		<script src="modules/core/services/paginated-search.service.js"></script>
+
+		<!-- Product scripts -->
+		<script src="modules/products/products.module.js"></script>
+		<script src="modules/products/routes/products.routes.js"></script>
+		<script src="modules/products/services/products.service.js"></script>
+		<script src="modules/products/controllers/products.controller.js"></script>
+
+		<!-- Product Category scripts -->
+		<script src="modules/product-categories/product-categories.module.js"></script>
+		<script src="modules/product-categories/routes/product-categories.routes.js"></script>
+		<script src="modules/product-categories/services/product-categories.service.js"></script>
+		<script src="modules/product-categories/controllers/product-categories.controller.js"></script>
+
+		<!-- Shopping List scripts -->
+		<script src="modules/shopping-lists/shopping-lists.module.js"></script>
+		<script src="modules/shopping-lists/routes/shopping-lists.routes.js"></script>
+		<script src="modules/shopping-lists/services/shopping-lists.service.js"></script>
+		<script src="modules/shopping-lists/services/item-management.service.js"></script>
+		<script src="modules/shopping-lists/controllers/shopping-lists.controller.js"></script>
+
+        		
+		
+		
+	</body>
+</html>

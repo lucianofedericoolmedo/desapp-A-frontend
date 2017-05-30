@@ -1,0 +1,63 @@
+<style type="text/css">
+	
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+</style>
+
+<section ng-init="queryAll()">
+
+	<div>
+		<a class="btn btn-info" href="#/shopping-list/create">
+			Create
+		</a>
+	</div>
+
+	<div class="container jumbotron">
+		<div ng-if="shoppingLists.length > 0">
+			<div class="table-responsive">
+				<table class="table table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Created at</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="shoppingList in shoppingLists">
+						<tr>
+							<td>
+								{{ shoppingList.name }}
+							</td>
+							<td>
+								{{ shoppingList.creationDate }}
+							</td>
+							<td>
+								<div class="btn-group">
+									<button class="btn btn-success btn-xs"
+										ng-click="createCartFromShoppingList(shoppingList)">
+										NEW CART
+									</button>
+									<a class="btn btn-info btn-xs"
+										href="#/shopping-list/edit/{{shoppingList.id}}">
+										EDIT
+									</a>
+									<button class="btn btn-danger btn-xs"
+										ng-click="delete(shoppingList.id)">
+										REMOVE
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div ng-if="shoppingLists.length === 0">
+			<span>No shopping-list to show</span>
+		</div>
+	</div>
+
+</section>
