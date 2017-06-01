@@ -3,6 +3,10 @@
 angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart', 
 	function ($scope, $stateParams, Cart) {
 	
+		var service = Cart;
+
+		$scope.carts = Cart.getAll();
+
 		function manageErrorResponse (message) {
 			window.alert(message);
 		}
@@ -14,7 +18,7 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 		};
 
 		$scope.get = function () {
-			Cart.get( { id : $stateParams.id }, function (successResponse) {
+			service.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.cart = successResponse;
 			}, manageErrorResponse);
 		}
@@ -48,6 +52,10 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 					$scope.newInstance();
 				});
 			}
+		};
+
+		$scope.delete = function (id) {
+			service.remove({ id : id});
 		};
 
 }]);
