@@ -15,9 +15,9 @@
 		</a>
 	</div>
 
-	<div class="container jumbotron">
-		<div ng-if="products.length > 0">
-			<div ng-repeat="product in products track by product.id">
+	<div class="container-fluid jumbotron">
+		<div ng-if="search.result.length > 0">
+			<div ng-repeat="product in search.result track by product.id">
 				<div class="col-md-3 col-sm-4 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-body">
@@ -40,8 +40,17 @@
 					</div>
 				</div>
 			</div>
+
+			<span>Used paginator</span>
+			<ul uib-pagination total-items="search.totalSize" 
+				ng-change="findPage()"
+				ng-model="search.pageNumber" max-size="maxSize"
+				items-per-page="search.pageSize"
+				class="pagination-sm" boundary-links="true">
+			</ul>
+
 		</div>
-		<div ng-if="products.length === 0">
+		<div ng-if="search.result.length === 0">
 			<span>No product to show</span>
 		</div>
 	</div>

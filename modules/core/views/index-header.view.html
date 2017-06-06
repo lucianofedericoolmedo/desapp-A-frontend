@@ -1,0 +1,51 @@
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Comprando A Lo Loco</a>
+		</div>
+
+
+		<!--TODO: Refactor to snippet or isolate controller -->
+		<div class="navbar-collapse collapse" ng-controller="AppController">
+			<ul class="nav navbar-nav navbar-right" >
+
+				<div ng-translate-language-select></div>
+
+				<!--
+				<li class="dropdown" >
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Idiomas <span class="caret"></span></a>
+					<ul id="g-account-menu" class="dropdown-menu" role="menu">
+						<li><a ng-click="changeLanguage(es_ES)">Español</a></li>
+						<li><a ng-click="changeLanguage(en_US)">Ingles</a></li>
+					</ul>
+				</li>
+				-->
+
+				<li class="dropdown" ng-if="auth.isAuthenticated()" >
+					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+					<ul id="g-account-menu" class="dropdown-menu" role="menu">
+						<li><a href="#">My Profile</a></li>
+					</ul>
+				</li>
+				<li ng-if="auth.isAuthenticated()"><a href="#"><i class="glyphicon glyphicon-lock"></i> {{"views.main.Logout" | translate}}</a></li>						
+				<li >
+					<a ng-click="login()" ng-if="!auth.isAuthenticated()">
+						<i class="glyphicon glyphicon-lock"></i>
+						<div>
+						 {{"views.main.Login" | translate}}
+						 </div>
+						 
+					</a>
+				</li>
+			</ul>
+		</div>
+
+
+	</div>
+	<!-- /container -->
+</div>
