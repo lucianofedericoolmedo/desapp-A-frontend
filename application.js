@@ -3,23 +3,6 @@
 //Start by defining the main module and adding the module dependencies
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
-// Setting HTML5 Location Mode
-/*
-angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider', '$compileProvider',
-	function($locationProvider,$compileProvider) {
-		
-		$locationProvider.hashPrefix('!');
-		$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
-
-		
-		$locationProvider.html5Mode({
-		  enabled: true,
-		  requireBase: false
-		});
-		
-	}
-]);
-*/
 
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider', 
   function($locationProvider) {
@@ -61,6 +44,9 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(function (
 angular.module(ApplicationConfiguration.applicationModuleName).config(function (tmhDynamicLocaleProvider) {
     tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
   });
+
+
+
 
 //Then define the init function for starting up the application
 angular.element(document).ready(function() {

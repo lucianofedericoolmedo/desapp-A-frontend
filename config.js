@@ -14,9 +14,11 @@ var ApplicationConfiguration = (function() {
 		'ui.router', 
 		'ui.bootstrap',
 		'ngSanitize',
-	        'ngTouch',
-	        'pascalprecht.translate',
-	        'tmh.dynamicLocale'
+	    'ngTouch',
+	    'pascalprecht.translate',
+	    'tmh.dynamicLocale',
+	    'auth0.auth0', 
+	    'angular-jwt'
 		];
 
 	// Add a new vertical module

@@ -183,8 +183,13 @@
 		</div>
 		<!-- /.modal -->
 		
+
+    	
+
 		
 		
+
+
 		<!-- script references -->
 		
 		
@@ -212,9 +217,19 @@
 		<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
 
 
+		<script type="text/javascript" src="node_modules/auth0-js/build/auth0.js"></script>
+		<script type="text/javascript" src="node_modules/angular-auth0/dist/angular-auth0.js"></script>
+   		<script type="text/javascript" src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
+
+   		
 		<script src="config.js"></script>		
 		<script src="application.js"></script>
 		<script src="baseModule/urlServer.js"></script>
+
+		<script type="text/javascript" src="auth0-variables.js"></script>
+
+		<script type="text/javascript" src="app.run.js"></script>
+	    
 
 		
 		<script src="modules/app/app.client.module.js"></script>
@@ -240,6 +255,7 @@
 
 		<!-- Core scripts -->
 		<script src="modules/core/core.module.js"></script>
+		<script src="modules/core/services/auth.service.js"></script>
 		<script src="modules/core/services/paginated-search.service.js"></script>
 
 		<!-- Product scripts -->
