@@ -1,0 +1,17 @@
+<div ng-controller="AppController">
+	<h1>{{demoText}}<h1>
+	<div> {{"views.main.Splendid!" | translate}} </div>
+
+	<h4 ng-if="auth.isAuthenticated()">
+	    You are logged in! You can now <a ui-sref="#/nose">LINKEAME A SEGUNDA VISTA</a> capo.
+	</h4>
+	<h4 ng-if="!auth.isAuthenticated()">
+	  You are not logged in! Please <button ng-click="login()">Log In</button> to continue.
+	</h4>
+
+	<!--
+	vm.auth.login()
+	-->
+
+	<a ng-if="vm.auth.isAuthenticated()" href="#/product/list"> LISTAR PRODUCTOS </a>
+</div>
