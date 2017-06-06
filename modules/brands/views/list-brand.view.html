@@ -1,0 +1,59 @@
+<style type="text/css">
+	
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+</style>
+
+<section ng-init="queryAll()">
+
+	<div>
+		<a class="btn btn-info" href="#/brand/create">
+			Create
+		</a>
+	</div>
+
+	<div class="container jumbotron">
+		<div ng-if="brands.length > 0">
+			<div class="table-responsive">
+				<table class="table table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Created at</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="brand in brands">
+						<tr>
+							<td>
+								{{ brand.name }}
+							</td>
+							<td>
+								{{ brand.creationDate }}
+							</td>
+							<td>
+								<div class="btn-group">
+									<a class="btn btn-info btn-xs"
+										href="#/shopping-list/edit/{{shoppingList.id}}">
+										EDIT
+									</a>
+									<button class="btn btn-danger btn-xs"
+										ng-click="delete(shoppingList.id)">
+										REMOVE
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div ng-if="brands.length === 0">
+			<span>No brands to show</span>
+		</div>
+	</div>
+
+</section>

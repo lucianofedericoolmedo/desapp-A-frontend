@@ -13,6 +13,11 @@ angular.module('brand').config(['$stateProvider',
 			url: '/brand/edit/:id',
 			templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 			controller: 'BrandCtrl'
+		}).
+		state('list-brand', {
+			url: '/brand/list',
+			templateUrl: 'modules/brands/views/list-brand.view.html',
+			controller: 'BrandCtrl'
 		});
 
 }])

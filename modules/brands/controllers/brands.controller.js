@@ -1,8 +1,14 @@
 'use strict';
 
-angular.module('brand').controller('BrandCtrl', [ '$scope', '$stateParams', 'Brand', 
-	function ($scope, $stateParams, Brand) {
-	
+angular.module('brand').controller('BrandCtrl', [ '$scope', '$stateParams', 'Brand',
+	'PaginatedSearch',
+	function ($scope, $stateParams, Brand, PaginatedSearch) {
+
+		var service = Brand;
+		$scope.search = new PaginatedSearch(service);
+
+		$scope.brands = Brand.getAll();
+
 		function manageErrorResponse (message) {
 			window.alert(message);
 		}

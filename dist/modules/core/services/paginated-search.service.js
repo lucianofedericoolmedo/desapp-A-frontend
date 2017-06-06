@@ -4,7 +4,7 @@ angular.module('core').factory('PaginatedSearch', [ function () {
 
 	return function (service, pageSizeParam) {
 		this.queryData = {};
-		this.pageNumber = 0;
+		this.pageNumber = 1; // Set it to ONE for offset for uib-paginator.
 		this.pageSize = pageSizeParam ? pageSizeParam : 10;
 		this.result = [];
 
@@ -23,7 +23,7 @@ angular.module('core').factory('PaginatedSearch', [ function () {
 				}
 			});
 			data.pageSize = parent.pageSize;
-			data.pageNumber = parent.pageNumber;
+			data.pageNumber = parent.pageNumber - 1; // Substract the offset for uib-paginator.
 			return data;
 		}
 

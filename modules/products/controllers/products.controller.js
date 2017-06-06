@@ -5,9 +5,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 	function ($scope, $stateParams, Product, PaginatedSearch, Brand) {
 
 		var service = Product;
-		$scope.search = new PaginatedSearch(service);
-
-		console.log($scope.search);
+		$scope.search = new PaginatedSearch(service, 1);
 
 		$scope.search.search();
 
@@ -61,6 +59,10 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 			} else {
 				sendEntityWithMethod('save');
 			}
+		};
+
+		$scope.findPage = function () {
+			$scope.search.search();
 		};
 
 }]);
