@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('app').controller('AppController', ['$scope', 'authService',
+angular.module('app').controller('AppController', ['$scope', 'authService', 
   function($scope,authService) {
     // This provides Authentication context.
     $scope.demoText = "Bueenasss";
@@ -10,6 +10,7 @@ angular.module('app').controller('AppController', ['$scope', 'authService',
 
     $scope.login = function(){
       $scope.auth.login();
-    }
+    };
+
   }
 ]);

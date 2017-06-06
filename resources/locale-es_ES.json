@@ -5,6 +5,8 @@
 
   "views.Fork me on": "Forkeame",
 
+  "views.main.Login": "Inicia sesion", 
+  "views.main.Logout": "Cerrar sesion",
   "views.index.Home": "Inicio",
   "views.index.About": "Sobre nosotros",
   "views.index.Contact": "Contactos",

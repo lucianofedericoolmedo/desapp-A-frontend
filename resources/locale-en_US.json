@@ -5,6 +5,8 @@
 
   "views.Fork me on": "Fork me on",
 
+  "views.main.Login": "Login", 
+  "views.main.Logout": "Logut",
   "views.index.Home": "Home",
   "views.index.About": "About",
   "views.index.Contact": "Contact",
