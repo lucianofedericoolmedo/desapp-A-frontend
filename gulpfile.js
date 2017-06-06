@@ -1,8 +1,10 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
-    rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var browserSync = require('browser-sync');
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
+    browserSync = require('browser-sync'),
+    gls = require('gulp-live-server'),
+    clean = require('gulp-clean');
 
 gulp.task('browser-sync', function() {
   browserSync({
@@ -72,6 +74,21 @@ gulp.task('prepareIndex', function(){
 });
 
 
+gulp.task('prepareBaseModuleDev', function() {
+  console.log('En prepareBaseModule')
+  return gulp.src(
+    [
+      'baseModule/**'
+    ])
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(gulp.dest('dist/baseModule'))
+    .pipe(browserSync.reload({stream:true}))
+});
+
 gulp.task('prepareBaseModule', function() {
   console.log('En prepareBaseModule')
   return gulp.src(
@@ -100,12 +117,12 @@ gulp.task('prepareServer', ['prepareBaseModule'], function() {
     }}))
     .pipe(rename('urlServer.js'))
     .pipe(gulp.dest('dist/baseModule/'))
+    .pipe(gulp.src('dist/baseModule/urlServerRemote.js'))
+    .pipe(clean())
     //.pipe(gulp.src('dist/baseModule/urlServerRemote.js'))
     //.pipe(rename('dist/baseModule/urlServer.js'))
     .pipe(browserSync.reload({stream:true}))
 });
-
-
 
 gulp.task('prepareApp', function(){
   return gulp.src('application.js')
@@ -135,4 +152,11 @@ gulp.task('default', ['browser-sync'], function(){
 });
 
 //'prepareServer',  ,'bowerComponents'
-gulp.task('buildModule', ['scripts',  'prepareServer','prepareIndex', 'prepareApp', 'prepareConfig', 'prepareResources' ,'prepareCSS']);
+gulp.task('buildProd', ['scripts',  'prepareServer','prepareIndex', 'prepareApp', 'prepareConfig', 'prepareResources' ,'prepareCSS']);
+
+gulp.task('buildDev', ['scripts', 'prepareBaseModuleDev', 'prepareIndex', 'prepareApp', 'prepareConfig', 'prepareResources' ,'prepareCSS']);
+
+gulp.task('local', [ 'buildDev'], function() {
+  var server = gls.new('./server.js');
+  return server.start();
+});
