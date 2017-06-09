@@ -7,7 +7,9 @@ angular.module('brand').controller('BrandCtrl', [ '$scope', '$stateParams', 'Bra
 		var service = Brand;
 		$scope.search = new PaginatedSearch(service);
 
-		$scope.brands = Brand.getAll();
+		$scope.findPage = function () {
+			$scope.search.search();
+		};
 
 		function manageErrorResponse (message) {
 			window.alert(message);

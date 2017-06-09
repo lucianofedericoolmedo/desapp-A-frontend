@@ -21,6 +21,11 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
         	method:'DELETE' 
         },
 
+        findByPage : {
+            method:'GET',
+            url: URLServer.url + '/services/products/find-by-page'
+        },
+
         createCartFromShoppingList : {
             method: 'POST',
             url: URLServer.url + '/services/carts/create-from-shopping-list-for-user/:shoppingListId/:userId'

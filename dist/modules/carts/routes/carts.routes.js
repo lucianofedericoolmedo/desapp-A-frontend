@@ -9,6 +9,16 @@ angular.module('cart').config(['$stateProvider',
 			templateUrl: 'modules/carts/views/crud-actions-cart.view.html',
 			controller: 'CartCtrl'
 		}).
+		state('list-cart', {
+			url: '/cart/list',
+			templateUrl: 'modules/carts/views/list-cart.view.html',
+			controller: 'CartCtrl'
+		}).
+		state('check-items-cart', {
+			url: '/cart/check-items/:id',
+			templateUrl: 'modules/carts/views/check-cart-items.view.html',
+			controller: 'CartCtrl'
+		}).
 		state('edit-cart', {
 			url: '/cart/edit/:id',
 			templateUrl: 'modules/carts/views/crud-actions-cart.view.html',

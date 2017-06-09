@@ -1,8 +1,16 @@
 'use strict';
 
-angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart', 
-	function ($scope, $stateParams, Cart) {
+angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart',
+	'PaginatedSearch',
+	function ($scope, $stateParams, Cart, PaginatedSearch) {
 	
+		var service = Cart;
+		$scope.search = new PaginatedSearch(service);
+
+		$scope.findPage = function () {
+			$scope.search.search();
+		};
+
 		function manageErrorResponse (message) {
 			window.alert(message);
 		}
@@ -14,10 +22,10 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 		};
 
 		$scope.get = function () {
-			Cart.get( { id : $stateParams.id }, function (successResponse) {
+			service.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.cart = successResponse;
 			}, manageErrorResponse);
-		}
+		};
 
 		$scope.crudInit = function () {
 			var justCreatedCart = $stateParams.justCreatedCart;
@@ -48,6 +56,10 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 					$scope.newInstance();
 				});
 			}
+		};
+
+		$scope.delete = function (id) {
+			service.remove({ id : id});
 		};
 
 }]);
