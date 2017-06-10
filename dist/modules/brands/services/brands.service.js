@@ -19,7 +19,12 @@ angular.module('brand').service('Brand', function($resource, URLServer) {
         },
         remove : { 
         	method:'DELETE' 
-        }
+        },
+
+        findByPage : {
+            method:'GET',
+            url: URLServer.url + '/services/brands/find-by-page'
+        },
 
     });
 })

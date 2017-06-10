@@ -99,7 +99,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 
 		$scope.increaseQuantity = function (product) {
 			if (product) {
-				product.quantity = product.quantity + 1;
+				product.quantity = product.quantity ? product.quantity + 1 : 1;
 			}
 		};
 
@@ -122,7 +122,8 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 			var shoppingListId = $scope.shoppingList.id;
 			ShoppingList.removeItem({ itemId : itemId , shoppingListId : shoppingListId },
 				function (successResponse) {
-					$scope.shoppingList.splice(index, 1);
+					$scope.searchProductsNotInShoppingList();
+					$scope.shoppingList.items.splice(index, 1);
 			}, manageErrorResponse);
 		};
 

@@ -33,3 +33,11 @@ footer {
   -o-border-radius: 10px;
   border-radius: 10px;
 }
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+}

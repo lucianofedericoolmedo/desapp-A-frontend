@@ -1,8 +1,19 @@
+<style type="text/css">
+	.no-margin-h {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.no-padding-h {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+</style>
+
 <div>
 	<div>
 		<h3>Products in Shopping List</h3>
 	</div>
-	<div class="container jumbotron">
+	<div class="container-fluid jumbotron">
 		<div ng-if="shoppingList.items.length > 0">
 			<div ng-repeat="item in shoppingList.items track by item.id">
 				<div class="col-md-3 col-sm-4 col-xs-12">
@@ -19,17 +30,17 @@
 									<button class="btn btn-sm btn-primary" type="button" 
 										ng-click="decreaseQuantity(item)"
 										ng-enabled="canDecrease(item)">
-										<small>-</small>
+										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-md-4 no-padding-horizontal">
+								<div class="col-md-4 no-padding-h">
 									<input type="number" name="quantity" class="full-width" 
 										ng-model="item.quantity">
 								</div>
 								<div class="col-md-4">
 									<button class="btn btn-sm btn-primary" type="button" 
 										ng-click="increaseQuantity(item)">
-										<small>+</small>
+										<i class="glyphicon glyphicon-plus"></i>
 									</button>
 								</div>
 							</div>
@@ -55,10 +66,10 @@
 	<div>
 		<h3>Products to add</h3>
 	</div>
-	<div class="container jumbotron">
+	<div class="container-fluid jumbotron">
 		<div ng-if="searchNotInShoppingList.result.length > 0">
 			<div ng-repeat="product in searchNotInShoppingList.result track by product.id">
-				<div class="col-md-3 col-sm-4 col-xs-12">
+				<div class="col-md-2 col-sm-4 col-xs-12">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<!-- Product information -->
@@ -67,31 +78,32 @@
 								<p>{{product.name }}</p>
 							</div>
 							<!-- Product actions -->
-							<div class="col-md-12">
-								<div class="col-md-4">
+							<div class="row">
+								<div class="col-md-4 col-xs-4">
 									<button class="btn btn-sm btn-primary" type="button" 
 										ng-click="decreaseQuantity(product)"
 										ng-enabled="canDecrease(product)">
-										<small>-</small>
+										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-md-4 no-padding-horizontal">
+								<div class="col-md-4 col-xs-4 no-padding-h">
 									<input type="number" name="quantity" class="full-width" 
 										ng-init="initializeQuantity(product)"
 										ng-model="product.quantity">
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 col-xs-4">
 									<button class="btn btn-sm btn-primary" type="button" 
 										ng-click="increaseQuantity(product)">
-										<small>+</small>
+										<i class="glyphicon glyphicon-plus"></i>
 									</button>
 								</div>
-							</div>
-							<div class="col-md-11">
-								<button class="btn btn-sm btn-primary full-width" type="button" 
-									ng-click="addProduct(product)">
-									<small>ADD</small>
-								</button>
+								<div class="col-md-12">
+									<button class="btn btn-sm btn-primary full-width"
+										type="button" 
+										ng-click="addProduct(product)">
+										<small>ADD</small>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -101,6 +113,15 @@
 		<div ng-if="searchNotInShoppingList.result.length === 0">
 			<span>No product to show</span>
 		</div>
+	</div>
+
+	<div class="col-md-12" ng-if="searchNotInShoppingList.result.length > 0">
+		<ul uib-pagination total-items="searchNotInShoppingList.totalSize" 
+			ng-change="findPage()"
+			ng-model="searchNotInShoppingList.pageNumber" max-size="maxSize"
+			items-per-page="searchNotInShoppingList.pageSize"
+			class="pagination-sm" boundary-links="true">
+		</ul>
 	</div>
 
 </div>
