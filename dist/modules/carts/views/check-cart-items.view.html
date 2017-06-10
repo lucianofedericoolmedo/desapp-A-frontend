@@ -35,8 +35,9 @@
 								</div>
 							</div>
 							<div class="col-md-11">
-								<button class="btn btn-sm btn-primary full-width" type="button" 
-									ng-click="checkItem(item, $index)">
+								<button class="btn btn-sm full-width" type="button" 
+									ng-click="checkItem(item)"
+									ng-class="{'btn-success' : item.checked, 'btn-secondary' : !item-checked}">
 									<small>CHECK</small>
 								</button>
 							</div>

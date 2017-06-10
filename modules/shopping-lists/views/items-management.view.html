@@ -27,18 +27,18 @@
 							<!-- Product actions -->
 							<div class="col-md-12">
 								<div class="col-md-4">
-									<button class="btn btn-sm btn-primary" type="button" 
+									<button class="btn btn-xs btn-primary" type="button" 
 										ng-click="decreaseQuantity(item)"
 										ng-enabled="canDecrease(item)">
 										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-md-4 no-padding-h">
+								<div class="col-md-4">
 									<input type="number" name="quantity" class="full-width" 
 										ng-model="item.quantity">
 								</div>
 								<div class="col-md-4">
-									<button class="btn btn-sm btn-primary" type="button" 
+									<button class="btn btn-xs btn-primary" type="button" 
 										ng-click="increaseQuantity(item)">
 										<i class="glyphicon glyphicon-plus"></i>
 									</button>
@@ -79,25 +79,27 @@
 							</div>
 							<!-- Product actions -->
 							<div class="row">
-								<div class="col-md-4 col-xs-4">
-									<button class="btn btn-sm btn-primary" type="button" 
+								<div class="visible-xs visible-sm col-xs-4 center" >
+									<button class="btn btn-xs btn-primary"
+										type="button" 
 										ng-click="decreaseQuantity(product)"
 										ng-enabled="canDecrease(product)">
 										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-md-4 col-xs-4 no-padding-h">
+								<div class="col-lg-7 col-md-12 col-sm-4 col-xs-4">
 									<input type="number" name="quantity" class="full-width" 
 										ng-init="initializeQuantity(product)"
 										ng-model="product.quantity">
 								</div>
-								<div class="col-md-4 col-xs-4">
-									<button class="btn btn-sm btn-primary" type="button" 
+								<div class="visible-xs visible-sm col-xs-4 center">
+									<button class="btn btn-xs btn-primary"
+										type="button" 
 										ng-click="increaseQuantity(product)">
 										<i class="glyphicon glyphicon-plus"></i>
 									</button>
 								</div>
-								<div class="col-md-12">
+								<div class="col-lg-5 col-md-12 col-xs-12">
 									<button class="btn btn-sm btn-primary full-width"
 										type="button" 
 										ng-click="addProduct(product)">

@@ -62,4 +62,8 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 			service.remove({ id : id});
 		};
 
+		$scope.checkItem = function (item) {
+			item.checked = !item.checked;
+		};
+
 }]);

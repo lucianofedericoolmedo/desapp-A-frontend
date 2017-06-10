@@ -7,7 +7,7 @@
 
 </style>
 
-<section ng-init="queryAll()">
+<section>
 
 	<div>
 		<a class="btn btn-info" href="#!/cart/create">
@@ -15,28 +15,32 @@
 		</a>
 	</div>
 
-	<div class="container jumbotron">
+	<div class="container-fluid jumbotron" ng-init="findPage()">
 		<div ng-if="search.result.length > 0">
 			<div class="table-responsive">
 				<table>
 					<thead>
-						<tr>
-							<th>Used Shopping List</th>
-							<th>Created at</th>
-							<th>Actions</th>
+						<tr class="row">
+							<th class="col-md-5">Used Shopping List</th>
+							<th class="col-md-2">Created at</th>
+							<th class="col-md-4 pull-right">Actions</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="cart in search.result">
-						<tr>
-							<td>{{ cart.usedShoppingList.name }}</td>
-							<td>{{ cart.creationDate }}</td>
-							<td>
+						<tr class="row">
+							<td class="col-md-5">{{ cart.usedShoppingList.name }}</td>
+							<td class="col-md-2">{{ cart.creationDate }}</td>
+							<td class="col-md-4 pull-right">
 								<div class="btn-group">
-									<a class="btn btn-xs btn-info"
-										href="#!/cart/edit/{{ cart.id }}">
+									<a type="button" class="btn btn-xs btn-info"
+										href="#/cart/edit/{{ cart.id }}">
 										EDIT
 									</a>
-									<button class="btn btn-xs btn-danger"
+									<a type="button" class="btn btn-xs btn-info"
+										href="#/cart/check-items/{{ cart.id }}">
+										CHECK
+									</a>
+									<button type="button" class="btn btn-xs btn-danger"
 										ng-click="delete(cart.id)">
 										REMOVE
 									</button>
