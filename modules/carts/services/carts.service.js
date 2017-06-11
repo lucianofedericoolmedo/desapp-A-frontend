@@ -23,7 +23,7 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
 
         findByPage : {
             method:'GET',
-            url: URLServer.url + '/services/products/find-by-page'
+            url: URLServer.url + '/services/carts/find-by-page'
         },
 
         createCartFromShoppingList : {

@@ -6,7 +6,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 		$state) {
 
 		var service = Product;
-		$scope.search = new PaginatedSearch(service, 1);
+		$scope.search = new PaginatedSearch(service);
 
 		$scope.findPage = function () {
 			$scope.search.search();

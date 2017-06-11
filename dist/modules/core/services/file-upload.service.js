@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('core').service('FileUpload', ['$http', function ($http) {
+angular.module('core').service('FileUpload', ['$http', 'URLServer', function ($http, URLServer) {
 
-	var url = 'http://localhost:8080/services/upload/product-batch-uploading'
+	var url = URLServer.url + '/services/upload/product-batch-uploading';
 
 	var uploadFile = function(image, path, success, error) {
 		var fd = new FormData();
