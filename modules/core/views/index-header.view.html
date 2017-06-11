@@ -14,7 +14,7 @@
 		<div class="navbar-collapse collapse" ng-controller="AppController">
 			<ul class="nav navbar-nav navbar-right" >
 
-				<div ng-translate-language-select></div>
+				<div class="col-md-4" ng-translate-language-select></div>
 
 				<!--
 				<li class="dropdown" >
@@ -26,15 +26,15 @@
 				</li>
 				-->
 
-				<li class="dropdown" ng-if="auth.isAuthenticated()" >
+				<li class="dropdown col-md-4" ng-if="auth.isAuthenticated()" >
 					<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
 					<ul id="g-account-menu" class="dropdown-menu" role="menu">
 						<li><a href="#">My Profile</a></li>
 					</ul>
 				</li>
-				<li ng-if="auth.isAuthenticated()"><a href="#"><i class="glyphicon glyphicon-lock"></i> {{"views.main.Logout" | translate}}</a></li>						
-				<li >
-					<a ng-click="login()" ng-if="!auth.isAuthenticated()">
+				<li ng-if="auth.isAuthenticated()" ><a href="#"><i class="glyphicon glyphicon-lock"></i> {{"views.main.Logout" | translate}}</a></li>						
+				<li class="col-md-4" ng-if="!auth.isAuthenticated()">
+					<a ng-click="login()" >
 						<i class="glyphicon glyphicon-lock"></i>
 						<div>
 						 {{"views.main.Login" | translate}}

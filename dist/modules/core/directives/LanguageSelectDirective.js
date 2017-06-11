@@ -10,7 +10,7 @@ angular.module('core')
 
 
     var templateElem2 = '<div class="language-select" ng-if="visible">'+
-          '<label>'+
+          '<label >'+
             '{{"directives.language-select.Language" | translate}}:'+
             '<select ng-model="currentLocaleDisplayName"'+
               'ng-options="localesDisplayName for localesDisplayName in localesDisplayNames"'+
@@ -18,17 +18,6 @@ angular.module('core')
             '</select>'+
           '</label>'+
         '</div>';
-
-    //TODO: Darle estilo a esto ...
-    var templateElem = 
-            '<li class="dropdown" >' + 
-              '<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"> '
-              + '<i class="glyphicon glyphicon-user"></i> Idiomas <span class="caret"></span></a>' +                
-                '<select id="g-account-menu" class="dropdown-menu" ng-model="currentLocaleDisplayName"'+
-                  'ng-options="localesDisplayName for localesDisplayName in localesDisplayNames"'+
-                  'ng-change="changeLanguage(currentLocaleDisplayName)">'+
-                '</select>'
-                + '</li> ';
 
     return {
       restrict: 'A',
