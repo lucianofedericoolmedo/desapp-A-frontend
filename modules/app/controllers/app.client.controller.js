@@ -13,8 +13,8 @@ angular.module('app').controller('AppController', [
   	$locale,
   	$scope,
   	authService) {
-    // This provides Authentication context.
-    $scope.demoText = "Bueenasss";
+
+
     $scope.auth = authService;
 
     $scope.date = new Date();
@@ -31,9 +31,10 @@ angular.module('app').controller('AppController', [
       };
 
 
+    /*
     $rootScope.model = {selectedLocale: 'es'};
     $rootScope.$locale = $locale;
     $rootScope.changeLocale = tmhDynamicLocale.set;
-
+	*/
   }
 ]);

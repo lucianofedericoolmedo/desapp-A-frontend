@@ -1,5 +1,16 @@
-<div ng-controller="AppController">
-	<h1>{{demoText}}<h1>
+<div >
+
+
+	<div >
+		<p class="ng-binding">{{model.selectedLocale}}</p>
+		<p class="ng-binding">{{date | date:'shortDate'}}</p>
+		<p class="ng-binding">{{date | date:'EEEE'}}</p>
+		<p class="ng-binding">{{amount | currency}}</p>		
+	</div>
+
+
+	<!-- -->
+
 	<div> {{"views.main.Splendid!" | translate}} </div>
 
 	<h4 ng-if="auth.isAuthenticated()">
@@ -13,5 +24,5 @@
 	vm.auth.login()
 	-->
 
-	<a ng-if="vm.auth.isAuthenticated()" href="#/product/list"> LISTAR PRODUCTOS </a>
+	<a ng-if="auth.isAuthenticated()" href="#/product/list"> LISTAR PRODUCTOS </a>
 </div>

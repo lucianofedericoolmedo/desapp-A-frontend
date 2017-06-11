@@ -1,25 +1,16 @@
-<div ng-controller="AppController">
+<div >
 
 
-	<div class="container">
-		<h4>Example</h4>
-		<p>Pick a locale <select class="ng-valid ng-dirty ng-valid-parse ng-touched" ng-model="model.selectedLocale" ng-options="key as value for (key, value) in availableLocales" ng-change="changeLocale(model.selectedLocale)"></select></p>
+	<div >
 		<p class="ng-binding">{{model.selectedLocale}}</p>
 		<p class="ng-binding">{{date | date:'shortDate'}}</p>
 		<p class="ng-binding">{{date | date:'EEEE'}}</p>
-		<p class="ng-binding">{{amount | currency}}</p>
-		
+		<p class="ng-binding">{{amount | currency}}</p>		
 	</div>
-
-
-
-
-
 
 
 	<!-- -->
 
-	<h1>{{demoText}}<h1>
 	<div> {{"views.main.Splendid!" | translate}} </div>
 
 	<h4 ng-if="auth.isAuthenticated()">

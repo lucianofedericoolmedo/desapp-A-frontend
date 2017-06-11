@@ -48,10 +48,6 @@ angular.module('app').config(['$stateProvider',
 	      scope: REQUESTED_SCOPES
 	    });
 
-	    console.log(AUTH0_CLIENT_ID);
-	    console.log(AUTH0_DOMAIN);
-	    console.log(AUTH0_AUDIENCE);
-	    console.log(AUTH0_CALLBACK_URL);
 
 	    jwtOptionsProvider.config({
 	      tokenGetter: function() {
