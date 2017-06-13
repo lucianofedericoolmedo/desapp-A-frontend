@@ -37,6 +37,11 @@ angular.module('product').service('Product', function($resource, URLServer) {
         saveDto : { 
             method: 'POST',
             url: URLServer.url + '/services/products/create-dto'
+        },
+
+        stockForProduct : { 
+            method: 'GET',
+            url: URLServer.url + '/services/stock/for-product/:prodId'
         }
 
     });

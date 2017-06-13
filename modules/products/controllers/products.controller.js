@@ -34,6 +34,12 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 		$scope.get = function () {
 			service.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.product = successResponse;
+				$scope.priceForDto = successResponse.currentPrice ? successResponse.currentPrice.price : undefined;
+				Product.stockForProduct({ prodId : $scope.product.id },
+					function (successResponse) {
+						$scope.stockForDto = successResponse.quantity;
+					}
+				);
 			}, manageErrorResponse);
 		};
 
@@ -73,9 +79,11 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 			var toListCallback = function (successResponse) {
 				$state.go('list-product');
 			};
+			var dto = buildDto();
 
 			if ($scope.product.id) {
-				sendEntityWithMethod('updateDto', toListCallback);
+				Product.updateDto({ id : $scope.product.id }, dto, toListCallback)
+				//sendEntityWithMethod('updateDto', toListCallback);
 			} else {
 				sendEntityWithMethod('saveDto', toListCallback);
 			}
