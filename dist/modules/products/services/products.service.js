@@ -28,6 +28,15 @@ angular.module('product').service('Product', function($resource, URLServer) {
         findNotInShoppingList : {
             method:'GET',
             url: URLServer.url + '/services/products/find-not-in-shopping-list'
+        },
+
+        updateDto : {
+            method: 'PUT',
+            url: URLServer.url + '/services/products/update-dto/:id'
+        },
+        saveDto : { 
+            method: 'POST',
+            url: URLServer.url + '/services/products/create-dto'
         }
 
     });

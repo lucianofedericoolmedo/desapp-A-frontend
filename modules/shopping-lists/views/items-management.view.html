@@ -16,7 +16,8 @@
 	<div class="container-fluid jumbotron">
 		<div ng-if="shoppingList.items.length > 0">
 			<div ng-repeat="item in shoppingList.items track by item.id">
-				<div class="col-md-3 col-sm-4 col-xs-12">
+				<div class="col-md-3 col-sm-4 col-xs-12"
+					ng-init="item.initialQuantity = item.quantity">
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<!-- Product information -->
@@ -33,7 +34,7 @@
 										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 no-padding-h">
 									<input type="number" name="quantity" class="full-width" 
 										ng-model="item.quantity">
 								</div>
@@ -44,10 +45,15 @@
 									</button>
 								</div>
 							</div>
-							<div class="col-md-11">
-								<button class="btn btn-sm btn-primary full-width" type="button" 
+							<div class="btn-group col-md-11">
+								<button class="btn btn-sm btn-danger full-width" type="button" 
 									ng-click="removeItem(item, $index)">
 									<small>REMOVE</small>
+								</button>
+								<button class="btn btn-sm btn-info full-width" type="button" 
+									ng-if="item.quantity !== item.initialQuantity"
+									ng-click="updateItem(item)">
+									<small>UPDATE</small>
 								</button>
 							</div>
 						</div>
@@ -87,7 +93,7 @@
 										<i class="glyphicon glyphicon-minus"></i>
 									</button>
 								</div>
-								<div class="col-lg-7 col-md-12 col-sm-4 col-xs-4">
+								<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4">
 									<input type="number" name="quantity" class="full-width" 
 										ng-init="initializeQuantity(product)"
 										ng-model="product.quantity">
@@ -99,7 +105,7 @@
 										<i class="glyphicon glyphicon-plus"></i>
 									</button>
 								</div>
-								<div class="col-lg-5 col-md-12 col-xs-12">
+								<div class="col-lg-12 col-md-12 col-xs-12">
 									<button class="btn btn-sm btn-primary full-width"
 										type="button" 
 										ng-click="addProduct(product)">

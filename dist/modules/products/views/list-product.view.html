@@ -4,12 +4,15 @@
 		<a class="btn btn-info" href="#/product/create">
 			Create
 		</a>
-	</div>
-
-	<div>
-		<a class="btn btn-info" href="#/product/crud-batch">
+		<!--a class="btn btn-info" href="#/product/crud-batch">
 			Batch Upload
-		</a>
+		</a-->
+		<button type="file" class="btn btn-info" 
+			ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
+			accept="text/csv">
+		  	Batch Upload
+	  	</button>
+
 	</div>
 
 	<div class="jumbotron" ng-init="findPage()">
@@ -26,7 +29,7 @@
 							<!-- Product actions -->
 							<div class="btn-group">
 								<a class="btn btn-xs btn-info"
-									href="/product/edit/{{product.id}}">
+									href="#/product/edit/{{product.id}}">
 									<small>EDIT</small>
 								</a>
 								<div class="btn btn-xs btn-danger" ng-click="delete(product.id)">

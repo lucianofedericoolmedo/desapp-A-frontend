@@ -1,21 +1,12 @@
-<style type="text/css">
-	
-	img {
-		max-width: 100%;
-		max-height: 100%;
-	}
-
-</style>
-
 <section ng-init="queryAll()">
 
 	<div>
-		<a class="btn btn-info" href="#/brand/create">
+		<a class="btn btn-info" href="#/product-category/create">
 			Create
 		</a>
 	</div>
 
-	<div class="container jumbotron" ng-init="findPage()">
+	<div class="container-fluid jumbotron" ng-init="findPage()">
 		<div ng-if="search.result.length > 0">
 			<div class="table-responsive">
 				<table class="table table-condensed table-hover">
@@ -25,22 +16,22 @@
 							<th>Created at</th>
 						</tr>
 					</thead>
-					<tbody ng-repeat="brand in search.result">
+					<tbody ng-repeat="productCategory in search.result">
 						<tr>
 							<td>
-								{{ brand.name }}
+								{{ productCategory.name }}
 							</td>
 							<td>
-								{{ brand.creationDate }}
+								{{ productCategory.creationDate }}
 							</td>
 							<td>
 								<div class="btn-group">
 									<a class="btn btn-info btn-xs"
-										href="#/brand/edit/{{brand.id}}">
+										href="#/product-category/edit/{{productCategory.id}}">
 										EDIT
 									</a>
 									<button class="btn btn-danger btn-xs"
-										ng-click="delete(brand.id)">
+										ng-click="delete(productCategory.id)">
 										REMOVE
 									</button>
 								</div>
@@ -52,7 +43,7 @@
 		</div>
 
 		<div ng-if="search.result.length === 0">
-			<span>No brands to show</span>
+			<span>No product categories to show</span>
 		</div>
 	</div>
 

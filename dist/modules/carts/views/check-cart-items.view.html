@@ -38,7 +38,7 @@
 								<button class="btn btn-sm full-width" type="button" 
 									ng-click="checkItem(item)"
 									ng-class="{'btn-success' : item.checked, 'btn-secondary' : !item-checked}">
-									<small>CHECK</small>
+									<small>{{ item.checked ? 'CHECK' : 'UNCHECK' }}</small>
 								</button>
 							</div>
 						</div>

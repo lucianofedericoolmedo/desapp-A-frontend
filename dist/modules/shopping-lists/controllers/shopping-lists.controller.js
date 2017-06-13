@@ -66,7 +66,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 				userId : { value : $scope.hardcodedUser.id }
 			}
 			Cart.createCartFromShoppingList(data, function (successResponse) {
-				$state.go('edit-cart', { id : successResponse.id, justCreatedCart : successResponse });
+				$state.go('check-items-cart', { id : successResponse.id, justCreatedCart : successResponse });
 			}, manageErrorResponse);
 		};
 
@@ -110,11 +110,18 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 					quantity: product.quantity
 				}
 				ShoppingList.createItem({ id : $scope.shoppingList.id }, item, function (successResponse) {
-					$scope.shoppingList.items.push(successResponse);
+					var persistedItem = successResponse;
+					persistedItem.initialQuantity = persistedItem.quantity;
+					$scope.shoppingList.items.push(persistedItem);
 					$scope.searchProductsNotInShoppingList();
 				}, manageErrorResponse);
-				//ItemManagementSrv.setProductAndQuantity(product);
 			}
+		};
+
+		$scope.updateItem = function (item) {
+			ShoppingList.updateItem(item, function (successResponse) {
+				item.initialQuantity = item.quantity;
+			}, manageErrorResponse);
 		};
 
 		$scope.removeItem = function (item, index) {

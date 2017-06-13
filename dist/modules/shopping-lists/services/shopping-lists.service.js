@@ -30,7 +30,12 @@ angular.module('shopping-list').service('ShoppingList', function($resource, URLS
             method: 'DELETE',
             url: URLServer.url + '/services/shopping-lists/remove-item-in/:itemId/:shoppingListId',
             isArray: false
-        }
+        },
+        updateItem : {
+            method: 'PUT',
+            url: URLServer.url + '/services/shopping-lists/update-item/:id',
+            isArray: false
+        },
 
     });
 })

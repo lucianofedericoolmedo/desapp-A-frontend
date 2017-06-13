@@ -1,3 +1,14 @@
+<style type="text/css">
+	.no-padding-h {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.no-padding-v {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+</style>
+
 <section>
 
 	<div class="form-group">
@@ -8,8 +19,8 @@
 	</div>
 
 	<div class="form-group">
-		<label class="col-md-2 col-xs-12 control-label" for="brand">Brand</label>
-		<div class="col-md-5 col-xs-12">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="brand">Brand</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
 			<select class="full-width" name="brand" ng-model="product.brand"
 				ng-options="brand as brand.name for brand in brands track by brand.id">
 				<option value="">Select a brand</option>
@@ -23,14 +34,72 @@
 	</div>
 
 	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="stock">Stock</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input class="full-width" type="text" name="stock" ng-model="stockForDto"
+				ng-change="setStockForDto(stockForDto)">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="price">Price</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input class="full-width" type="text" name="price" ng-model="priceForDto"
+				ng-change="setPriceForDto(priceForDto)">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="category">Categories</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<select class="full-width" name="category" ng-model="categoryToAdd"
+				ng-options="productCategory as productCategory.name for productCategory in productCategories"
+				ng-change="addCategory()">
+				<option value="">Select a category to add</option>
+			</select>
+		</div>
+		<div>
+			<button type="button" class="btn" ng-click="openModalCrudProductCategory()">
+				<i class="glyphicon glyphicon-plus"></i>
+			</button>
+			<button type="button" class="btn btn-success" ng-click="addCategory(categoryToAdd)">
+				ADD CATEGORY
+			</button>
+		</div>
+	</div>
+
+	<div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="col-md-3 no-padding-h" ng-repeat="category in product.categories">
+					<div class="alert alert-warning full-width no-padding-h no-padding-v">
+						<button type="button" class="close"
+							ng-click="removeCategory($index)" aria-label="Close">
+							<span aria-hidden="true">
+								&times;
+							</span>
+						</button>
+						<strong><small>{{ category.name }}</small></strong>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
 		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="image">Image URL</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
 			<input class="full-width" type="text" name="image" ng-model="product.imageUrl">
 		</div>
 
-		<div ng-if="product.imageUrl">
-			<img ng-src="{{ product.imageUrl }}">
+		<div class="col-md-12">
+			<div class="col-md-2 visible-md visible-lg"></div>
+			<div ng-if="product.imageUrl" class="col-md-2 center">
+				<img ng-src="{{ product.imageUrl }}">
+			</div>
 		</div>
+
 	</div>
 
 </section>

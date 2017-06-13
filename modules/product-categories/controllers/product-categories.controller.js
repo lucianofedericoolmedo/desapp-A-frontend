@@ -1,8 +1,16 @@
 'use strict';
 
-angular.module('product-category').controller('ProductCategoryCtrl', [ '$scope', '$stateParams', 'ProductCategory', 
-	function ($scope, $stateParams, ProductCategory) {
+angular.module('product-category').controller('ProductCategoryCtrl', [ '$scope', '$stateParams',
+	'ProductCategory', 'PaginatedSearch',
+	function ($scope, $stateParams, ProductCategory, PaginatedSearch) {
 	
+		var service = ProductCategory;
+		$scope.search = new PaginatedSearch(service);
+
+		$scope.findPage = function () {
+			$scope.search.search();
+		};
+
 		function manageErrorResponse (message) {
 			window.alert(message);
 		}

@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 'Product', 'PaginatedSearch',
-	'Brand', '$uibModal', 'FileUpload', '$state',
+angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 'Product',
+	'PaginatedSearch', 'Brand', '$uibModal', 'FileUpload', '$state', 'ProductCategory',
 	function ($scope, $stateParams, Product, PaginatedSearch, Brand, $uibModal, FileUpload,
-		$state) {
+		$state, ProductCategory) {
 
 		var service = Product;
 		$scope.search = new PaginatedSearch(service);
@@ -13,6 +13,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 		};
 
 		$scope.brands = Brand.getAll();
+		$scope.productCategories = ProductCategory.getAll();
 		$scope.products = Product.getAll();
 		$scope.noImageSrc = 'http://www.jeaconf.org/UploadedFiles/Images/NoImage.jpg';
 
@@ -49,18 +50,34 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 			service.remove({ id : id});
 		};
 
+		function buildDto() {
+			var productDto = {};
+			productDto.product = $scope.product;
+			productDto.stock = $scope.stockForDto;
+			productDto.price = $scope.priceForDto;
+			return productDto;
+		}
+
 		function sendEntityWithMethod (methodName, callBack) {
-			service[methodName]($scope.product,
+			var dto = buildDto();
+
+			service[methodName](dto,
 				function (successResponse) {
-					$scope.newInstance();
+					if (callBack) {
+						callBack(successResponse);
+					}
 				}, manageErrorResponse);
 		}
 
 		$scope.saveOrUpdate = function () {
+			var toListCallback = function (successResponse) {
+				$state.go('list-product');
+			};
+
 			if ($scope.product.id) {
-				sendEntityWithMethod('update');
+				sendEntityWithMethod('updateDto', toListCallback);
 			} else {
-				sendEntityWithMethod('save');
+				sendEntityWithMethod('saveDto', toListCallback);
 			}
 		};
 
@@ -73,14 +90,47 @@ angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 
 			});
 		};
 
+		$scope.openModalCrudProductCategory = function () {
+			$uibModal.open({
+				templateUrl: 'modules/product-categories/views/modal-crud-product-category.view.html',
+				controller: 'ProductCategoriesCrudModalCtrl'
+			}).result.then(function () {
+				$scope.productCategories = ProductCategory.getAll();
+			});
+		};
+
+		////////////// UPLOAD FILES //////////////
+
 		$scope.uploadFiles = function(file, errFiles) {
 			var successCallback = function (successResponse) {
-				$state.go('list-product');
+				$scope.search.search();
 			};
 			var errorCallback = function (errorResponse) {
 				console.alert(errorResponse);
 			}
 			FileUpload.uploadFile(file, "", successCallback, errorCallback);
+		};
+
+		////////////// CATEGORY //////////////
+
+		$scope.addCategory = function (categoryToAdd) {
+			if (categoryToAdd) {
+				$scope.product.categories.push(categoryToAdd);
+			}
+		};
+
+		$scope.removeCategory = function (index) {
+			if (index !== null || index !== undefined) {
+				$scope.product.categories.splice(index, 1);
+			}
+		};
+
+		$scope.setStockForDto = function (stock) {
+			$scope.stockForDto = stock;
+		};
+
+		$scope.setPriceForDto = function (price) {
+			$scope.priceForDto = price;
 		};
 
 }]);
