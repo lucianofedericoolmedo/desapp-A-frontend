@@ -29,6 +29,21 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
         createCartFromShoppingList : {
             method: 'POST',
             url: URLServer.url + '/services/carts/create-from-shopping-list-for-user/:shoppingListId/:userId'
+        },
+
+        setValueToItem : {
+            method: 'PUT',
+            url: URLServer.url + '/services/carts/check-item-cart/:id'
+        },
+
+        requestPurchaseTurn: {
+            method: 'GET',
+            url: URLServer.url + '/services/carts/request-turn/:id'
+        },
+
+        confirmTurn : {
+            method: 'POST',
+            url: URLServer.url + '/services/carts/confirm-turn'
         }
 
     });

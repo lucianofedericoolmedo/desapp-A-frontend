@@ -27,6 +27,22 @@ angular.module('cart').config(['$stateProvider',
 				id : undefined,
 				justCreatedCart : undefined
 			}
+		}).
+		state('confirm-cart-purchase', {
+			url: '/cart/confirmation',
+			templateUrl: 'modules/carts/views/confirm-purchase-request.view.html',
+			controller: 'ConfirmCartPurchaseCtrl',
+			params: {
+				turn : undefined
+			}
+		}).
+		state('payment-turn-countdown', {
+			url: '/cart/payment-countdown',
+			templateUrl: 'modules/carts/views/payment-countdown.view.html',
+			controller: 'PaymentTurnCountdownCtrl',
+			params: {
+				paymentCountdown : undefined
+			}
 		});
 
 }])

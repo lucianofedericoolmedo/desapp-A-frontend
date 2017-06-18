@@ -2,13 +2,11 @@
 
 angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$state', 
 	'$stateParams', '$location', 'ShoppingList', 'ItemManagementSrv', 'Product',
-	'PaginatedSearch', 'Cart',
+	'PaginatedSearch', 'Cart', 'Authentication',
 	function ($scope, $state, $stateParams, $location, ShoppingList, ItemManagementSrv, Product, 
-		PaginatedSearch, Cart) {
-	
-		$scope.shoppingLists = ShoppingList.getAll();
+		PaginatedSearch, Cart, Authentication) {
 
-		$scope.hardcodedUser = { id : 1 };
+		$scope.shoppingLists = ShoppingList.getAll();
 
 		function manageErrorResponse (message) {
 			window.alert(message);
@@ -16,14 +14,13 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 
 		$scope.newInstance = function () {
 			$scope.shoppingList = new ShoppingList({
-				name : '',
 			});
 		};
 
 		$scope.get = function () {
 			ShoppingList.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.shoppingList = successResponse;
-				// Once the shopping list is assigned, the not assigned products are fetched.
+				// Once the shopping list is assigned, the unassigned products are fetched.
 				$scope.searchProductsNotInShoppingList();
 			}, manageErrorResponse);
 		}
@@ -41,29 +38,24 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 			service.remove({ id : id});
 		};
 
-		function sendEntityWithMethod (methodName, callback) {
-			ShoppingList[methodName]($scope.shoppingList,
-				function (successResponse) {
-					if (callback) {
-						callback(successResponse);
-					}
-				}, manageErrorResponse);
-		}
-
 		$scope.saveOrUpdate = function () {
 			if ($scope.shoppingList.id) {
-				sendEntityWithMethod('update');
+				ShoppingList.update($scope.shoppingList,
+					function (successResponse) {
+						$location.path('/shopping-list/list');
+					}, manageErrorResponse);
 			} else {
-				sendEntityWithMethod('save', function (successResponse) {
-					$location.path('/shopping-list/edit/'.concat(successResponse.id));
-				});
+				ShoppingList.save($scope.shoppingList,
+					function (successResponse) {
+						$location.path('/shopping-list/edit/'.concat(successResponse.id));
+					}, manageErrorResponse);
 			}
 		};
 
 		$scope.createCartFromShoppingList = function (shoppingList) {
 			var data = {
 				shoppingListId : { value : shoppingList.id },
-				userId : { value : $scope.hardcodedUser.id }
+				userId : { value : Authentication.getUserId() }
 			}
 			Cart.createCartFromShoppingList(data, function (successResponse) {
 				$state.go('check-items-cart', { id : successResponse.id, justCreatedCart : successResponse });

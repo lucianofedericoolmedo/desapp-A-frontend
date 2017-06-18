@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart',
-	'PaginatedSearch',
-	function ($scope, $stateParams, Cart, PaginatedSearch) {
+	'PaginatedSearch', '$timeout', '$state',
+	function ($scope, $stateParams, Cart, PaginatedSearch, $timeout, $state) {
 	
 		var service = Cart;
 		$scope.search = new PaginatedSearch(service);
+
+		var itemCheckInformation = {};
 
 		$scope.findPage = function () {
 			$scope.search.search();
@@ -62,8 +64,69 @@ angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart'
 			service.remove({ id : id});
 		};
 
+		var sendingItemCheckState = false;
+
 		$scope.checkItem = function (item) {
 			item.checked = !item.checked;
+			if (itemCheckInformation[item.id]) {
+				itemCheckInformation[item.id] = false;
+				return;
+			}
+			itemCheckInformation[item.id] = true;
+			var sendRequest = function () {
+				if (!itemCheckInformation[item.id]) {
+					return;
+				}
+				var dataToSend = { checked : item.checked };
+				if (item.checked) {
+					dataToSend.newQuantity = item.quantity;
+				}
+				Cart.setValueToItem({ id : item.id }, dataToSend, function (successResponse) {
+					itemCheckInformation[item.id] = false;
+				}, function (errorResponse) {
+					item.checked = !item.checked;
+					itemCheckInformation[item.id] = false;
+				});
+			}
+			$timeout(sendRequest, 3000);
+		};
+
+		function isSendingAnyItemCheckState() {
+			var sendingItemCheckState = false;
+			angular.forEach(Object.keys(itemCheckInformation), function (itemId) {
+				sendingItemCheckState = sendingItemCheckState || itemCheckInformation[itemId];
+			});
+			return sendingItemCheckState;
+		}
+
+		$scope.requestPurchaseTurn = function () {
+			if (isSendingAnyItemCheckState()) {
+				$timeout(function () {}, 3000);
+			}
+			Cart.requestPurchaseTurn({ id : $scope.cart.id }, function (successResponse) {
+				$state.go('confirm-cart-purchase', { turn : successResponse });
+			}, function (errorResponse) {
+				alert(errorResponse);
+			});
+		};
+
+		$scope.decreaseQuantity = function (itemCart) {
+			if (itemCart && itemCart.quantity) {
+				itemCart.quantity = itemCart.quantity - 1;
+			}
+		};
+
+		$scope.canDecrease = function (itemCart) {
+			if (itemCart) {
+				return itemCart.quantity !== undefined && itemCart.quantity > 0;
+			}
+			return false;
+		};
+
+		$scope.increaseQuantity = function (itemCart) {
+			if (itemCart) {
+				itemCart.quantity = itemCart.quantity ? itemCart.quantity + 1 : 1;
+			}
 		};
 
 }]);
