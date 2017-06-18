@@ -41,7 +41,7 @@ angular.module('cart').config(['$stateProvider',
 			templateUrl: 'modules/carts/views/payment-countdown.view.html',
 			controller: 'PaymentTurnCountdownCtrl',
 			params: {
-				paymentCountdown : undefined
+				countdownInformation : undefined
 			}
 		});
 

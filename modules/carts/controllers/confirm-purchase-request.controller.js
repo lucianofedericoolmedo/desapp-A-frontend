@@ -2,7 +2,7 @@
 
 angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$stateParams', 'Cart',
 	'$rootScope', '$state',
-	function ($scope, $stateParams, Cart, $rootScope) {
+	function ($scope, $stateParams, Cart, $rootScope, $state) {
 	
 		$scope.turn = $stateParams.turn;
 

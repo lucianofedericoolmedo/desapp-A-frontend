@@ -18,7 +18,8 @@ var ApplicationConfiguration = (function() {
 	    'pascalprecht.translate',
 	    'tmh.dynamicLocale',
 	    'auth0.auth0', 
-	    'angular-jwt'
+	    'angular-jwt',
+	    'timer'
 		];
 
 	// Add a new vertical module
