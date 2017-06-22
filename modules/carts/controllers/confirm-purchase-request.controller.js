@@ -8,12 +8,8 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$stateP
 
 		$scope.confirmTurn = function () {
 			Cart.confirmTurn($scope.turn, function () {
-				var paymentCountdown = {
-					requestTimestamp : $scope.turn.requestTimestamp,
-					stimatedTime : $scope.turn.stimatedTime
-				};
-				$rootScope.paymentCountdown = paymentCountdown;
-				$state.go('payment-turn-countdown', { countdownInformation : paymentCountdown});
+				$rootScope.currentTurn = $scope.turn;
+				$state.go('payment-turn-countdown', { currentTurn : $scope.turn });
 			});
 		};
 

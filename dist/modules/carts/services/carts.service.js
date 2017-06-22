@@ -44,6 +44,11 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
         confirmTurn : {
             method: 'POST',
             url: URLServer.url + '/services/carts/confirm-turn'
+        },
+
+        findUnattendedCartForUser : {
+            method: 'GET',
+            url: URLServer.url + '/services/carts/find-unattended-cart-for-user/:id'
         }
 
     });

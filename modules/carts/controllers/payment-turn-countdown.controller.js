@@ -8,28 +8,34 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$state
 		$scope.showCountdown = true;
 
 		function setCountdownInformation () {
-			if ($stateParams.countdownInformation) {
-				var countdownInformation = $stateParams.countdownInformation;
-			} else if ($rootScope.paymentCountdown) {
-				var countdownInformation = $rootScope.countdownInformation;
+			if ($stateParams.currentTurn) {
+				var currentTurn = $stateParams.currentTurn;
+			} else if ($rootScope.currentTurn) {
+				console.log($rootScope.currentTurn);
+				var currentTurn = $rootScope.currentTurn;
 			} else {
 				$location.url('/');
 				return;
 			}
-			$scope.requestTimestamp = countdownInformation.requestTimestamp;
-			$scope.stimatedTime = countdownInformation.stimatedTime;
+			$scope.requestTimeStamp = currentTurn.requestTimeStamp;
+			$scope.stimatedTime = currentTurn.stimatedTime;
+			$scope.cashRegisterCode = currentTurn.cashRegisterCode;
 		}
 
 		$scope.setEndTime = function () {
 			setCountdownInformation();
-			var now = new Date();
-			$scope.endTime = now.setSeconds(now.getSeconds() + $scope.stimatedTime);
+			if ($rootScope.endTime === undefined) {
+				var now = new Date();
+				var endTime = now.setSeconds(now.getSeconds() + $scope.stimatedTime);
+				$rootScope.endTime = endTime;
+			}
+			$scope.endTime = $rootScope.endTime;
 		};
 
 		$scope.finishedCountdown = function () {
 			$scope.showRedirection = true;
 			$scope.showCountdown = false;
-			$rootScope.countdownInformation = undefined;
+			$rootScope.currentTurn = undefined;
 		};
 
 }]);

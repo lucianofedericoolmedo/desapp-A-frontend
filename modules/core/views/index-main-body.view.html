@@ -1,0 +1,21 @@
+<!-- header -->
+<div
+	ng-include="'modules/core/views/index-header.view.html'"></div>
+
+<!-- Main -->
+<div class="container-fluid" style="padding-top: 60px; padding-bottom: 60px;">
+	<div class="row">
+
+		<div class="col-sm-2">
+			<div ng-include="'modules/core/views/index-sidebar-menu.view.html'"></div>
+		</div>
+		
+		<div class="col-sm-10">
+
+		    <div data-ui-view class="container-fluid"></div>
+		</div>
+		
+	
+	</div>
+</div>
+<!-- /Main -->

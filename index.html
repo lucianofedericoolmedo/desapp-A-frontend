@@ -25,13 +25,22 @@
 		
 		<link href="./css/styles.css" rel="stylesheet">
 	</head>
-	<body>
+	<body ng-controller="HomeCtrl" ng-init="toLogOrNotToLog()">
+
+		<div ng-hide="isLoggued">
+			<div ng-init="createUserInstance()"
+				ng-include="'modules/authentication/views/log-in.view.html'">
+			</div>
+		</div>
+
+		<div ng-show="isLoggued"
+			ng-include="'modules/core/views/index-main-body.view.html'">
+		</div>
 		
-		<!-- header -->
+		<!--
 		<div
 			ng-include="'modules/core/views/index-header.view.html'"></div>
 
-		<!-- Main -->
 		<div class="container-fluid" style="padding-top: 60px; padding-bottom: 60px;">
 			<div class="row">
 
@@ -47,7 +56,7 @@
 			
 			</div>
 		</div>
-		<!-- /Main -->
+		-->
 
 		<footer class="text-center">2017- ComprandoALoLoco-GrupoA</footer>
 
@@ -129,6 +138,7 @@
 		<!-- Authentication -->
 		<script src="modules/authentication/authentication.module.js"></script>
 		<script src="modules/authentication/services/authentication.service.js"></script>
+		<script src="modules/authentication/services/user-authentication.service.js"></script>
 
 		<!-- Brand scripts -->
 		<script src="modules/brands/brands.module.js"></script>
@@ -144,15 +154,17 @@
 		<script src="modules/carts/controllers/carts.controller.js"></script>
 		<script src="modules/carts/controllers/confirm-purchase-request.controller.js"></script>
 		<script src="modules/carts/controllers/payment-turn-countdown.controller.js"></script>
+		<script src="modules/carts/controllers/check-items-cart.controller.js"></script>
 
 		<!-- Core scripts -->
 		<script src="modules/core/core.module.js"></script>
 		<script src="modules/core/services/LocaleService.js"></script>
 		<script src="modules/core/services/auth.service.js"></script>
 		<script src="modules/core/services/paginated-search.service.js"></script>
-		<script src="modules/core/directives/LanguageSelectDirective.js"></script>
 		<script src="modules/core/services/date-utils.service.js"></script>
 		<script src="modules/core/services/file-upload.service.js"></script>
+		<script src="modules/core/directives/LanguageSelectDirective.js"></script>
+		<script src="modules/core/controllers/home.controller.js"></script>
 
 		<!-- Product scripts -->
 		<script src="modules/products/products.module.js"></script>

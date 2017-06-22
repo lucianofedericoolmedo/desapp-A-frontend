@@ -1,0 +1,49 @@
+<section class="container-fluid full-width full-height">
+	
+	<div class="row outter">
+
+		<div class="col-md-12">
+			<h1 style="text-align: center">Comprando aLoLoco</h1>
+		</div>
+
+		<div class="col-md-5 center inner">
+
+			<div class="jumbotron">
+				<form class="form-horizontal">
+					
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="username">
+							Username
+						</label>
+						<div class="col-md-10">
+							<input type="text" name="username" class="full-width"
+								ng-model="user.username">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="password">
+							Password
+						</label>
+						<div class="col-md-10">
+							<input type="password" name="password" class="full-width"
+								ng-model="user.password">
+						</div>
+					</div>
+
+				</form>
+				<div class="clearfix"></div>
+				<div>
+					<button class="btn btn-info pull-left" type="button" ng-click="register()">
+						REGISTER
+					</button>
+					<button class="btn btn-success pull-right" type="button" ng-click="login()">
+						LOG IN
+					</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+</section>

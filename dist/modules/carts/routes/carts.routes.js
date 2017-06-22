@@ -17,7 +17,7 @@ angular.module('cart').config(['$stateProvider',
 		state('check-items-cart', {
 			url: '/cart/check-items/:id',
 			templateUrl: 'modules/carts/views/check-cart-items.view.html',
-			controller: 'CartCtrl'
+			controller: 'CheckItemsCartCtrl'
 		}).
 		state('edit-cart', {
 			url: '/cart/edit/:id',
@@ -41,7 +41,7 @@ angular.module('cart').config(['$stateProvider',
 			templateUrl: 'modules/carts/views/payment-countdown.view.html',
 			controller: 'PaymentTurnCountdownCtrl',
 			params: {
-				countdownInformation : undefined
+				currentTurn : undefined
 			}
 		});
 

@@ -11,10 +11,19 @@ i {
 }
   
 footer {
+  /*
   margin-top:20px;
   padding-top:20px;
   padding-bottom:20px;
   background-color:#efefef;
+  */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 /* count indicator near icons */
@@ -42,7 +51,32 @@ footer {
   width: 100%;
 }
 
+.full-height {
+  height: 100%;
+}
+
+.center-on-view {
+  top: 50%;
+  left: 29%;
+}
+
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+@media (min-width: 500px) {
+
+  .outer {
+    position: relative;
+  }
+
+  .inner {
+    position: absolute;
+    top: 35%;
+    left: 29%;
+    height: 6em;
+    margin-top: -3em;
+  }
+
 }

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('authenticacion').value('userAuthenticationData', {});
-angular.module('authenticacion').service('Authentication', ['userAuthenticationData',
+angular.module('authentication').value('userAuthenticationData', {});
+angular.module('authentication').service('Authentication', ['userAuthenticationData',
 	'$state', 'DateUtils',
 	function (userAuthenticationData, $state, DateUtils) {
 

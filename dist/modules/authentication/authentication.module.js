@@ -1,3 +1,3 @@
 'use strict';
 
-ApplicationConfiguration.registerModule('authenticacion');
+ApplicationConfiguration.registerModule('authentication');
