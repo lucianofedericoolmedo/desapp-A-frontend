@@ -1,0 +1,48 @@
+<section>
+
+	<div class="container-fluid jumbotron" ng-init="findPage()">
+		<div ng-if="search.result.length > 0">
+			<div class="table-responsive">
+				<table>
+					<thead>
+						<tr class="row">
+							<th class="col-md-5">Used Shopping List</th>
+							<th class="col-md-2">Created at</th>
+							<th class="col-md-4 pull-right">Actions</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="purchase in search.result">
+						<tr class="row">
+							<td class="col-md-5">
+								{{ purchase.usedShoppingList.name }}
+							</td>
+							<td class="col-md-2">{{ purchase.creationDate }}</td>
+							<td class="col-md-4 pull-right">
+								<div class="btn-group">
+									<a type="button" class="btn btn-xs btn-info"
+										href="#/purchase/history/{{ purchase.id }}">
+										VIEW
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div ng-if="search.result.length === 0">
+			<span>No purchase to show</span>
+		</div>
+	</div>
+
+	<div class="col-md-12" ng-if="search.result.length > 0">
+		<ul uib-pagination total-items="search.totalSize" 
+			ng-change="findPurchasesByUser()"
+			ng-model="search.pageNumber" max-size="maxSize"
+			items-per-page="search.pageSize"
+			class="pagination-sm" boundary-links="true">
+		</ul>
+	</div>
+
+</section>

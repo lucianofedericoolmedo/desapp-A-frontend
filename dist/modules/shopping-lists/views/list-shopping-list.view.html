@@ -1,4 +1,4 @@
-<section ng-init="queryAll()">
+<section ng-init="searchUsersShoppingLists()">
 
 	<div>
 		<a class="btn btn-info" href="#/shopping-list/create">
@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="container jumbotron">
-		<div ng-if="shoppingLists.length > 0">
+		<div ng-if="usersShoppingLists.result.length > 0">
 			<div class="table-responsive">
 				<table class="table table-condensed table-hover">
 					<thead>
@@ -16,7 +16,7 @@
 							<th>Created at</th>
 						</tr>
 					</thead>
-					<tbody ng-repeat="shoppingList in shoppingLists">
+					<tbody ng-repeat="shoppingList in usersShoppingLists.result">
 						<tr>
 							<td>
 								{{ shoppingList.name }}
@@ -46,9 +46,18 @@
 			</div>
 		</div>
 
-		<div ng-if="shoppingLists.length === 0">
+		<div ng-if="usersShoppingLists.result.length === 0">
 			<span>No shopping-list to show</span>
 		</div>
+	</div>
+
+	<div class="col-md-12" ng-if="usersShoppingLists.result.length > 0">
+		<ul uib-pagination total-items="usersShoppingLists.totalSize" 
+			ng-change="searchUsersShoppingLists()"
+			ng-model="usersShoppingLists.pageNumber" max-size="maxSize"
+			items-per-page="usersShoppingLists.pageSize"
+			class="pagination-sm" boundary-links="true">
+		</ul>
 	</div>
 
 </section>

@@ -5,8 +5,46 @@
 	<hr>
 
 	<ul class="nav nav-stacked">
-		<li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Home <i class="glyphicon glyphicon-chevron-down"></i></a>
+		<li class="nav-header" ng-if="hasRole('CLIENT')">
+			<a href="#" data-toggle="collapse" data-target="#userMenu">
+				Home
+				<i class="glyphicon glyphicon-chevron-down"></i>
+			</a>
 			<ul class="nav nav-stacked collapse in" id="userMenu">
+				<li>
+					<a href="#/shopping-list/list">
+						<i class="glyphicon glyphicon-comment"></i>
+						Shopping Lists
+					</a>
+				</li>
+				<li>
+					<a href="#/cart/payment-countdown">
+						<i class="glyphicon glyphicon-user"></i>
+						Carts
+					</a>
+				</li>
+				<li>
+					<a href="#/purchase/history-list">
+						<i class="glyphicon glyphicon-user"></i>
+						Purchases
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="glyphicon glyphicon-off"></i>
+						Logout
+					</a>
+				</li>
+			</ul>
+		</li>
+		
+
+		<li class="nav-header" ng-if="hasRole('ADMIN')">
+			<a href="#" data-toggle="collapse" data-target="#admin">
+				Administration
+				<i class="glyphicon glyphicon-chevron-down"></i>
+			</a>
+			<ul class="nav nav-stacked collapse in" id="admin">
 				<li>
 					<a href="#/product/list">
 						<i class="glyphicon glyphicon-envelope"></i>
@@ -26,24 +64,10 @@
 						Product Categories
 					</a>
 				</li>
-				<li>
-					<a href="#/shopping-list/list">
-						<i class="glyphicon glyphicon-comment"></i>
-						Shopping Lists
-					</a>
-				</li>
-				<li>
-					<a href="#/cart/check-items/">
-						<i class="glyphicon glyphicon-user"></i>
-						Carts
-					</a>
-				</li>
-				<li><a href="#"><i class="glyphicon glyphicon-flag"></i> Transactions</a></li>
-				<li><a href="#"><i class="glyphicon glyphicon-exclamation-sign"></i> Rules</a></li>
-				<li><a href="#"><i class="glyphicon glyphicon-off"></i> Logout</a></li>
 			</ul>
 		</li>
-		
+
+
 	</ul>
 
 	

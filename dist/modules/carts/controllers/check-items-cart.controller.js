@@ -7,7 +7,7 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 		var itemCheckInformation = {};
 
 		function manageErrorResponse (message) {
-			window.alert(message);
+			window.alert(message.data.message);
 		}
 
 		$scope.get = function () {
@@ -27,11 +27,10 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 				$scope.get();
 			} else {
 				$state.go('list-cart');
-				//$location.url('/');
 			}
 		}
 
-		$scope.checkItemsInit = function () {
+		function fetchUnattendedCartForUser () {
 			Cart.findUnattendedCartForUser({ id: Authentication.getUserId() },
 				function (unattendedCartId) {
 					if (unattendedCartId.value !== null) {
@@ -43,7 +42,17 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 					} else {
 						fetchDataFromStateParams();
 					}
-			});
+				}
+			);			
+		}
+
+		$scope.checkItemsInit = function () {
+			if ($stateParams.justCreatedCart || $stateParams.id) {
+				fetchDataFromStateParams();
+			} else {
+				fetchUnattendedCartForUser();
+			}
+
 		};
 
 		var sendingItemCheckState = false;
@@ -109,6 +118,14 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 			if (itemCart) {
 				itemCart.quantity = itemCart.quantity ? itemCart.quantity + 1 : 1;
 			}
+		};
+
+		$scope.cancelCart = function () {
+			Cart.cancelCart({ id : $scope.cart.id },
+				function (successResponse) {
+					$state.go('list-shopping-list');
+				}, manageErrorResponse
+			);
 		};
 
 }])

@@ -14,7 +14,7 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$state
 				console.log($rootScope.currentTurn);
 				var currentTurn = $rootScope.currentTurn;
 			} else {
-				$state.go('check-items-cart', { id : null, justCreatedCart : null });
+				$location.url('/');
 				return;
 			}
 			$scope.requestTimeStamp = currentTurn.requestTimeStamp;

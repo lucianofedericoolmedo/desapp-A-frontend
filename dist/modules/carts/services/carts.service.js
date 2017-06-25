@@ -49,6 +49,11 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
         findUnattendedCartForUser : {
             method: 'GET',
             url: URLServer.url + '/services/carts/find-unattended-cart-for-user/:id'
+        },
+
+        cancelCart : {
+            method:'PUT',
+            url: URLServer.url + '/services/carts/cancel-cart/:id'
         }
 
     });

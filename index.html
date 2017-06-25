@@ -27,36 +27,15 @@
 	</head>
 	<body ng-controller="HomeCtrl" ng-init="toLogOrNotToLog()">
 
-		<div ng-hide="isLoggued">
+		<div ng-if="!isLoggued">
 			<div ng-init="createUserInstance()"
 				ng-include="'modules/authentication/views/log-in.view.html'">
 			</div>
 		</div>
 
-		<div ng-show="isLoggued"
+		<div ng-if="isLoggued"
 			ng-include="'modules/core/views/index-main-body.view.html'">
 		</div>
-		
-		<!--
-		<div
-			ng-include="'modules/core/views/index-header.view.html'"></div>
-
-		<div class="container-fluid" style="padding-top: 60px; padding-bottom: 60px;">
-			<div class="row">
-
-				<div class="col-sm-2">
-					<div ng-include="'modules/core/views/index-sidebar-menu.view.html'"></div>
-				</div>
-				
-				<div class="col-sm-10">
-
-				    <div data-ui-view class="container-fluid"></div>
-				</div>
-				
-			
-			</div>
-		</div>
-		-->
 
 		<footer class="text-center">2017- ComprandoALoLoco-GrupoA</footer>
 
@@ -178,6 +157,12 @@
 		<script src="modules/product-categories/services/product-categories.service.js"></script>
 		<script src="modules/product-categories/controllers/product-categories.controller.js"></script>
 		<script src="modules/product-categories/controllers/product-categories-crud-modal.controller.js"></script>
+
+		<!-- Purchase scripts -->
+		<script src="modules/purchases/purchases.module.js"></script>
+		<script src="modules/purchases/routes/purchases.routes.js"></script>
+		<script src="modules/purchases/services/purchases.service.js"></script>
+		<script src="modules/purchases/controllers/purchases.controller.js"></script>
 
 		<!-- Shopping List scripts -->
 		<script src="modules/shopping-lists/shopping-lists.module.js"></script>

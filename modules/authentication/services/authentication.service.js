@@ -6,6 +6,7 @@ angular.module('authentication').service('Authentication', ['userAuthenticationD
 	function (userAuthenticationData, $state, DateUtils) {
 
 		this.setUserData = function (user) {
+			delete userAuthenticationData.user;
 			userAuthenticationData.user = user;
 			userAuthenticationData.loginDate = new Date();
 		}
@@ -23,10 +24,8 @@ angular.module('authentication').service('Authentication', ['userAuthenticationD
 		}
 
 		this.getUserId = function () {
-			var hardcodedUserId = 1;
-			return hardcodedUserId;
 			if (this.isAnyLoggued()) {
-				return this.getUser().id;
+				return this.getUser().userId;
 			} else {
 				return null;
 			}
@@ -44,6 +43,15 @@ angular.module('authentication').service('Authentication', ['userAuthenticationD
 				return;
 			}
 			$state.go('login');
+		}
+
+		this.hasRole = function (role) {
+			var user = this.getUser();
+			var isAuthored = false;
+			angular.forEach(user.roles, function (userRole) {
+				isAuthored |= userRole.name === role;
+			});
+			return isAuthored;
 		}
 
 }]);

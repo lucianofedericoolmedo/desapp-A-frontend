@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('core').controller('HomeCtrl', [ '$scope', 'Authentication', 
-	'UserAuthentication',
-	function ($scope, Authentication, UserAuthentication) {
+	'UserAuthentication', '$location',
+	function ($scope, Authentication, UserAuthentication, $location) {
 
 		$scope.createUserInstance = function () {
 			$scope.user = new UserAuthentication({
@@ -15,9 +15,10 @@ angular.module('core').controller('HomeCtrl', [ '$scope', 'Authentication',
 			UserAuthentication[signMethod]($scope.user, function (userSuccessResponse) {
 				Authentication.setUserData(userSuccessResponse);
 				$scope.toLogOrNotToLog();
-			}), function (errorResponse) {
-				window.alert(errorResponse);
-			};
+				$location.url('/');
+			}, function (errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 		}
 
 		$scope.register = function () {
@@ -30,6 +31,10 @@ angular.module('core').controller('HomeCtrl', [ '$scope', 'Authentication',
 
 		$scope.toLogOrNotToLog = function () {
 			$scope.isLoggued = Authentication.isAnyLoggued();
+		};
+
+		$scope.hasRole = function (role) {
+			return Authentication.hasRole(role);
 		};
 
 }])

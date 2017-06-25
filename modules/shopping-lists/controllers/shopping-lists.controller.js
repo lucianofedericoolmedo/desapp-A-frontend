@@ -6,10 +6,15 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 	function ($scope, $state, $stateParams, $location, ShoppingList, ItemManagementSrv, Product, 
 		PaginatedSearch, Cart, Authentication) {
 
-		$scope.shoppingLists = ShoppingList.getAll();
+		$scope.usersShoppingLists = new PaginatedSearch(ShoppingList);
 
-		function manageErrorResponse (message) {
-			window.alert(message);
+		$scope.searchUsersShoppingLists = function () {
+			$scope.usersShoppingLists.queryData.userId = Authentication.getUserId();
+			$scope.usersShoppingLists.search('pageByUser');
+		};
+
+		function manageErrorResponse (errorResponse) {
+			window.alert(errorResponse.data.message);
 		}
 
 		$scope.newInstance = function () {
@@ -45,7 +50,8 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 						$location.path('/shopping-list/list');
 					}, manageErrorResponse);
 			} else {
-				ShoppingList.save($scope.shoppingList,
+				ShoppingList.saveForUser({ userId : Authentication.getUserId() }, 
+					$scope.shoppingList,
 					function (successResponse) {
 						$location.path('/shopping-list/edit/'.concat(successResponse.id));
 					}, manageErrorResponse);

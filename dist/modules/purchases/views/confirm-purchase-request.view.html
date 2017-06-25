@@ -1,0 +1,60 @@
+<style type="text/css">
+	.btn-confirm {
+		height: 50px;
+		width: 100%;
+		margin: 5px;
+	}
+	.btn-confirm-text {
+		top: 50%;
+	}
+	.btn-confirm-text-anchor {
+		margin-top: 8px;
+	}
+</style>
+
+<section>
+	
+	<div class="page-header">
+		<h2>
+			Purchase Solicitude Confirmation
+		</h2>
+	</div>
+
+	<div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<!-- {{ turn.stimatedTime | secondsToDateTime | date:'HH:mm:ss'}} -->
+				<p>The estimated time to be called from cash register <strong>#{{ turn.cashRegisterCode }}</strong> is <strong>{{ turn.stimatedTime | secondsToDateTime | date:'HH'}} hours {{ turn.stimatedTime | secondsToDateTime | date:'mm'}} minutes {{ turn.stimatedTime | secondsToDateTime | date:'ss'}} seconds</strong>.</p>
+				<p>Do you wish to confirm the solicitude to pay in a cash register or you wish your purchase to be delivered?</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-info btn-confirm" type="button" ng-click="confirmTurn()">
+					<span class="btn-confirm-text">
+						<i class="glyphicon glyphicon-ok"></i>
+						CONFIRM TURN SOLICITUDE
+					</span>
+				</button>
+			</div>
+			<div class="col-md-4">
+				<button class="btn btn-info btn-confirm" type="button">
+					<span class="btn-confirm-text">
+						<i class="glyphicon glyphicon-map-marker"></i>
+						HOME DELIVERY
+					</span>
+				</button>
+			</div>
+			<div class="col-md-4">
+				<a class="btn btn-info btn-confirm" type="button"
+					href="#/cart/check-items/{{turn.cartId}}">
+					<span class="btn-confirm-text-anchor" style="display: block;">
+						<i class="glyphicon glyphicon-remove"></i>
+						BACK
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+</section>

@@ -1,22 +1,35 @@
 'use strict';
 
-angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$state', '$timeout',
-	'Authentication', '$stateParams', '$location',
-	function ($scope, Cart, $state, $timeout, Authentication, $stateParams, $location) {
+angular.module('cart').controller('CartCtrl', [ '$scope', '$stateParams', 'Cart',
+	'PaginatedSearch', '$timeout', '$state',
+	function ($scope, $stateParams, Cart, PaginatedSearch, $timeout, $state) {
+	
+		var service = Cart;
+		$scope.search = new PaginatedSearch(service);
 
 		var itemCheckInformation = {};
 
+		$scope.findPage = function () {
+			$scope.search.search();
+		};
+
 		function manageErrorResponse (message) {
-			window.alert(message.data.message);
+			window.alert(message);
 		}
 
+		$scope.newInstance = function () {
+			$scope.cart = new Cart({
+				name : '',
+			});
+		};
+
 		$scope.get = function () {
-			Cart.get( { id : $stateParams.id }, function (successResponse) {
+			service.get( { id : $stateParams.id }, function (successResponse) {
 				$scope.cart = successResponse;
 			}, manageErrorResponse);
 		};
 
-		function fetchDataFromStateParams () {
+		$scope.crudInit = function () {
 			var justCreatedCart = $stateParams.justCreatedCart;
 			if (justCreatedCart) {
 				$scope.cart = justCreatedCart;
@@ -26,33 +39,29 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 			if (id) {
 				$scope.get();
 			} else {
-				$state.go('list-cart');
+				$scope.newInstance();
 			}
+		};
+
+		function sendEntityWithMethod (methodName, callback) {
+			Cart[methodName]($scope.cart,
+				function (successResponse) {
+					callback(successResponse);
+				}, manageErrorResponse);
 		}
 
-		function fetchUnattendedCartForUser () {
-			Cart.findUnattendedCartForUser({ id: Authentication.getUserId() },
-				function (unattendedCartId) {
-					if (unattendedCartId.value !== null) {
-						Cart.get({ id : unattendedCartId.value },
-							function (fetchedCart) {
-								$scope.cart = fetchedCart;
-							}
-						);
-					} else {
-						fetchDataFromStateParams();
-					}
-				}
-			);			
-		}
-
-		$scope.checkItemsInit = function () {
-			if ($stateParams.justCreatedCart || $stateParams.id) {
-				fetchDataFromStateParams();
+		$scope.saveOrUpdate = function () {
+			if ($scope.cart.id) {
+				sendEntityWithMethod('update');
 			} else {
-				fetchUnattendedCartForUser();
+				sendEntityWithMethod('save', function (successResponse) {
+					$scope.newInstance();
+				});
 			}
+		};
 
+		$scope.delete = function (id) {
+			service.remove({ id : id});
 		};
 
 		var sendingItemCheckState = false;
@@ -120,12 +129,4 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$sta
 			}
 		};
 
-		$scope.cancelCart = function () {
-			Cart.cancelCart({ id : $scope.cart.id },
-				function (successResponse) {
-					$state.go('list-shopping-list');
-				}, manageErrorResponse
-			);
-		};
-
-}])
+}]);

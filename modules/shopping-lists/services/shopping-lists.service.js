@@ -36,6 +36,16 @@ angular.module('shopping-list').service('ShoppingList', function($resource, URLS
             url: URLServer.url + '/services/shopping-lists/update-item/:id',
             isArray: false
         },
+        saveForUser : {
+            method: 'POST',
+            url: URLServer.url + '/services/shopping-lists/create-for/:userId',
+            isArray: false
+        },
+        pageByUser : {
+            method: 'GET',
+            url: URLServer.url + '/services/shopping-lists/page-by-user',
+            isArray: false
+        }
 
     });
 })

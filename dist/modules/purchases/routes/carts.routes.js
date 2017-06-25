@@ -17,16 +17,16 @@ angular.module('cart').config(['$stateProvider',
 		state('check-items-cart', {
 			url: '/cart/check-items/:id',
 			templateUrl: 'modules/carts/views/check-cart-items.view.html',
-			controller: 'CheckItemsCartCtrl',
-			params: {
-				id : undefined,
-				justCreatedCart : undefined
-			}
+			controller: 'CheckItemsCartCtrl'
 		}).
 		state('edit-cart', {
 			url: '/cart/edit/:id',
 			templateUrl: 'modules/carts/views/crud-actions-cart.view.html',
-			controller: 'CartCtrl'
+			controller: 'CartCtrl',
+			params: {
+				id : undefined,
+				justCreatedCart : undefined
+			}
 		}).
 		state('confirm-cart-purchase', {
 			url: '/cart/confirmation',
