@@ -24,17 +24,23 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$state
 
 		$scope.setEndTime = function () {
 			setCountdownInformation();
+			if (!$scope.stimatedTime) {
+				return;
+			}
 			if ($rootScope.endTime === undefined) {
 				var now = new Date();
 				var endTime = now.setSeconds(now.getSeconds() + $scope.stimatedTime);
+				console.log(endTime);
 				$rootScope.endTime = endTime;
 			}
 			$scope.endTime = $rootScope.endTime;
+			console.log('Endtime '.concat($scope.endTime));
 		};
 
 		$scope.finishedCountdown = function () {
 			$scope.showRedirection = true;
 			$scope.showCountdown = false;
+			console.log('Termino el conteo.');
 			$rootScope.currentTurn = undefined;
 		};
 

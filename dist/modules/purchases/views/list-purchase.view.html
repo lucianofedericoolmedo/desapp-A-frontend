@@ -1,23 +1,29 @@
-<section>
+<section ng-init="findPurchasesByUser()">
 
-	<div class="container-fluid jumbotron" ng-init="findPage()">
+	<div class="container-fluid jumbotron">
 		<div ng-if="search.result.length > 0">
 			<div class="table-responsive">
 				<table>
 					<thead>
 						<tr class="row">
-							<th class="col-md-5">Used Shopping List</th>
-							<th class="col-md-2">Created at</th>
-							<th class="col-md-4 pull-right">Actions</th>
+							<th class="col-md-2">Purchase Date</th>
+							<th class="col-md-3">Used Shopping List</th>
+							<th class="col-md-4">Payment Type</th>
+							<th class="col-md-2 pull-right">Actions</th>
 						</tr>
 					</thead>
 					<tbody ng-repeat="purchase in search.result">
 						<tr class="row">
-							<td class="col-md-5">
-								{{ purchase.usedShoppingList.name }}
+							<td class="col-md-2">
+								{{ purchase.purchaseDate }}
 							</td>
-							<td class="col-md-2">{{ purchase.creationDate }}</td>
-							<td class="col-md-4 pull-right">
+							<td class="col-md-3">
+								{{ purchase.usedShoppingListName }}
+							</td>
+							<td class="col-md-4">
+								{{ purchase.paymentType }}
+							</td>
+							<td class="col-md-2 pull-right">
 								<div class="btn-group">
 									<a type="button" class="btn btn-xs btn-info"
 										href="#/purchase/history/{{ purchase.id }}">

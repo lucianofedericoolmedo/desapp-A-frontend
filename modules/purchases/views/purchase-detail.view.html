@@ -1,0 +1,52 @@
+<section ng-init="get()">
+
+	<div class="page-header">
+		<h3>Purchase History</h3>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-6 col-xs-12">
+			<p><strong>Date:</strong> {{purchase.purchaseDate}}</p>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<p><strong>Used Shopping List:</strong> {{purchase.usedShoppingListName}}</p>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<p><strong>Payment:</strong> {{purchase.paymentType}}</p>
+		</div>
+		<div class="col-md-6 col-xs-12">
+			<p><strong>Paid at Cash Register:</strong> {{purchase.paidAtCashRegister}}</p>
+		</div>
+
+	</div>
+
+	<hr>
+
+	<div>
+		<div class="table-responsive">
+			<table class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th>Quantity</th>
+						<th>History Price</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="item in purchase.items">
+					<tr>
+						<td>{{item.product}}</td>
+						<td>{{item.quantity}}</td>
+						<td>{{item.historyProductPrice}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h3 class="center">Total paid: ${{ totalPaid(purchase.items) }}</h3>
+	</div>
+
+	<div>
+		<a href="#/purchase/history-list" class="btn btn-primary">BACK</a>
+	</div>
+
+</section>
