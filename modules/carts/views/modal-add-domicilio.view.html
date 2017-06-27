@@ -1,0 +1,20 @@
+<div class="modal-header" style="background-color:#268c59;">
+    <div class="row">
+        <h4 class="modal-title text-center" style="color: #ffffff;">
+            Ingrese su domicilio
+        </h4>
+    </div>
+</div>
+<div class="modal-body" >
+	<div class="row">
+	    <input ng-model="direccion.calle" placeholder="Calle">
+        <input ng-model="direccion.numero" placeholder="Numero">
+        <input ng-model="direccion.localidad" placeholder="Localidad">
+        <input ng-model="direccion.provincia" placeholder="Provincia">
+
+	</div>
+</div>
+<div class="modal-footer">
+    <div class="btn btn-success" ng-click="confirmarGeolocalizacion()">Confirmar</div>
+    <div class="btn btn-success" ng-click="$close()">Salir</div>
+</div>

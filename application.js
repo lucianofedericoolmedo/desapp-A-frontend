@@ -47,6 +47,17 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(function (
 
 
 
+angular.module(ApplicationConfiguration.applicationModuleName).config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyCXV5KjTMLDeoYHi6mCozzDrOFfr7eBb7M',
+        v: '3.26',
+        libraries: 'weather,geometry,visualization',
+        china: true
+    });
+});
+
+
+
 
 //Then define the init function for starting up the application
 angular.element(document).ready(function() {

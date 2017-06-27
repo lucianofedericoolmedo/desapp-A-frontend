@@ -1,0 +1,17 @@
+<div class="modal-header" style="background-color:#268c59;">
+    <div class="row">
+        <h4 class="modal-title text-center" style="color: #ffffff;">
+            GEOLOCALIZACIÓN
+        </h4>
+    </div>
+</div>
+<div class="modal-body" ng-init="init()">
+	<div class="row">
+	    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+	    	<ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+	    </ui-gmap-google-map>
+	</div>
+</div>
+<div class="modal-footer">
+    <div class="btn btn-success" ng-click="ok()">Salir</div>
+</div>

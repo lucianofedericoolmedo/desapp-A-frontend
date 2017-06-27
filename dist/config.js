@@ -19,7 +19,9 @@ var ApplicationConfiguration = (function() {
 	    'tmh.dynamicLocale',
 	    'auth0.auth0', 
 	    'angular-jwt',
-	    'timer'
+	    'timer',
+	    //'lodash',
+	    'uiGmapgoogle-maps'
 		];
 
 	// Add a new vertical module
