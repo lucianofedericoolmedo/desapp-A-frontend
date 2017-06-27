@@ -1,0 +1,47 @@
+<section>
+
+
+
+	<div class="container-fluid jumbotron">
+		<div ng-if="profile.thresholds.length > 0">
+			<div class="table-responsive">
+				<table>
+					<thead>
+						<tr class="row">
+							<th class="col-md-2">Purchase Date</th>
+							<th class="col-md-3">Used Shopping List</th>
+							<th class="col-md-4">Payment Type</th>
+							<th class="col-md-2 pull-right">Actions</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="threshold in profile.thresholds">
+						<tr class="row">
+							<td class="col-md-2">
+								{{ purchase.purchaseDate }}
+							</td>
+							<td class="col-md-3">
+								{{ purchase.usedShoppingListName }}
+							</td>
+							<td class="col-md-4">
+								{{ purchase.paymentType }}
+							</td>
+							<td class="col-md-2 pull-right">
+								<div class="btn-group">
+									<a type="button" class="btn btn-xs btn-info"
+										href="#/purchase/history/{{ purchase.id }}">
+										VIEW
+									</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div ng-if="profile.thresholds.length === 0">
+			<span>No purchase to show</span>
+		</div>
+	</div>
+
+</section>

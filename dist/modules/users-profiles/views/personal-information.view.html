@@ -1,0 +1,34 @@
+<section>
+
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="name">Name</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input class="full-width" type="text" name="name" ng-model="profile.name">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="surname">Surname</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input class="full-width" type="text" name="surname" ng-model="profile.surname">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="dni">DNI</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input class="full-width" type="text" name="dni" ng-model="profile.dni">
+		</div>
+	</div>
+
+	<div class="row">
+      <div class="col-md-6">
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+
+</section>

@@ -1,0 +1,41 @@
+<section>
+
+	<form class="form-horizontal" ng-submit="update()" ng-init="findProfile()">
+
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a data-toggle="tab" href="#data">
+					Personal Information
+				</a>
+			</li>
+			<li>
+				<a data-toggle="tab" href="#thresholds">
+					Thresholds
+				</a>
+			</li>
+		</ul>
+
+		<div id="data" class="tab-pane fade in active"
+			ng-include="'modules/users-profiles/views/personal-information.view.html'">
+		</div>
+
+		<div id="thresholds" class="tab-pane fade"
+			ng-include="'modules/users-profiles/views/thresholds.view.html'">
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="form-actions">
+			<div class="btn-group">
+				<button class="btn btn-primary" type="submit">
+					Update
+				</div>
+				<a class="btn btn-danger" href="#/">
+					Back
+				</a>
+			</div>
+		</div>
+
+	</form>	
+
+</section>
