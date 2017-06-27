@@ -35,6 +35,8 @@ angular.module('core').service('authService',
       }
       angularAuth0.client.userInfo(accessToken, function(err, profile) {
         if (profile) {
+          console.log("SETEO PROFILE");
+          console.log(profile)
           setUserProfile(profile);
         }
         cb(err, profile);
