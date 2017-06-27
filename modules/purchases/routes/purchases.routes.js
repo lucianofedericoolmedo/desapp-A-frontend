@@ -11,7 +11,7 @@ angular.module('purchases').config(['$stateProvider',
 		}).
 		state('review-purchase', {
 			url: '/purchase/history/:id',
-			templateUrl: 'modules/purchases/views/review-purchase.view.html',
+			templateUrl: 'modules/purchases/views/purchase-detail.view.html',
 			controller: 'PurchaseCtrl'
 		});
 

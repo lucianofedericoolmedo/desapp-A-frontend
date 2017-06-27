@@ -18,8 +18,16 @@ angular.module('purchases').controller('PurchaseCtrl', [ '$scope', '$stateParams
 
 		$scope.get = function () {
 			service.getDto( { id : $stateParams.id }, function (successResponse) {
-				$scope.cart = successResponse;
+				$scope.purchase = successResponse;
 			}, manageErrorResponse);
+		};
+
+		$scope.totalPaid = function (itemPurchaseDto) {
+			var total = 0.00;
+			angular.forEach(itemPurchaseDto, function (item) {
+				total += item.historyProductPrice;
+			});
+			return total;
 		};
 
 }]);
