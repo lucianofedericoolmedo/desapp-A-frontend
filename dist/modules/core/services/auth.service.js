@@ -58,7 +58,8 @@ angular.module('core').service('authService',
       // use the scopes as requested. If no scopes were requested,
       // set it to nothing
       var scopes = authResult.scope || REQUESTED_SCOPES || '';
-
+      console.log(authResult);
+      localStorage.setItem('email', authResult.idTokenPayload.nickname + '@gmail.com');
       localStorage.setItem('access_token', authResult.accessToken);
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
@@ -68,6 +69,7 @@ angular.module('core').service('authService',
     function logout() {
       // Remove tokens and expiry time from localStorage
       localStorage.removeItem('access_token');
+      localStorage.removeItem('email');
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
       localStorage.removeItem('scopes');
