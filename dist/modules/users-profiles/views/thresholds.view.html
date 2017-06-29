@@ -1,8 +1,29 @@
 <section>
 
+	<div class="form-group">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
+			Thresholds Type
+		</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<select class="full-width" name="type" ng-model="selectedThreshold"
+				ng-change="changedThreshold(selectedThreshold)"
+				ng-options="threshold as threshold.name for threshold in thresholds">
+				<option value="">Select a threshold</option>
+			</select>
+		</div>
+	</div>
 
+	<div class="form-group" ng-if="thresholdInstance">
+		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
+			Percentage to Surpass
+		</label>
+		<div class="col-md-5 col-sm-5 col-xs-12">
+			<input type="number" max="99" min="1" name="percentage"
+				ng-model="thresholdInstance.percentageToSurpass">
+		</div>
+	</div>
 
-	<div class="container-fluid jumbotron">
+	<div class="jumbotron">
 		<div ng-if="profile.thresholds.length > 0">
 			<div class="table-responsive">
 				<table>

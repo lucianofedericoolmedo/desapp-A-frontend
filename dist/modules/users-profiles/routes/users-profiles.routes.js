@@ -6,7 +6,7 @@ angular.module('users-profiles').config(['$stateProvider',
 		$stateProvider.
 		state('edit-profile', {
 			url: '/profile',
-			templateUrl: 'modules/users-profiles/views/profile-edition.view.html',
+			templateUrl: 'modules/users-profiles/views/edit-actions.view.html',
 			controller: 'UserProfileCtrl'
 		});
 

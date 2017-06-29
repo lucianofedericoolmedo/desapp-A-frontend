@@ -1,5 +1,9 @@
 <section>
 
+	<div class="page-header">
+		<h3>User Profile</h3>
+	</div>
+
 	<form class="form-horizontal" ng-submit="update()" ng-init="findProfile()">
 
 		<ul class="nav nav-tabs">
@@ -15,13 +19,18 @@
 			</li>
 		</ul>
 
-		<div id="data" class="tab-pane fade in active"
-			ng-include="'modules/users-profiles/views/personal-information.view.html'">
+		<div class="tab-content">
+			
+			<div id="data" class="tab-pane fade in active"
+				ng-include="'modules/users-profiles/views/personal-information.view.html'">
+			</div>
+
+			<div id="thresholds" class="tab-pane fade" 
+				ng-include="'modules/users-profiles/views/thresholds.view.html'">
+			</div>
+
 		</div>
 
-		<div id="thresholds" class="tab-pane fade"
-			ng-include="'modules/users-profiles/views/thresholds.view.html'">
-		</div>
 
 		<div class="clearfix"></div>
 
