@@ -1,13 +1,23 @@
 'use strict';
 
-angular.module('authentication').value('userAuthenticationData', {});
-angular.module('authentication').service('Authentication', ['userAuthenticationData',
+//angular.module('authentication').value('userAuthenticationData', {});
+angular.module('authentication').service('Authentication', [
 	'$state', 'DateUtils',
-	function (userAuthenticationData, $state, DateUtils) {
+	function ($state, DateUtils) {
+
+		var userAuthenticationData = {'user' : localStorage.getItem('user')};
+
+		this.deleteUser = function(){
+			userAuthenticationData.user = undefined;
+		}
+
+		this.setUser = function(user){
+			userAuthenticationData.user = {'user': user};
+		}
 
 		this.setUserData = function (user) {
-			delete userAuthenticationData.user;
-			userAuthenticationData.user = user;
+			this.deleteUser();
+			this.setUser(user);
 			userAuthenticationData.loginDate = new Date();
 		}
 

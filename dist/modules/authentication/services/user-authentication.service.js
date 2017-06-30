@@ -21,6 +21,11 @@ angular.module('authentication').service('UserAuthentication', function($resourc
         	method:'DELETE' 
         },
 
+        getOrCreateProfile:{
+            method: 'POST',
+            url: URLServer.url + '/services/users/getOrCreateProfile'
+        },
+
         signup : {
             method: 'POST',
             url: URLServer.url + '/services/users/signup'

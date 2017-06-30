@@ -5,7 +5,7 @@ angular.module('core').service('authService',
   //authService);
 
 
-  function($state, angularAuth0, $timeout) {
+  function($state, angularAuth0, $timeout, UserAuthentication) {
 
     var userProfile;
 
@@ -66,6 +66,28 @@ angular.module('core').service('authService',
       localStorage.setItem('id_token', authResult.idToken);
       localStorage.setItem('expires_at', expiresAt);
       localStorage.setItem('scopes', JSON.stringify(scopes));
+
+      UserAuthentication.getOrCreateProfile(
+        {'email' :  localStorage.getItem('email'),
+         'name' : authResult.idTokenPayload.given_name,
+         'surname' : authResult.idTokenPayload.family_name,
+         'gender' : authResult.idTokenPayload.gender,
+         'picture_url' : authResult.idTokenPayload.picture,
+        }
+        ,
+        function(response){
+          //setearse un id del profile
+          localStorage.setItem({'user' : {
+            'userId' : response.userId,
+            'roles' : response.roles}
+          });
+          //localStorage.setItem('userId', response);
+        }, 
+        function(errorResponse){
+
+          console.log("Error la manqueaste no se pudo cargar el id");
+        });
+
     }
     
     function logout() {
