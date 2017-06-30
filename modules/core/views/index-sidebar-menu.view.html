@@ -1,44 +1,44 @@
 <section>
 
-	<a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+	<a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Panel</strong></a>
 
 	<hr>
 
 	<ul class="nav nav-stacked">
 		<li class="nav-header" ng-if="hasRole('CLIENT')">
 			<a href="#" data-toggle="collapse" data-target="#userMenu">
-				Home
+				{{"views.main.Home" | translate}}
 				<i class="glyphicon glyphicon-chevron-down"></i>
 			</a>
 			<ul class="nav nav-stacked collapse in" id="userMenu">
 				<li>
 					<a href="#/shopping-list/list">
 						<i class="glyphicon glyphicon-comment"></i>
-						Shopping Lists
+						{{"views.main.ShoppingLists" | translate}}
 					</a>
 				</li>
 				<li>
 					<a href="#/cart/payment-countdown"> <!-- payment-countdown -->
 						<i class="glyphicon glyphicon-user"></i>
-						Carts
+						{{"views.main.Carts" | translate}}
 					</a>
 				</li>
 				<li>
 					<a href="#/purchase/history-list">
 						<i class="glyphicon glyphicon-user"></i>
-						Purchases
+						{{"views.main.Purchases" | translate}}
 					</a>
 				</li>
 				<li>
 					<a href="#/profile">
 						<i class="glyphicon glyphicon-user"></i>
-						Profile
+						{{"views.main.Profile" | translate}}
 					</a>
 				</li>
 				<li>
 					<a href="#">
 						<i class="glyphicon glyphicon-off"></i>
-						Logout
+						{{"views.main.Logout" | translate}}
 					</a>
 				</li>
 			</ul>
@@ -47,27 +47,27 @@
 
 		<li class="nav-header" ng-if="hasRole('ADMIN')">
 			<a href="#" data-toggle="collapse" data-target="#admin">
-				Administration
+				{{"views.main.Administration" | translate}}
 				<i class="glyphicon glyphicon-chevron-down"></i>
 			</a>
 			<ul class="nav nav-stacked collapse in" id="admin">
 				<li>
 					<a href="#/product/list">
 						<i class="glyphicon glyphicon-envelope"></i>
-						Products
+						{{"views.main.Products" | translate}}
 						<span class="badge badge-info">4</span>
 					</a>
 				</li>
 				<li>
 					<a href="#/brand/list">
 						<i class="glyphicon glyphicon-cog"></i>
-						Brands
+						{{"views.main.Brands" | translate}}
 					</a>
 				</li>
 				<li>
 					<a href="#/product-category/list">
 						<i class="glyphicon glyphicon-cog"></i>
-						Product Categories
+						{{"views.main.ProductCategories" | translate}}
 					</a>
 				</li>
 			</ul>
