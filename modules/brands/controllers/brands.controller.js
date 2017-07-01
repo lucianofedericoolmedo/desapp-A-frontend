@@ -45,7 +45,6 @@ angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stat
 			if (!$scope.brand.name) {
 				SweetAlert.swal("Error", 
 						'Ingrese un nombre', "error");
-				console.log('invalid brand!');
 				return;
 			}
 			Brand[methodName]($scope.brand,
