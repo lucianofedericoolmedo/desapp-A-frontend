@@ -2,8 +2,8 @@
 
 angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 
 	'$controller','Cart', '$state', '$timeout',
-	'Authentication', '$stateParams', '$location', 'SweetAlert',
-	function ($scope, $controller ,Cart, $state, $timeout, 
+	'Authentication', '$stateParams', '$location','SweetAlert',
+	function ($scope, $controller ,Cart, $state, $timeout,
 		Authentication, $stateParams, $location, SweetAlert) {
 
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -139,4 +139,4 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope',
 			);
 		};
 
-}])
+}]);

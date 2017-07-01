@@ -43,7 +43,10 @@ angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stat
 
 		function sendEntityWithMethod (methodName, callback) {
 			if (!$scope.brand.name) {
+				SweetAlert.swal("Error", 
+						'Ingrese un nombre', "error");
 				console.log('invalid brand!');
+				return;
 			}
 			Brand[methodName]($scope.brand,
 				function (successResponse) {
@@ -56,6 +59,8 @@ angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stat
 				sendEntityWithMethod('update');
 			} else {
 				sendEntityWithMethod('save', function (successResponse) {
+					SweetAlert.swal("Ok", 
+						"Se ha creado una marca", "success");
 					$scope.newInstance();
 				});
 			}

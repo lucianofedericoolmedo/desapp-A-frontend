@@ -2,7 +2,7 @@
 
 angular.module('product-category').controller('ProductCategoryCtrl',
  ['$scope', '$state','$controller','$stateParams',
- 'ProductCategory', 'PaginatedSearch', 'SweetAlert'
+ 'ProductCategory', 'PaginatedSearch', 'SweetAlert',
 	function ($scope, $state, $controller, $stateParams, 
 		ProductCategory, PaginatedSearch,SweetAlert ) {
 	

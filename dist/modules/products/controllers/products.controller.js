@@ -3,10 +3,12 @@
 angular.module('product').controller('ProductCtrl', [ '$scope', 
 	'$controller','$stateParams', 'Product',
 	'PaginatedSearch', 'Brand', '$uibModal', 
-	'FileUpload', '$state', 'ProductCategory','SweetAlert', '$window', '$timeout',
+	'FileUpload', '$state', 'ProductCategory',
+	'SweetAlert', '$window', '$timeout',
 	function ($scope, $controller, $stateParams, 
 		Product, PaginatedSearch, Brand, $uibModal, 
-		FileUpload, $state, ProductCategory, SweetAlert, $window, $timeout) {
+		FileUpload, $state, ProductCategory, SweetAlert, 
+		$window, $timeout) {
 
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
