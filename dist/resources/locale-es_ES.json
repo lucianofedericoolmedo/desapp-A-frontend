@@ -23,6 +23,7 @@
   "views.main.Profile" : "Perfil",
   "views.main.Administration" : "Administracion",
   "views.main.Products" : "Productos",
+  "views.main.Discounts" : "Ofertas",
   "views.main.Brands": "Marcas",
   "views.main.BACK": "ATRAS",
   "views.main.HOME DELIVERY" : "ENVIO A DOMICILIO",

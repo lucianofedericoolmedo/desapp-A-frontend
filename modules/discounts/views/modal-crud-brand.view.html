@@ -1,0 +1,18 @@
+<div class="modal-content" ng-init="newInstance()">
+
+	<div class="modal-header">
+		<h3>Create a new brand</h3>
+	</div>
+
+	<div class="modal-body">
+		<div ng-include="'modules/brands/views/crud-brand.view.html'"></div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="create()">Create</button>
+	</div>
+
+</div>
