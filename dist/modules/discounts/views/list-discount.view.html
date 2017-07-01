@@ -1,0 +1,102 @@
+<style type="text/css">
+	
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+</style>
+
+
+
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
+
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Crear Oferta</h2>
+		</div>
+		
+		
+		<div class="jumbotron">
+			<div class="container" ng-init="queryAll()">
+				<!--
+				<div>
+					<a class="btn btn-info" ui-sref="create-cart">
+						Create
+					</a>
+				</div>
+				-->
+
+				<div>
+					<a class="btn btn-info" href="#/discount/create">
+						Create
+					</a>
+				</div>
+
+				<div class="container jumbotron" ng-init="findPage()">
+					<div ng-if="search.result.length > 0">
+						<div class="table-responsive">
+							<table class="table table-condensed table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Created at</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="discount in search.result">
+									<tr>
+										<td>
+											{{ discount.name }}
+										</td>
+										<td>
+											{{ discount.creationDate }}
+										</td>
+										<td>
+											<div class="btn-group">
+												<a class="btn btn-info btn-xs"
+													ui-sref="edit-discount({id:discount.id})">
+													EDIT
+												</a>
+												<button class="btn btn-danger btn-xs"
+													ng-click="delete(discount.id)">
+													REMOVE
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div ng-if="search.result.length === 0">
+						<span>No discounts to show</span>
+					</div>
+				</div>
+
+				<div class="col-md-12" ng-if="search.result.length > 0">
+					<ul uib-pagination total-items="search.totalSize" 
+						ng-change="findPage()"
+						ng-model="search.pageNumber" max-size="maxSize"
+						items-per-page="search.pageSize"
+						class="pagination-sm" boundary-links="true">
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+
+
+	</snap-content>	
+</div>
+
+

@@ -259,7 +259,16 @@ angular
 			
 	        { name: 'logout', 
 	        	state: { url: '/login', 
-	        	data: {text: "Logout", visible: true }} }
+	        	data: {text: "Logout", visible: true }} },
+
+			{ name: 'discounts', 
+	        	state: {
+				url: '/list-discount',
+				templateUrl: 'modules/discounts/views/list-discount.view.html',
+				controller: 'DiscountCtrl',
+				data: {text: "Ofertas", visible: true }}
+			},
+
 	    ];
 
 
