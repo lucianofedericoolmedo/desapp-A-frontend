@@ -1,59 +1,81 @@
-<section ng-init="queryAll()">
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<div>
-		<a class="btn btn-info" href="#/product-category/create">
-			Create
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
 		</a>
-	</div>
+		
+		<div class="pull-right fr">
+			<h2>Crear carrito</h2>
+		</div>
+		
+		
+		<div class="jumbotron">
+			<div class="container" ng-init="queryAll()">
+				<div>
+					<a class="btn btn-info" href="#/product-category/create">
+						Create
+					</a>
+				</div>
 
-	<div class="container-fluid jumbotron" ng-init="findPage()">
-		<div ng-if="search.result.length > 0">
-			<div class="table-responsive">
-				<table class="table table-condensed table-hover">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Created at</th>
-						</tr>
-					</thead>
-					<tbody ng-repeat="productCategory in search.result">
-						<tr>
-							<td>
-								{{ productCategory.name }}
-							</td>
-							<td>
-								{{ productCategory.creationDate }}
-							</td>
-							<td>
-								<div class="btn-group">
-									<a class="btn btn-info btn-xs"
-										href="#/product-category/edit/{{productCategory.id}}">
-										EDIT
-									</a>
-									<button class="btn btn-danger btn-xs"
-										ng-click="delete(productCategory.id)">
-										REMOVE
-									</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="container-fluid jumbotron" ng-init="findPage()">
+					<div ng-if="search.result.length > 0">
+						<div class="table-responsive">
+							<table class="table table-condensed table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Created at</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="productCategory in search.result">
+									<tr>
+										<td>
+											{{ productCategory.name }}
+										</td>
+										<td>
+											{{ productCategory.creationDate }}
+										</td>
+										<td>
+											<div class="btn-group">
+												<a class="btn btn-info btn-xs"
+													href="#/product-category/edit/{{productCategory.id}}">
+													EDIT
+												</a>
+												<button class="btn btn-danger btn-xs"
+													ng-click="delete(productCategory.id)">
+													REMOVE
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div ng-if="search.result.length === 0">
+						<span>No product categories to show</span>
+					</div>
+				</div>
+
+				<div class="col-md-12" ng-if="search.result.length > 0">
+					<ul uib-pagination total-items="search.totalSize" 
+						ng-change="findPage()"
+						ng-model="search.pageNumber" max-size="maxSize"
+						items-per-page="search.pageSize"
+						class="pagination-sm" boundary-links="true">
+					</ul>
+				</div>
 			</div>
 		</div>
 
-		<div ng-if="search.result.length === 0">
-			<span>No product categories to show</span>
-		</div>
-	</div>
 
-	<div class="col-md-12" ng-if="search.result.length > 0">
-		<ul uib-pagination total-items="search.totalSize" 
-			ng-change="findPage()"
-			ng-model="search.pageNumber" max-size="maxSize"
-			items-per-page="search.pageSize"
-			class="pagination-sm" boundary-links="true">
-		</ul>
-	</div>
+	</snap-content>	
+</div>
 
-</section>

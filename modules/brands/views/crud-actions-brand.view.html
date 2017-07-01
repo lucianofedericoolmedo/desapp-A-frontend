@@ -1,22 +1,48 @@
-<section>
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<form class="form-horizontal" ng-submit="saveOrUpdate()" ng-init="crudInit()">
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Marcas</h2>
+		</div>
+		
+		<br>
 
-		<div ng-include="'modules/brands/views/crud-brand.view.html'"></div>
+		<div class="jumbotron">
 
-		<div class="clearfix"></div>
+			<div class="container">
+				<form class="form-horizontal" ng-submit="saveOrUpdate()" ng-init="crudInit()">
 
-		<div class="form-actions">
-			<div class="btn-group">
-				<button class="btn btn-primary" type="submit">
-					{{ brand.id ? 'Update' : 'Create' }}
-				</div>
-				<div class="btn btn-danger" ng-click="">
-					Back
-				</div>
+					<div ng-include="'modules/brands/views/crud-brand.view.html'"></div>
+
+					<div class="clearfix"></div>
+
+					<div class="form-actions">
+						<div class="btn-group">
+							<button class="btn btn-primary" type="submit">
+								{{ brand.id ? 'Update' : 'Create' }}
+							</div>
+							<div class="btn btn-danger" ng-click="">
+								Back
+							</div>
+						</div>
+					</div>
+
+				</form>	
+				
 			</div>
 		</div>
 
-	</form>	
 
-</section>
+	</snap-content>	
+</div>
+
+

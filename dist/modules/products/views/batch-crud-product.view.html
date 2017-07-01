@@ -1,24 +1,47 @@
-<section>
-	
-	<h4>
-		Upload on file select
-	</h4>
-	<button type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
-		accept="text/csv">
-	  	Select File
-  	</button>
-	
-	<br><br>
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	File:
-	<div style="font:smaller">
-		{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
-		<span class="progress" ng-show="f.progress >= 0">
-		  <div style="width:{{f.progress}}%"></div>
-		</span>
-	</div>
-	<div>
-		{{ errorMsg }}
-	</div>
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Listar carritos</h2>
+		</div>
+		
+		<br>
 
-</section>
+		<div class="jumbotron">
+			<div class="container">				
+
+				<h4>
+					Upload on file select
+				</h4>
+				<button type="file" ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
+					accept="text/csv">
+				  	Select File
+			  	</button>
+				
+				<br><br>
+
+				File:
+				<div style="font:smaller">
+					{{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+					<span class="progress" ng-show="f.progress >= 0">
+					  <div style="width:{{f.progress}}%"></div>
+					</span>
+				</div>
+				<div>
+					{{ errorMsg }}
+				</div>
+				
+			</div>
+		</div>
+
+	</snap-content>	
+</div>

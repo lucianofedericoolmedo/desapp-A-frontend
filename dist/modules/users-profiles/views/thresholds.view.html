@@ -1,68 +1,97 @@
-<section>
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<div class="form-group">
-		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
-			Thresholds Type
-		</label>
-		<div class="col-md-5 col-sm-5 col-xs-12">
-			<select class="full-width" name="type" ng-model="selectedThreshold"
-				ng-change="changedThreshold(selectedThreshold)"
-				ng-options="threshold as threshold.name for threshold in thresholds">
-				<option value="">Select a threshold</option>
-			</select>
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Listar carritos</h2>
 		</div>
-	</div>
+		
+		<br>
 
-	<div class="form-group" ng-if="thresholdInstance">
-		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
-			Percentage to Surpass
-		</label>
-		<div class="col-md-5 col-sm-5 col-xs-12">
-			<input type="number" max="99" min="1" name="percentage"
-				ng-model="thresholdInstance.percentageToSurpass">
-		</div>
-	</div>
+		<div class="jumbotron">
+			<div class="container">			
+				<div class="form-group">
+					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
+						Thresholds Type
+					</label>
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<select class="full-width" name="type" ng-model="selectedThreshold"
+							ng-change="changedThreshold(selectedThreshold)"
+							ng-options="threshold as threshold.name for threshold in thresholds">
+							<option value="">Select a threshold</option>
+						</select>
+					</div>
+				</div>
 
-	<div class="jumbotron">
-		<div ng-if="profile.thresholds.length > 0">
-			<div class="table-responsive">
-				<table>
-					<thead>
-						<tr class="row">
-							<th class="col-md-2">Purchase Date</th>
-							<th class="col-md-3">Used Shopping List</th>
-							<th class="col-md-4">Payment Type</th>
-							<th class="col-md-2 pull-right">Actions</th>
-						</tr>
-					</thead>
-					<tbody ng-repeat="threshold in profile.thresholds">
-						<tr class="row">
-							<td class="col-md-2">
-								{{ purchase.purchaseDate }}
-							</td>
-							<td class="col-md-3">
-								{{ purchase.usedShoppingListName }}
-							</td>
-							<td class="col-md-4">
-								{{ purchase.paymentType }}
-							</td>
-							<td class="col-md-2 pull-right">
-								<div class="btn-group">
-									<a type="button" class="btn btn-xs btn-info"
-										href="#/purchase/history/{{ purchase.id }}">
-										VIEW
-									</a>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="form-group" ng-if="thresholdInstance">
+					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="type">
+						Percentage to Surpass
+					</label>
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<input type="number" max="99" min="1" name="percentage"
+							ng-model="thresholdInstance.percentageToSurpass">
+					</div>
+				</div>
+
+				<div class="jumbotron">
+					<div ng-if="profile.thresholds.length > 0">
+						<div class="table-responsive">
+							<table>
+								<thead>
+									<tr class="row">
+										<th class="col-md-2">Purchase Date</th>
+										<th class="col-md-3">Used Shopping List</th>
+										<th class="col-md-4">Payment Type</th>
+										<th class="col-md-2 pull-right">Actions</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="threshold in profile.thresholds">
+									<tr class="row">
+										<td class="col-md-2">
+											{{ purchase.purchaseDate }}
+										</td>
+										<td class="col-md-3">
+											{{ purchase.usedShoppingListName }}
+										</td>
+										<td class="col-md-4">
+											{{ purchase.paymentType }}
+										</td>
+										<td class="col-md-2 pull-right">
+											<div class="btn-group">
+												<a type="button" class="btn btn-xs btn-info"
+													href="#/purchase/history/{{ purchase.id }}">
+													VIEW
+												</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div ng-if="profile.thresholds.length === 0">
+						<span>No purchase to show</span>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 
-		<div ng-if="profile.thresholds.length === 0">
-			<span>No purchase to show</span>
-		</div>
-	</div>
+
+	</snap-content>	
+</div>
+
+<section>
+
+	
 
 </section>

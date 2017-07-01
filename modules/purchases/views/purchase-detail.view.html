@@ -1,52 +1,77 @@
-<section ng-init="get()">
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<div class="page-header">
-		<h3>Purchase History</h3>
-	</div>
-
-	<div class="row">
-
-		<div class="col-md-6 col-xs-12">
-			<p><strong>Date:</strong> {{purchase.purchaseDate}}</p>
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Listar carritos</h2>
 		</div>
-		<div class="col-md-6 col-xs-12">
-			<p><strong>Used Shopping List:</strong> {{purchase.usedShoppingListName}}</p>
+		
+		<br>
+
+		<div class="jumbotron">
+
+			<div class="container" ng-init="get()">
+
+				<div class="page-header">
+					<h3>Purchase History</h3>
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-6 col-xs-12">
+						<p><strong>Date:</strong> {{purchase.purchaseDate}}</p>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<p><strong>Used Shopping List:</strong> {{purchase.usedShoppingListName}}</p>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<p><strong>Payment:</strong> {{purchase.paymentType}}</p>
+					</div>
+					<div class="col-md-6 col-xs-12">
+						<p><strong>Paid at Cash Register:</strong> {{purchase.paidAtCashRegister}}</p>
+					</div>
+
+				</div>
+
+				<hr>
+
+				<div>
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th>Quantity</th>
+									<th>History Price</th>
+								</tr>
+							</thead>
+							<tbody ng-repeat="item in purchase.items">
+								<tr>
+									<td>{{item.product}}</td>
+									<td>{{item.quantity}}</td>
+									<td>{{item.historyProductPrice}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="center">Total paid: ${{ totalPaid(purchase.items) }}</h3>
+				</div>
+
+				<div>
+					<a href="#/purchase/history-list" class="btn btn-primary">BACK</a>
+				</div>
+				
+			</div>
 		</div>
-		<div class="col-md-6 col-xs-12">
-			<p><strong>Payment:</strong> {{purchase.paymentType}}</p>
-		</div>
-		<div class="col-md-6 col-xs-12">
-			<p><strong>Paid at Cash Register:</strong> {{purchase.paidAtCashRegister}}</p>
-		</div>
 
-	</div>
 
-	<hr>
-
-	<div>
-		<div class="table-responsive">
-			<table class="table table-hover table-condensed">
-				<thead>
-					<tr>
-						<th>Product</th>
-						<th>Quantity</th>
-						<th>History Price</th>
-					</tr>
-				</thead>
-				<tbody ng-repeat="item in purchase.items">
-					<tr>
-						<td>{{item.product}}</td>
-						<td>{{item.quantity}}</td>
-						<td>{{item.historyProductPrice}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<h3 class="center">Total paid: ${{ totalPaid(purchase.items) }}</h3>
-	</div>
-
-	<div>
-		<a href="#/purchase/history-list" class="btn btn-primary">BACK</a>
-	</div>
-
-</section>
+	</snap-content>	
+</div>

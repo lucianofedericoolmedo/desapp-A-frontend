@@ -1,57 +1,84 @@
-<section ng-init="queryAll()">
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<div>
-		<a class="btn btn-info" href="#/product/create">
-			Create
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
 		</a>
-		<button type="file" class="btn btn-info" 
-			ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
-			accept="text/csv">
-		  	Batch Upload
-	  	</button>
+		
+		<div class="pull-right fr">
+			<h2>Crear carrito</h2>
+		</div>
+		
+		
+		<div class="jumbotron">
+			<div class="container" ng-init="queryAll()">
+				<div>
+					<a class="btn btn-info" href="#/product/create">
+						Create
+					</a>
+					<button type="file" class="btn btn-info" 
+						ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
+						accept="text/csv">
+					  	Batch Upload
+				  	</button>
 
-	</div>
+				</div>
 
-	<div class="jumbotron" ng-init="findPage()">
-		<div class="container-fluid" ng-if="search.result.length > 0">
-			<div ng-repeat="product in search.result track by product.id">
-				<div class="col-md-2 col-sm-4 col-xs-12">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<!-- Product information -->
-							<div>
-								<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
-								<p>{{product.name }}</p>
-							</div>
-							<!-- Product actions -->
-							<div class="btn-group">
-								<a class="btn btn-xs btn-info"
-									href="#/product/edit/{{product.id}}">
-									<small>EDIT</small>
-								</a>
-								<div class="btn btn-xs btn-danger" ng-click="delete(product.id)">
-									<small>REMOVE</small>
+				<div class="jumbotron" ng-init="findPage()">
+					<div class="container-fluid" ng-if="search.result.length > 0">
+						<div ng-repeat="product in search.result track by product.id">
+							<div class="col-md-2 col-sm-4 col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<!-- Product information -->
+										<div>
+											<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
+											<p>{{product.name }}</p>
+										</div>
+										<!-- Product actions -->
+										<div class="btn-group">
+											<a class="btn btn-xs btn-info"
+												href="#/product/edit/{{product.id}}">
+												<small>EDIT</small>
+											</a>
+											<div class="btn btn-xs btn-danger" ng-click="delete(product.id)">
+												<small>REMOVE</small>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+					
+					<div ng-if="search.result.length === 0">
+						<span>No product to show</span>
+					</div>
 				</div>
+
+				<div class="col-md-12" ng-if="search.result.length > 0">
+					<ul uib-pagination total-items="search.totalSize" 
+						ng-change="findPage()"
+						ng-model="search.pageNumber" max-size="maxSize"
+						items-per-page="search.pageSize"
+						class="pagination-sm" boundary-links="true">
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 
-		
-		<div ng-if="search.result.length === 0">
-			<span>No product to show</span>
-		</div>
-	</div>
 
-	<div class="col-md-12" ng-if="search.result.length > 0">
-		<ul uib-pagination total-items="search.totalSize" 
-			ng-change="findPage()"
-			ng-model="search.pageNumber" max-size="maxSize"
-			items-per-page="search.pageSize"
-			class="pagination-sm" boundary-links="true">
-		</ul>
-	</div>
+	</snap-content>	
+</div>
 
-</section>
+
+
+
+

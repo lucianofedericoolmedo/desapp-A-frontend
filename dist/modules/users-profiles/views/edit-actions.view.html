@@ -1,3 +1,78 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
+
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Perfil de usuario</h2>
+		</div>
+		
+		<br>
+
+		<div class="jumbotron">
+
+			<div class="container">
+				
+				<form class="form-horizontal" 
+					ng-submit="update()" ng-init="findProfile()">
+
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a data-toggle="tab" href="#data">
+								Personal Information
+							</a>
+						</li>
+						<li>
+							<a data-toggle="tab" href="#thresholds">
+								Thresholds
+							</a>
+						</li>
+					</ul>
+
+					<div class="tab-content">
+						
+						<div id="data" class="tab-pane fade in active"
+							ng-include="'modules/users-profiles/views/personal-information.view.html'">
+						</div>
+
+						<div id="thresholds" class="tab-pane fade" 
+							ng-include="'modules/users-profiles/views/thresholds.view.html'">
+						</div>
+
+					</div>
+
+
+					<div class="clearfix"></div>
+
+					<div class="form-actions">
+						<div class="btn-group">
+							<button class="btn btn-primary" type="submit">
+								Update
+							</div>
+							<a class="btn btn-danger" href="#/">
+								Back
+							</a>
+						</div>
+					</div>
+
+				</form>	
+
+				
+			</div>
+		</div>
+
+
+	</snap-content>	
+</div>
+
+
 <section>
 
 	<div class="page-header">

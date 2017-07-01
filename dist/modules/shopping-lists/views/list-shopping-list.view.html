@@ -1,63 +1,91 @@
-<section ng-init="searchUsersShoppingLists()">
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
 
-	<div>
-		<a class="btn btn-info" href="#/shopping-list/create">
-			Create
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
 		</a>
-	</div>
+		
+		<div class="pull-right fr">
+			<h2>Listar carritos</h2>
+		</div>
+		
+		<br>
 
-	<div class="container jumbotron">
-		<div ng-if="usersShoppingLists.result.length > 0">
-			<div class="table-responsive">
-				<table class="table table-condensed table-hover">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Created at</th>
-						</tr>
-					</thead>
-					<tbody ng-repeat="shoppingList in usersShoppingLists.result">
-						<tr>
-							<td>
-								{{ shoppingList.name }}
-							</td>
-							<td>
-								{{ shoppingList.creationDate }}
-							</td>
-							<td>
-								<div class="btn-group">
-									<button class="btn btn-success btn-xs"
-										ng-click="createCartFromShoppingList(shoppingList)">
-										NEW CART
-									</button>
-									<a class="btn btn-info btn-xs"
-										href="#/shopping-list/edit/{{shoppingList.id}}">
-										EDIT
-									</a>
-									<button class="btn btn-danger btn-xs"
-										ng-click="delete(shoppingList.id)">
-										REMOVE
-									</button>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		<div class="jumbotron">
+
+			<div class="container" 
+				ng-init="searchUsersShoppingLists()">
+				
+				<div>
+					<a class="btn btn-info" href="#/shopping-list/create">
+						Create
+					</a>
+				</div>
+
+				<div class="jumbotron">
+					<div ng-if="usersShoppingLists.result.length > 0">
+						<div class="table-responsive">
+							<table class="table table-condensed table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Created at</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="shoppingList in usersShoppingLists.result">
+									<tr>
+										<td>
+											{{ shoppingList.name }}
+										</td>
+										<td>
+											{{ shoppingList.creationDate }}
+										</td>
+										<td>
+											<div class="btn-group">
+												<button class="btn btn-success btn-xs"
+													ng-click="createCartFromShoppingList(shoppingList)">
+													NEW CART
+												</button>
+												<a class="btn btn-info btn-xs"
+													href="#/shopping-list/edit/{{shoppingList.id}}">
+													EDIT
+												</a>
+												<button class="btn btn-danger btn-xs"
+													ng-click="delete(shoppingList.id)">
+													REMOVE
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div ng-if="usersShoppingLists.result.length === 0">
+						<span>No shopping-list to show</span>
+					</div>
+				</div>
+
+				<div class="col-md-12" ng-if="usersShoppingLists.result.length > 0">
+					<ul uib-pagination total-items="usersShoppingLists.totalSize" 
+						ng-change="searchUsersShoppingLists()"
+						ng-model="usersShoppingLists.pageNumber" max-size="maxSize"
+						items-per-page="usersShoppingLists.pageSize"
+						class="pagination-sm" boundary-links="true">
+					</ul>
+				</div>
+				
 			</div>
 		</div>
 
-		<div ng-if="usersShoppingLists.result.length === 0">
-			<span>No shopping-list to show</span>
-		</div>
-	</div>
 
-	<div class="col-md-12" ng-if="usersShoppingLists.result.length > 0">
-		<ul uib-pagination total-items="usersShoppingLists.totalSize" 
-			ng-change="searchUsersShoppingLists()"
-			ng-model="usersShoppingLists.pageNumber" max-size="maxSize"
-			items-per-page="usersShoppingLists.pageSize"
-			class="pagination-sm" boundary-links="true">
-		</ul>
-	</div>
+	</snap-content>	
+</div>
 
-</section>
+
