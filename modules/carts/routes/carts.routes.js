@@ -3,17 +3,22 @@
 angular.module('cart').config(['$stateProvider',
 	function($stateProvider) {
 
-		$stateProvider.
+
+
+		//$stateProvider.
+		/*
 		state('create-cart', {
 			url: '/cart/create',
 			templateUrl: 'modules/carts/views/crud-actions-cart.view.html',
 			controller: 'CartCtrl'
 		}).
+		
 		state('list-cart', {
 			url: '/cart/list',
 			templateUrl: 'modules/carts/views/list-cart.view.html',
 			controller: 'CartCtrl'
 		}).
+		
 		state('check-items-cart', {
 			url: '/cart/check-items/:id',
 			templateUrl: 'modules/carts/views/check-cart-items.view.html',
@@ -44,5 +49,8 @@ angular.module('cart').config(['$stateProvider',
 				currentTurn : undefined
 			}
 		});
+		*/
 
-}])
+}
+
+])

@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 'Cart', '$state', '$timeout',
+angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', '$controller','Cart', '$state', '$timeout',
 	'Authentication', '$stateParams', '$location',
-	function ($scope, Cart, $state, $timeout, Authentication, $stateParams, $location) {
+	function ($scope, $controller ,Cart, $state, $timeout, Authentication, $stateParams, $location) {
+
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		var itemCheckInformation = {};
 

@@ -3,6 +3,7 @@
 angular.module('shopping-list').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('create-shopping-list', {
 			url: '/shopping-list/create',
@@ -19,5 +20,5 @@ angular.module('shopping-list').config(['$stateProvider',
 			templateUrl: 'modules/shopping-lists/views/list-shopping-list.view.html',
 			controller: 'ShoppingListCtrl'
 		});
-
+		*/
 }])

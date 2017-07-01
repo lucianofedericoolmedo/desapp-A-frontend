@@ -3,6 +3,7 @@
 angular.module('product').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('create-product', {
 			url: '/product/create',
@@ -24,5 +25,6 @@ angular.module('product').config(['$stateProvider',
 			templateUrl: 'modules/products/views/batch-crud-product.view.html',
 			controller: 'ProductCtrl'
 		});
+		*/
 
 }])

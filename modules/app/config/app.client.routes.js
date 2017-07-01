@@ -19,9 +19,43 @@ angular.module('app').config(['$stateProvider',
 
 		) {
 		// Redirect to home view when route not found
-		$urlRouterProvider.otherwise('/');
+		//$urlRouterProvider.otherwise('/dashboard/overview');
+
+
+		$urlRouterProvider.when('/', '/dashboard/overview');
+	    //$urlRouterProvider.otherwise('/login');
+
+	    $stateProvider
+	      .state('base', {
+	        abstract: true,
+	        url: '',
+	        templateUrl: 'modules/core/views/base.html'
+	      })
+	        .state('login', {
+	          url: '/login',
+	          parent: 'base',
+	          templateUrl: 'modules/core/views/login.html',
+	          controller: 'LoginCtrl'
+	        })
+	        .state('dashboard', {
+	          url: '/dashboard',
+	          parent: 'base',
+	          templateUrl: 'modules/core/views/dashboard.html',
+	          controller: 'DashboardCtrl'
+	        })
+	          .state('overview', {
+	            url: '/overview',
+	            parent: 'dashboard',
+	            templateUrl: 'modules/core/views/dashboard/overview.html'
+	          })
+	          .state('reports', {
+	            url: '/reports',
+	            parent: 'dashboard',
+	            templateUrl: 'modules/core/views/dashboard/reports.html'
+	          });
 
 		// Home state routing
+		/*
 		$stateProvider.
 		state('app', {
 			url: '/',
@@ -32,7 +66,7 @@ angular.module('app').config(['$stateProvider',
 			url: '/nose',
 			templateUrl: 'modules/app/views/extra.html'
 		});
-
+		*/
 
 		/*
 		To add auth0 to the app

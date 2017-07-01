@@ -3,6 +3,7 @@
 angular.module('purchases').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('list-purchase', {
 			url: '/purchase/history-list',
@@ -14,5 +15,7 @@ angular.module('purchases').config(['$stateProvider',
 			templateUrl: 'modules/purchases/views/purchase-detail.view.html',
 			controller: 'PurchaseCtrl'
 		});
+
+		*/
 
 }])

@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('brand').controller('BrandCtrl', [ '$scope', '$stateParams', 'Brand',
+angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stateParams', 'Brand',
 	'PaginatedSearch',
-	function ($scope, $stateParams, Brand, PaginatedSearch) {
+	function ($scope, $controller, $stateParams, Brand, PaginatedSearch) {
 
 		var service = Brand;
+
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
+
 		$scope.search = new PaginatedSearch(service);
 
 		$scope.findPage = function () {

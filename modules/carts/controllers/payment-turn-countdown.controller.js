@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$stateParams',
+angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$controller', '$stateParams',
 	'Cart', '$rootScope', '$state', '$filter', '$location',
-	function ($scope, $stateParams, Cart, $rootScope, $state, $filter, $location) {
+	function ($scope, $controller, $stateParams, Cart, $rootScope, $state, $filter, $location) {
 	
 		$scope.showRedirection = false;
 		$scope.showCountdown = true;
+
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		function setCountdownInformation () {
 			if ($stateParams.currentTurn) {

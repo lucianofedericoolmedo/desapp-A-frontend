@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$stateParams', 'Cart',
+angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$controller','$stateParams', 'Cart',
 	'$rootScope', '$state', 'uiGmapGoogleMapApi', '$uibModal',
-	function ($scope, $stateParams, Cart, $rootScope, $state, uiGmapGoogleMapApi,$uibModal) {
+	function ($scope, $controller, $stateParams, Cart, $rootScope, $state, uiGmapGoogleMapApi,$uibModal) {
 	
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
+
 		$scope.turn = $stateParams.turn;
 
 		$scope.direccion = {};

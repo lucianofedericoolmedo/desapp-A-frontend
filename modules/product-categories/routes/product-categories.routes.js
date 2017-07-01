@@ -3,6 +3,7 @@
 angular.module('product-category').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('create-product-category', {
 			url: '/product-category/create',
@@ -14,5 +15,6 @@ angular.module('product-category').config(['$stateProvider',
 			templateUrl: 'modules/product-categories/views/crud-actions-product-category.view.html',
 			controller: 'BrandCtrl'
 		});
+		*/
 
 }])

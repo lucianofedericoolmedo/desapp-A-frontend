@@ -3,6 +3,7 @@
 angular.module('brand').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('create-brand', {
 			url: '/brand/create',
@@ -19,5 +20,6 @@ angular.module('brand').config(['$stateProvider',
 			templateUrl: 'modules/brands/views/list-brand.view.html',
 			controller: 'BrandCtrl'
 		});
+		*/
 
 }])

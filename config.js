@@ -20,6 +20,7 @@ var ApplicationConfiguration = (function() {
 	    'auth0.auth0', 
 	    'angular-jwt',
 	    'timer',
+	    'snap',
 	    //'lodash',
 	    'uiGmapgoogle-maps'
 		];
