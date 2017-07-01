@@ -111,6 +111,26 @@ angular.module('product').controller('ProductCtrl', [ '$scope',
 		}
 
 		function sendEntityWithMethod (methodName, callBack) {
+
+			if (!$scope.product === undefined) {
+				SweetAlert.swal("Error", 
+						'Ingrese un producto', "error");
+				return;
+			}
+
+			if (!$scope.stockForDto === undefined) {
+				SweetAlert.swal("Error", 
+						'Ingrese un stock', "error");
+				return;
+			}
+
+			if (!$scope.priceForDto === undefined) {
+				SweetAlert.swal("Error", 
+						'Ingrese un precio', "error");
+				return;
+			}
+
+
 			var dto = buildDto();
 
 			service[methodName](dto,

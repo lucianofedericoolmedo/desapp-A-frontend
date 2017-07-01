@@ -48,6 +48,14 @@ angular.module('product-category').controller('ProductCategoryCtrl',
 		};
 
 		function sendEntityWithMethod (methodName) {
+
+			if (!$scope.productCategory.name === undefined) {
+				SweetAlert.swal("Error", 
+						'Ingrese una categoria de producto', "error");
+				return;
+			}
+			
+
 			ProductCategory[methodName]($scope.productCategory,
 				function (successResponse) {
 					// Do something

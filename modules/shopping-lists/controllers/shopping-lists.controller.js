@@ -92,7 +92,25 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 
 
 		$scope.saveOrUpdate = function () {
-			console.log(Authentication.getUserId());
+			
+			/*
+			if($scope.shoppingList.name !== undefined){
+				SweetAlert.swal("Error", 
+						'Ingrese un nombre', "error");
+				return;
+			}
+			if($scope.shoppingList.description!== undefined)
+			{
+				SweetAlert.swal("Error", 
+						'Ingrese una description', "error");
+				return;
+			}
+			
+			if(shoppingList.items !== undefined ||
+				shoppingList.items.length === 0){
+
+			}
+			*/
 			if ($scope.shoppingList.id) {
 				ShoppingList.update($scope.shoppingList,
 					function (successResponse) {
