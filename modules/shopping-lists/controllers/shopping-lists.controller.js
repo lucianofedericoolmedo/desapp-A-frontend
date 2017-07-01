@@ -4,11 +4,11 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 	[ '$scope', '$state', '$controller',
 	'$stateParams', '$location', 'ShoppingList', 
 	'ItemManagementSrv', 'Product',
-	'PaginatedSearch', 'Cart', 'Authentication',
+	'PaginatedSearch', 'Cart', 'Authentication', 'SweetAlert', '$window', '$timeout',
 	function ($scope, $state, $controller,
 		$stateParams, $location, ShoppingList, 
 		ItemManagementSrv, Product, 
-		PaginatedSearch, Cart, Authentication) {
+		PaginatedSearch, Cart, Authentication, SweetAlert, $window, $timeout) {
 
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -21,8 +21,13 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 			$scope.usersShoppingLists.search('pageByUser');
 		};
 
-		function manageErrorResponse (errorResponse) {
-			window.alert(errorResponse.data.message);
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
+		}
+
+		function manageErrorResponse (message) {
+			manageErrorResponseHelper(message.data.message);
 		}
 
 		$scope.newInstance = function () {
@@ -47,9 +52,44 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 			}
 		};
 
-		$scope.delete = function (id) {
-			service.remove({ id : id});
+		$scope.delete = function(id) {
+			SweetAlert.swal({
+			   title: "Esta seguro?",
+			   text: "No podra recobrar el producto una vez eliminado!",
+			   type: "warning",
+			   showCancelButton: true,
+			   confirmButtonColor: "#DD6B55",confirmButtonText: "Si, eliminelo!",
+			   cancelButtonText: "No, cancele por favor!",
+			   closeOnConfirm: false,
+			   closeOnCancel: false }, 
+			function(isConfirm){ 
+			   if (isConfirm) {
+			      helperRemove(id);
+			   } else {
+			      SweetAlert.swal("Cancelado", "Sigue teniendo el producto :)", "error");
+			   }
+			});
+		}
+
+		function reloadPage(){
+			$window.location.reload();
+		}
+
+		function helperRemove(id) {
+			service.remove({ id : id},
+				function(response){
+					SweetAlert.swal("Ok", 
+						"Se ha borrado el producto con exito!", "success");
+					$timeout(reloadPage, 500);					
+				}, 
+				function(errorResponse){
+					SweetAlert.swal("Error", 
+						"No se ha borrado el producto!", "error")
+				});
 		};
+
+
+
 
 		$scope.saveOrUpdate = function () {
 			console.log(Authentication.getUserId());

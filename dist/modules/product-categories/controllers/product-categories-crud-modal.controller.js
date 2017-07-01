@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('product-category').controller('ProductCategoriesCrudModalCtrl', ['$scope',
-	'ProductCategory', '$uibModalInstance',
-	function ($scope, ProductCategory, $uibModalInstance) {
+	'ProductCategory', '$uibModalInstance','SweetAlert',
+	function ($scope, ProductCategory, $uibModalInstance, SweetAlert) {
 	
 		$scope.newInstance = function () {
 			$scope.productCategory = new ProductCategory({
@@ -12,13 +12,15 @@ angular.module('product-category').controller('ProductCategoriesCrudModalCtrl', 
 
 		$scope.create = function () {
 			if (!$scope.productCategory.name) {
-				alert('A new category must have a name.');
+				SweetAlert.swal("Error", 
+				'A new category must have a name.', "error");
 				return;
 			}
 			ProductCategory.save($scope.productCategory, function (successResponse) {
 				$uibModalInstance.close();
 			}, function (errorResponse) {
-				alert(errorResponse);
+				SweetAlert.swal("Error", 
+				errorResponse, "error");
 			});
 		};
 

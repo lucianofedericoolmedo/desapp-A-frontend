@@ -2,8 +2,9 @@
 
 angular.module('product-category').controller('ProductCategoryCtrl',
  ['$scope', '$state','$controller','$stateParams',
- 'ProductCategory', 'PaginatedSearch',
-	function ($scope, $state, $controller, $stateParams, ProductCategory, PaginatedSearch) {
+ 'ProductCategory', 'PaginatedSearch', 'SweetAlert',
+	function ($scope, $state, $controller, $stateParams, 
+		ProductCategory, PaginatedSearch,SweetAlert ) {
 	
 		var service = ProductCategory;
 
@@ -16,8 +17,13 @@ angular.module('product-category').controller('ProductCategoryCtrl',
 			$scope.search.search();
 		};
 
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
+		}
+
 		function manageErrorResponse (message) {
-			window.alert(message);
+			manageErrorResponseHelper(message);
 		}
 
 		$scope.newInstance = function () {

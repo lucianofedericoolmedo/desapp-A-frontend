@@ -2,9 +2,9 @@
 
 angular.module('purchases').controller('PurchaseCtrl', 
 	[ '$scope', '$stateParams', '$state', '$controller',
-	'Purchase', 'PaginatedSearch', 'Authentication', 
+	'Purchase', 'PaginatedSearch', 'Authentication', 'SweetAlert', 
 	function ($scope, $stateParams, $state, $controller, Purchase, 
-		PaginatedSearch, Authentication) {
+		PaginatedSearch, Authentication,SweetAlert) {
 
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -17,8 +17,14 @@ angular.module('purchases').controller('PurchaseCtrl',
 			$scope.search.search('pageByUser');
 		};
 
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
+		}
+
 		function manageErrorResponse (message) {
-			window.alert(message.data.message);
+			console.log(message);
+			manageErrorResponseHelper(message.data.message);
 		}
 
 		$scope.get = function () {

@@ -22,7 +22,8 @@ var ApplicationConfiguration = (function() {
 	    'timer',
 	    'snap',
 	    //'lodash',
-	    'uiGmapgoogle-maps'
+	    'uiGmapgoogle-maps',
+	    'oitozero.ngSweetAlert'
 		];
 
 	// Add a new vertical module

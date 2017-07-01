@@ -1,16 +1,25 @@
 'use strict';
 
-angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', '$controller','Cart', '$state', '$timeout',
-	'Authentication', '$stateParams', '$location',
-	function ($scope, $controller ,Cart, $state, $timeout, Authentication, $stateParams, $location) {
+angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', 
+	'$controller','Cart', '$state', '$timeout',
+	'Authentication', '$stateParams', '$location','SweetAlert',
+	function ($scope, $controller ,Cart, $state, $timeout,
+		Authentication, $stateParams, $location, SweetAlert) {
 
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		var itemCheckInformation = {};
 
-		function manageErrorResponse (message) {
-			window.alert(message.data.message);
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
 		}
+
+		function manageErrorResponse (message) {
+			console.log(message);
+			manageErrorResponseHelper(message.data.message);
+		}
+
 
 		$scope.get = function () {
 			Cart.get( { id : $stateParams.id }, function (successResponse) {
@@ -99,7 +108,7 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', '$controller'
 			Cart.requestPurchaseTurn({ id : $scope.cart.id }, function (successResponse) {
 				$state.go('confirm-cart-purchase', { turn : successResponse });
 			}, function (errorResponse) {
-				alert(errorResponse);
+				manageErrorResponseHelper(errorResponse);
 			});
 		};
 
@@ -130,4 +139,4 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope', '$controller'
 			);
 		};
 
-}])
+}]);

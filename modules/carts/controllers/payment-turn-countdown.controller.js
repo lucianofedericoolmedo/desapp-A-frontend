@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('cart').controller('PaymentTurnCountdownCtrl', ['$scope', '$controller', '$stateParams',
+angular.module('cart').controller('PaymentTurnCountdownCtrl', 
+	['$scope', '$controller', '$stateParams',
 	'Cart', '$rootScope', '$state', '$filter', '$location',
-	function ($scope, $controller, $stateParams, Cart, $rootScope, $state, $filter, $location) {
+	function ($scope, $controller, $stateParams, Cart, 
+		$rootScope, $state, $filter, $location) {
 	
 		$scope.showRedirection = false;
 		$scope.showCountdown = true;

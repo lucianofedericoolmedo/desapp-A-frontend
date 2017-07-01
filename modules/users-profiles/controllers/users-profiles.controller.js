@@ -3,10 +3,10 @@
 angular.module('users-profiles').controller('UserProfileCtrl', 
 	[ '$scope', '$stateParams', '$state', '$controller',
 	'UserProfile', 'Authentication', '$location', 
-	'Threshold', '$filter',
+	'Threshold', '$filter', 'SweetAlert',
 	function ($scope, $stateParams, $state, $controller,
 		UserProfile, Authentication, $location, 
-		Threshold, $filter) {
+		Threshold, $filter, SweetAlert) {
 
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -14,8 +14,13 @@ angular.module('users-profiles').controller('UserProfileCtrl',
 		$scope.thresholds = Threshold.getPossiblesThresholds();
 		$scope.thresholdsCriterias = Threshold.getPossiblesThresholdsCriterias();
 
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
+		}
+
 		function manageErrorResponse (message) {
-			window.alert(message.data.message);
+			manageErrorResponseHelper(message.data.message);
 		}
 
 		$scope.findProfile = function () {

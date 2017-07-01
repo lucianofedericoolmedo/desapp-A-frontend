@@ -3,10 +3,10 @@
 angular.module('product').controller('ProductCtrl', [ '$scope', 
 	'$controller','$stateParams', 'Product',
 	'PaginatedSearch', 'Brand', '$uibModal', 
-	'FileUpload', '$state', 'ProductCategory',
+	'FileUpload', '$state', 'ProductCategory','SweetAlert', '$window', '$timeout',
 	function ($scope, $controller, $stateParams, 
 		Product, PaginatedSearch, Brand, $uibModal, 
-		FileUpload, $state, ProductCategory) {
+		FileUpload, $state, ProductCategory, SweetAlert, $window, $timeout) {
 
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -23,8 +23,13 @@ angular.module('product').controller('ProductCtrl', [ '$scope',
 		$scope.products = Product.getAll();
 		$scope.noImageSrc = 'http://www.jeaconf.org/UploadedFiles/Images/NoImage.jpg';
 
+		function manageErrorResponseHelper(message) {
+			SweetAlert.swal("Error", 
+				message, "error");
+		}
+
 		function manageErrorResponse (message) {
-			window.alert(message);
+			manageErrorResponseHelper(message);
 		}
 
 		$scope.newInstance = function () {
@@ -58,9 +63,42 @@ angular.module('product').controller('ProductCtrl', [ '$scope',
 			}
 		};
 
-		$scope.delete = function (id) {
-			service.remove({ id : id});
+		$scope.delete = function(id) {
+			SweetAlert.swal({
+			   title: "Esta seguro?",
+			   text: "No podra recobrar el producto una vez eliminado!",
+			   type: "warning",
+			   showCancelButton: true,
+			   confirmButtonColor: "#DD6B55",confirmButtonText: "Si, eliminelo!",
+			   cancelButtonText: "No, cancele por favor!",
+			   closeOnConfirm: false,
+			   closeOnCancel: false }, 
+			function(isConfirm){ 
+			   if (isConfirm) {
+			      helperRemove(id);
+			   } else {
+			      SweetAlert.swal("Cancelado", "Sigue teniendo el producto :)", "error");
+			   }
+			});
+		}
+
+		function reloadPage(){
+			$window.location.reload();
+		}
+
+		function helperRemove(id) {
+			service.remove({ id : id},
+				function(response){
+					SweetAlert.swal("Ok", 
+						"Se ha borrado el producto con exito!", "success");
+					$timeout(reloadPage, 500);					
+				}, 
+				function(errorResponse){
+					SweetAlert.swal("Error", 
+						"No se ha borrado el producto!", "error")
+				});
 		};
+
 
 		function buildDto() {
 			var productDto = {};

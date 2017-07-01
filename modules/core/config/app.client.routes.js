@@ -117,7 +117,7 @@ angular
 				url: '/brand/create',
 				templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 				controller: 'BrandCtrl',
-				data: {text: "Marca", visible: true }}
+				data: {text: "Crear Marca", visible: false }}
 			},
 
 			{ name: 'edit-brand', 
@@ -125,7 +125,7 @@ angular
 				url: '/brand/edit/:id',
 				templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 				controller: 'BrandCtrl',
-				data: {text: "Editar Marca", visible: true }}
+				data: {text: "Editar Marca", visible: false }}
 			},
 
 			{ name: 'list-brand', 
@@ -144,7 +144,7 @@ angular
 				url: '/product-category/create',
 				templateUrl: 'modules/product-categories/views/crud-actions-product-category.view.html',
 				controller: 'BrandCtrl',
-				data: {text: "Crear Cat Prod", visible: true }}
+				data: {text: "Crear Cat Prod", visible: false }}
 			},
 
 			{ name: 'edit-product-category', 
@@ -155,7 +155,7 @@ angular
 				params:{
 					id:undefined
 				},
-				data: {text: "Editar Cat Prod", visible: true }}
+				data: {text: "Editar Cat Prod", visible: false }}
 			},
 
 
@@ -166,7 +166,7 @@ angular
 				url: '/product/create',
 				templateUrl: 'modules/products/views/crud-actions-product.view.html',
 				controller: 'ProductCtrl',
-				data: {text: "Crear Prod", visible: true }}
+				data: {text: "Crear Prod", visible: false }}
 			},
 
 			{ name: 'edit-product', 
@@ -177,7 +177,7 @@ angular
 				params:{
 					id:undefined
 				},
-				data: {text: "Editar Prod", visible: true }}
+				data: {text: "Editar Prod", visible: false }}
 			},
 
 			{ name: 'list-product', 
@@ -193,7 +193,7 @@ angular
 				url: '/product/crud-batch',
 				templateUrl: 'modules/products/views/batch-crud-product.view.html',
 				controller: 'ProductCtrl',
-				data: {text: "Crear Prod", visible: true }}
+				data: {text: "Crear Productos Por Batch", visible: false }}
 			},
 
 			//////////////////
@@ -224,7 +224,7 @@ angular
 				url: '/shopping-list/create',
 				templateUrl: 'modules/shopping-lists/views/crud-actions-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
-				data: {text: "Crear ShoppingList", visible: true }}
+				data: {text: "Crear ShoppingList", visible: false }}
 			},
 
 			{ name: 'edit-shopping-list', 
@@ -232,7 +232,7 @@ angular
 				url: '/shopping-list/edit/:id',
 				templateUrl: 'modules/shopping-lists/views/crud-actions-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
-				data: {text: "Listar ShoppingList", visible: true }}
+				data: {text: "Editar ShoppingList", visible: false }}
 			},
 
 			{ name: 'list-shopping-list', 
@@ -240,7 +240,7 @@ angular
 				url: '/shopping-list/list',
 				templateUrl: 'modules/shopping-lists/views/list-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
-				data: {text: "Editar ShoppingList", visible: true }}
+				data: {text: "ShoppingList", visible: true }}
 			},
 
 			/////////////////////

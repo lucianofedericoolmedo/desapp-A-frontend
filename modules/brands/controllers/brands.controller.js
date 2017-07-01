@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stateParams', 'Brand',
-	'PaginatedSearch',
-	function ($scope, $controller, $stateParams, Brand, PaginatedSearch) {
+	'PaginatedSearch', 'SweetAlert',
+	function ($scope, $controller, $stateParams, Brand, 
+		PaginatedSearch, SweetAlert) {
 
 		var service = Brand;
 
@@ -15,7 +16,8 @@ angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stat
 		};
 
 		function manageErrorResponse (message) {
-			window.alert(message);
+			SweetAlert.swal("Error", 
+						message, "error");
 		}
 
 		$scope.newInstance = function () {

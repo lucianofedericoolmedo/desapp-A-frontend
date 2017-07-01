@@ -2,9 +2,9 @@
 
 angular.module('cart').controller('CartCtrl', [ '$scope', 
 	'$controller', '$stateParams', 'Cart',
-	'PaginatedSearch', '$timeout', '$state',
+	'PaginatedSearch', '$timeout', '$state','$window', 'SweetAlert',
 	function ($scope, $controller, $stateParams, Cart, 
-		PaginatedSearch, $timeout, $state) {
+		PaginatedSearch, $timeout, $state, $window, SweetAlert) {
 	
 	
 		$scope.$state = $state;
@@ -20,7 +20,8 @@ angular.module('cart').controller('CartCtrl', [ '$scope',
 		};
 
 		function manageErrorResponse (message) {
-			window.alert(message);
+			SweetAlert.swal("Error", 
+						message, "error");
 		}
 
 		$scope.newInstance = function () {
@@ -66,8 +67,40 @@ angular.module('cart').controller('CartCtrl', [ '$scope',
 			}
 		};
 
-		$scope.delete = function (id) {
-			service.remove({ id : id});
+		$scope.delete = function(id) {
+			SweetAlert.swal({
+			   title: "Esta seguro?",
+			   text: "No podra recobrar el carrito una vez eliminado!",
+			   type: "warning",
+			   showCancelButton: true,
+			   confirmButtonColor: "#DD6B55",confirmButtonText: "Si, eliminelo!",
+			   cancelButtonText: "No, cancele por favor!",
+			   closeOnConfirm: false,
+			   closeOnCancel: false }, 
+			function(isConfirm){ 
+			   if (isConfirm) {
+			      helperRemove(id);
+			   } else {
+			      SweetAlert.swal("Cancelado", "Sigue teniedo el carrito :)", "error");
+			   }
+			});
+		}
+
+		function reloadPage(){
+			$window.location.reload();
+		}
+
+		function helperRemove(id) {
+			service.remove({ id : id},
+				function(response){
+					SweetAlert.swal("Ok", 
+						"Se ha borrado el carrito con exito!", "success");
+					$timeout(reloadPage, 500);					
+				}, 
+				function(errorResponse){
+					SweetAlert.swal("Error", 
+						"No se ha borrado el carrito!", "error")
+				});
 		};
 
 		var sendingItemCheckState = false;
