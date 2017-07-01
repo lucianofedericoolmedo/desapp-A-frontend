@@ -1,9 +1,15 @@
 'use strict';
 
-angular.module('product').controller('ProductCtrl', [ '$scope', '$stateParams', 'Product',
-	'PaginatedSearch', 'Brand', '$uibModal', 'FileUpload', '$state', 'ProductCategory',
-	function ($scope, $stateParams, Product, PaginatedSearch, Brand, $uibModal, FileUpload,
-		$state, ProductCategory) {
+angular.module('product').controller('ProductCtrl', [ '$scope', 
+	'$controller','$stateParams', 'Product',
+	'PaginatedSearch', 'Brand', '$uibModal', 
+	'FileUpload', '$state', 'ProductCategory',
+	function ($scope, $controller, $stateParams, 
+		Product, PaginatedSearch, Brand, $uibModal, 
+		FileUpload, $state, ProductCategory) {
+
+		$scope.$state = $state;
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		var service = Product;
 		$scope.search = new PaginatedSearch(service);

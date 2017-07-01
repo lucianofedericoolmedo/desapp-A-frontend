@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('cart').controller('CartCtrl', [ '$scope', '$controller', '$stateParams', 'Cart',
+angular.module('cart').controller('CartCtrl', [ '$scope', 
+	'$controller', '$stateParams', 'Cart',
 	'PaginatedSearch', '$timeout', '$state',
-	function ($scope, $controller, $stateParams, Cart, PaginatedSearch, $timeout, $state) {
+	function ($scope, $controller, $stateParams, Cart, 
+		PaginatedSearch, $timeout, $state) {
 	
 	
 		$scope.$state = $state;
-
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		var service = Cart;

@@ -11,154 +11,128 @@
 
 
 <div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false">
-
-		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
-			<span class="menutoggle">
-				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
-				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
-			</span>
-		</a>
-		
-		<div class="pull-right fr">
-			<h2>Listar carritos</h2>
-		</div>
-		
-		<br>
-
-		<div class="jumbotron">
-			<div class="container">	
-				<div>
-					<div>
-						<h3>Products in Shopping List</h3>
-					</div>
-					<div class="container-fluid jumbotron">
-						<div ng-if="shoppingList.items.length > 0">
-							<div ng-repeat="item in shoppingList.items track by item.id">
-								<div class="col-md-3 col-sm-4 col-xs-12"
-									ng-init="item.initialQuantity = item.quantity">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<!-- Product information -->
-											<div>
-												<img ng-src="{{ item.product.imageUrl ? item.product.imageUrl : noImageSrc }}">
-												<p>{{ item.product.name }}</p>
-											</div>
-											<!-- Product actions -->
-											<div class="col-md-12">
-												<div class="col-md-4">
-													<button class="btn btn-xs btn-primary" type="button" 
-														ng-click="decreaseQuantity(item)"
-														ng-enabled="canDecrease(item)">
-														<i class="glyphicon glyphicon-minus"></i>
-													</button>
-												</div>
-												<div class="col-md-4 no-padding-h">
-													<input type="number" name="quantity" class="full-width" 
-														ng-model="item.quantity">
-												</div>
-												<div class="col-md-4">
-													<button class="btn btn-xs btn-primary" type="button" 
-														ng-click="increaseQuantity(item)">
-														<i class="glyphicon glyphicon-plus"></i>
-													</button>
-												</div>
-											</div>
-											<div class="btn-group col-md-11">
-												<button class="btn btn-sm btn-danger full-width" type="button" 
-													ng-click="removeItem(item, $index)">
-													<small>REMOVE</small>
-												</button>
-												<button class="btn btn-sm btn-info full-width" type="button" 
-													ng-if="item.quantity !== item.initialQuantity"
-													ng-click="updateItem(item)">
-													<small>UPDATE</small>
-												</button>
-											</div>
-										</div>
-									</div>
+	<div>
+		<h3>Products in Shopping List</h3>
+	</div>
+	<div class="container-fluid jumbotron">
+		<div ng-if="shoppingList.items.length > 0">
+			<div ng-repeat="item in shoppingList.items track by item.id">
+				<div class="col-md-3 col-sm-4 col-xs-12"
+					ng-init="item.initialQuantity = item.quantity">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<!-- Product information -->
+							<div>
+								<img ng-src="{{ item.product.imageUrl ? item.product.imageUrl : noImageSrc }}">
+								<p>{{ item.product.name }}</p>
+							</div>
+							<!-- Product actions -->
+							<div class="col-md-12">
+								<div class="col-md-4">
+									<button class="btn btn-xs btn-primary" type="button" 
+										ng-click="decreaseQuantity(item)"
+										ng-enabled="canDecrease(item)">
+										<i class="glyphicon glyphicon-minus"></i>
+									</button>
+								</div>
+								<div class="col-md-4 no-padding-h">
+									<input type="number" name="quantity" class="full-width" 
+										ng-model="item.quantity">
+								</div>
+								<div class="col-md-4">
+									<button class="btn btn-xs btn-primary" type="button" 
+										ng-click="increaseQuantity(item)">
+										<i class="glyphicon glyphicon-plus"></i>
+									</button>
 								</div>
 							</div>
-						</div>
-						<div ng-if="shoppingList.items.length === 0">
-							<span>No product in shopping list</span>
+							<div class="btn-group col-md-11">
+								<button class="btn btn-sm btn-danger full-width" type="button" 
+									ng-click="removeItem(item, $index)">
+									<small>REMOVE</small>
+								</button>
+								<button class="btn btn-sm btn-info full-width" type="button" 
+									ng-if="item.quantity !== item.initialQuantity"
+									ng-click="updateItem(item)">
+									<small>UPDATE</small>
+								</button>
+							</div>
 						</div>
 					</div>
-
 				</div>
-
-				<div>
-					<div>
-						<h3>Products to add</h3>
-					</div>
-					<div class="container-fluid jumbotron">
-						<div ng-if="searchNotInShoppingList.result.length > 0">
-							<div ng-repeat="product in searchNotInShoppingList.result track by product.id">
-								<div class="col-md-2 col-sm-4 col-xs-12">
-									<div class="panel panel-default">
-										<div class="panel-body">
-											<!-- Product information -->
-											<div>
-												<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
-												<p>{{product.name }}</p>
-											</div>
-											<!-- Product actions -->
-											<div class="row">
-												<div class="visible-xs visible-sm col-xs-4 center" >
-													<button class="btn btn-xs btn-primary"
-														type="button" 
-														ng-click="decreaseQuantity(product)"
-														ng-enabled="canDecrease(product)">
-														<i class="glyphicon glyphicon-minus"></i>
-													</button>
-												</div>
-												<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4">
-													<input type="number" name="quantity" class="full-width" 
-														ng-init="initializeQuantity(product)"
-														ng-model="product.quantity">
-												</div>
-												<div class="visible-xs visible-sm col-xs-4 center">
-													<button class="btn btn-xs btn-primary"
-														type="button" 
-														ng-click="increaseQuantity(product)">
-														<i class="glyphicon glyphicon-plus"></i>
-													</button>
-												</div>
-												<div class="col-lg-12 col-md-12 col-xs-12">
-													<button class="btn btn-sm btn-primary full-width"
-														type="button" 
-														ng-click="addProduct(product)">
-														<small>ADD</small>
-													</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div ng-if="searchNotInShoppingList.result.length === 0">
-							<span>No product to show</span>
-						</div>
-					</div>
-
-					<div class="col-md-12" ng-if="searchNotInShoppingList.result.length > 0">
-						<ul uib-pagination total-items="searchNotInShoppingList.totalSize" 
-							ng-change="searchProductsNotInShoppingList()"
-							ng-model="searchNotInShoppingList.pageNumber" max-size="maxSize"
-							items-per-page="searchNotInShoppingList.pageSize"
-							class="pagination-sm" boundary-links="true">
-						</ul>
-					</div>
-
-				</div>				
 			</div>
 		</div>
+		<div ng-if="shoppingList.items.length === 0">
+			<span>No product in shopping list</span>
+		</div>
+	</div>
 
+</div>
 
-	</snap-content>	
+<div>
+	<div>
+		<h3>Products to add</h3>
+	</div>
+	<div class="container-fluid jumbotron">
+		<div ng-if="searchNotInShoppingList.result.length > 0">
+			<div ng-repeat="product in searchNotInShoppingList.result track by product.id">
+				<div class="col-md-2 col-sm-4 col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<!-- Product information -->
+							<div>
+								<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
+								<p>{{product.name }}</p>
+							</div>
+							<!-- Product actions -->
+							<div class="row">
+								<div class="visible-xs visible-sm col-xs-4 center" >
+									<button class="btn btn-xs btn-primary"
+										type="button" 
+										ng-click="decreaseQuantity(product)"
+										ng-enabled="canDecrease(product)">
+										<i class="glyphicon glyphicon-minus"></i>
+									</button>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4">
+									<input type="number" name="quantity" class="full-width" 
+										ng-init="initializeQuantity(product)"
+										ng-model="product.quantity">
+								</div>
+								<div class="visible-xs visible-sm col-xs-4 center">
+									<button class="btn btn-xs btn-primary"
+										type="button" 
+										ng-click="increaseQuantity(product)">
+										<i class="glyphicon glyphicon-plus"></i>
+									</button>
+								</div>
+								<div class="col-lg-12 col-md-12 col-xs-12">
+									<button class="btn btn-sm btn-primary full-width"
+										type="button" 
+										ng-click="addProduct(product)">
+										<small>ADD</small>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="searchNotInShoppingList.result.length === 0">
+			<span>No product to show</span>
+		</div>
+	</div>
+
+	<div class="col-md-12" ng-if="searchNotInShoppingList.result.length > 0">
+		<ul uib-pagination total-items="searchNotInShoppingList.totalSize" 
+			ng-change="searchProductsNotInShoppingList()"
+			ng-model="searchNotInShoppingList.pageNumber" max-size="maxSize"
+			items-per-page="searchNotInShoppingList.pageSize"
+			class="pagination-sm" boundary-links="true">
+		</ul>
+	</div>
+
 </div>
 
 

@@ -1,9 +1,14 @@
 'use strict';
 
-angular.module('purchases').controller('PurchaseCtrl', [ '$scope', '$stateParams', 
+angular.module('purchases').controller('PurchaseCtrl', 
+	[ '$scope', '$stateParams', '$state', '$controller',
 	'Purchase', 'PaginatedSearch', 'Authentication', 
-	function ($scope, $stateParams, Purchase, PaginatedSearch, Authentication) {
+	function ($scope, $stateParams, $state, $controller, Purchase, 
+		PaginatedSearch, Authentication) {
 
+		$scope.$state = $state;
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
+		
 		var service = Purchase;
 		$scope.search = new PaginatedSearch(service);
 

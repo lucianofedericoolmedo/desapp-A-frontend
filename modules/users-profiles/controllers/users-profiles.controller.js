@@ -1,9 +1,15 @@
 'use strict';
 
-angular.module('users-profiles').controller('UserProfileCtrl', [ '$scope', '$stateParams', 
-	'UserProfile', 'Authentication', '$location', 'Threshold', '$filter',
-	function ($scope, $stateParams, UserProfile, Authentication, $location, Threshold,
-		$filter) {
+angular.module('users-profiles').controller('UserProfileCtrl', 
+	[ '$scope', '$stateParams', '$state', '$controller',
+	'UserProfile', 'Authentication', '$location', 
+	'Threshold', '$filter',
+	function ($scope, $stateParams, $state, $controller,
+		UserProfile, Authentication, $location, 
+		Threshold, $filter) {
+
+		$scope.$state = $state;
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		$scope.thresholds = Threshold.getPossiblesThresholds();
 		$scope.thresholdsCriterias = Threshold.getPossiblesThresholdsCriterias();

@@ -1,68 +1,93 @@
-<section ng-init="checkItemsInit()">
-	
-	<div>
-		<h3>{{"views.main.ProductsinShoppingList" | translate}}</h3>
-		<div>
-			<button class="btn btn-success" type="button"
-				ng-click="requestPurchaseTurn()">
-				{{"views.main.Buy" | translate}}!
-			</button>
-			<button class="btn btn-danger" type="button"
-				ng-click="cancelCart()">
-				{{"views.main.Cancel" | translate}}
-			</button>
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
+
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="pull-right fr">
+			<h2>Listar carritos</h2>
 		</div>
-	</div>
-	<div class="container-fluid jumbotron">
-		<div ng-if="cart.items.length > 0">
-			<div ng-repeat="item in cart.items track by item.id">
-				<div class="col-md-2 col-sm-4 col-xs-12">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<!-- Product information -->
-							<div>
-								<img ng-src="{{ item.product.imageUrl ? item.product.imageUrl : noImageSrc }}">
-								<p>{{ item.product.name }}</p>
-							</div>
-							<!-- Product actions -->
-							<div class="row">
-								<div class="visible-xs visible-sm col-xs-4 center">
-									<button class="btn btn-sm btn-primary" type="button" 
-										ng-click="decreaseQuantity(item)"
-										ng-enabled="canDecrease(item)"
-										ng-disabled="item.checked">
-										<i class="glyphicon glyphicon-minus"></i>
-									</button>
-								</div>
-								<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4">
-									<input type="number" name="quantity" class="full-width"
-										ng-disabled="item.checked" 
-										ng-model="item.quantity">
-								</div>
-								<div class="visible-xs visible-sm col-xs-4 center">
-									<button class="btn btn-sm btn-primary" type="button" 
-										ng-click="increaseQuantity(item)"
-										ng-disabled="item.checked">
-										<i class="glyphicon glyphicon-plus"></i>
-									</button>
-								</div>
-								<div class="col-lg-12 col-md-12 col-xs-12">
-									<button class="btn btn-sm full-width" type="button" 
-										ng-click="checkItem(item)"
-										ng-class="{'btn-success' : item.checked, 'btn-secondary' : !item-checked}">
-										<small>{{ item.checked ? 'IN CART' : 'CHECK' }}</small>
-									</button>
+		
+		<br>
+
+		<div class="jumbotron">
+
+			<div class="container" ng-init="checkItemsInit()">
+	
+				<div>
+					<h3>{{"views.main.ProductsinShoppingList" | translate}}</h3>
+					<div>
+						<button class="btn btn-success" type="button"
+							ng-click="requestPurchaseTurn()">
+							{{"views.main.Buy" | translate}}!
+						</button>
+						<button class="btn btn-danger" type="button"
+							ng-click="cancelCart()">
+							{{"views.main.Cancel" | translate}}
+						</button>
+					</div>
+				</div>
+				<div class="container-fluid jumbotron">
+					<div ng-if="cart.items.length > 0">
+						<div ng-repeat="item in cart.items track by item.id">
+							<div class="col-md-2 col-sm-4 col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<!-- Product information -->
+										<div>
+											<img ng-src="{{ item.product.imageUrl ? item.product.imageUrl : noImageSrc }}">
+											<p>{{ item.product.name }}</p>
+										</div>
+										<!-- Product actions -->
+										<div class="row">
+											<div class="visible-xs visible-sm col-xs-4 center">
+												<button class="btn btn-sm btn-primary" type="button" 
+													ng-click="decreaseQuantity(item)"
+													ng-enabled="canDecrease(item)"
+													ng-disabled="item.checked">
+													<i class="glyphicon glyphicon-minus"></i>
+												</button>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4">
+												<input type="number" name="quantity" class="full-width"
+													ng-disabled="item.checked" 
+													ng-model="item.quantity">
+											</div>
+											<div class="visible-xs visible-sm col-xs-4 center">
+												<button class="btn btn-sm btn-primary" type="button" 
+													ng-click="increaseQuantity(item)"
+													ng-disabled="item.checked">
+													<i class="glyphicon glyphicon-plus"></i>
+												</button>
+											</div>
+											<div class="col-lg-12 col-md-12 col-xs-12">
+												<button class="btn btn-sm full-width" type="button" 
+													ng-click="checkItem(item)"
+													ng-class="{'btn-success' : item.checked, 'btn-secondary' : !item-checked}">
+													<small>{{ item.checked ? 'IN CART' : 'CHECK' }}</small>
+												</button>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div ng-if="cart.items.length === 0">
+						<span> {{"views.main.No product in cart" | translate}}
+						</span>
+					</div>
 				</div>
+				
 			</div>
 		</div>
-		<div ng-if="cart.items.length === 0">
-			<span> {{"views.main.No product in cart" | translate}}
-			</span>
-		</div>
-	</div>
 
-</section>
+
+	</snap-content>	
+</div>

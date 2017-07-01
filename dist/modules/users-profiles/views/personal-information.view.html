@@ -1,77 +1,50 @@
-<div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false">
+<div class="form-group">
+	<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="name">Name</label>
+	<div class="col-md-5 col-sm-5 col-xs-12">
+		<input class="full-width" type="text" name="name" 
+			ng-model="profile.userData.name">
+	</div>
+</div>
 
-		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
-			<span class="menutoggle">
-				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
-				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+<div class="form-group">
+	<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="surname">Surname</label>
+	<div class="col-md-5 col-sm-5 col-xs-12">
+		<input class="full-width" type="text" name="surname"
+			ng-model="profile.userData.surname">
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="dni">DNI</label>
+	<div class="col-md-5 col-sm-5 col-xs-12">
+		<input class="full-width" type="text" name="dni"
+			ng-model="profile.userData.dni">
+	</div>
+</div>
+
+<div class="form-group">
+	<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="dni">Birthday</label>
+	<div class="col-md-5  col-sm-5 col-xs-12">
+
+		<p class="input-group">
+			<input type="text" name="birthday" ng-model="profile.userData.birthday"
+				ng-init="profile.userData.birthday | date: 'dd/MM/yyyy'">
+			<!--
+			<input type="text" class="form-control" readonly="readonly"
+				uib-datepicker-popup="{{format}}"
+				ng-model="profile.userData.birthday"
+				ng-change="consoleData()"
+				is-open="birthdayDatePickerOpened" datepicker-options="dateOptions"
+				ng-required="true" close-text="Close"
+				alt-input-formats="altInputFormats" />
+			<span class="input-group-btn">
+				<button type="button" class="btn btn-default"
+					ng-click="birthdayDatePickerOpened = !birthdayDatePickerOpened">
+					<i class="glyphicon glyphicon-calendar"></i>
+				</button>
 			</span>
-		</a>
-		
-		<div class="pull-right fr">
-			<h2>Listar carritos</h2>
-		</div>
-		
-		<br>
+			-->
+        </p>
 
-		<div class="jumbotron">
-			<div class="container">		
-				<div class="form-group">
-					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="name">Name</label>
-					<div class="col-md-5 col-sm-5 col-xs-12">
-						<input class="full-width" type="text" name="name" 
-							ng-model="profile.userData.name">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="surname">Surname</label>
-					<div class="col-md-5 col-sm-5 col-xs-12">
-						<input class="full-width" type="text" name="surname"
-							ng-model="profile.userData.surname">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="dni">DNI</label>
-					<div class="col-md-5 col-sm-5 col-xs-12">
-						<input class="full-width" type="text" name="dni"
-							ng-model="profile.userData.dni">
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="dni">Birthday</label>
-					<div class="col-md-5  col-sm-5 col-xs-12">
-
-						<p class="input-group">
-							<input type="text" name="birthday" ng-model="profile.userData.birthday"
-								ng-init="profile.userData.birthday | date: 'dd/MM/yyyy'">
-							<!--
-							<input type="text" class="form-control" readonly="readonly"
-								uib-datepicker-popup="{{format}}"
-								ng-model="profile.userData.birthday"
-								ng-change="consoleData()"
-								is-open="birthdayDatePickerOpened" datepicker-options="dateOptions"
-								ng-required="true" close-text="Close"
-								alt-input-formats="altInputFormats" />
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-default"
-									ng-click="birthdayDatePickerOpened = !birthdayDatePickerOpened">
-									<i class="glyphicon glyphicon-calendar"></i>
-								</button>
-							</span>
-							-->
-				        </p>
-
-					</div>
-				</div>
-				
-			</div>
-		</div>
-
-
-	</snap-content>	
+	</div>
 </div>

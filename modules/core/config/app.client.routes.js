@@ -79,12 +79,9 @@ angular
 
 	        { name: 'edit-cart', 
 	        	state: {
-				url: '/cart/edit/',
+				url: '/cart/edit/:id',
 				templateUrl: 'modules/carts/views/crud-actions-cart.view.html',
 				controller: 'CartCtrl' ,
-				params:{
-					id:undefined
-				},
 				data: {text: "Editar", visible: false }}
 			},
 
@@ -125,12 +122,9 @@ angular
 
 			{ name: 'edit-brand', 
 	        	state: {				
-				url: '/brand/edit/',
+				url: '/brand/edit/:id',
 				templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 				controller: 'BrandCtrl',
-				params:{
-					id:undefined
-				},
 				data: {text: "Editar Marca", visible: true }}
 			},
 
@@ -235,12 +229,9 @@ angular
 
 			{ name: 'edit-shopping-list', 
 	        	state: {				
-				url: '/shopping-list/edit/',
+				url: '/shopping-list/edit/:id',
 				templateUrl: 'modules/shopping-lists/views/crud-actions-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
-				params:{
-					id:undefined
-				},
 				data: {text: "Listar ShoppingList", visible: true }}
 			},
 

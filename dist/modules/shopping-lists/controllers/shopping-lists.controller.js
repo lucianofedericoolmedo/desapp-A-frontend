@@ -1,10 +1,17 @@
 'use strict';
 
-angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$state', 
-	'$stateParams', '$location', 'ShoppingList', 'ItemManagementSrv', 'Product',
+angular.module('shopping-list').controller('ShoppingListCtrl', 
+	[ '$scope', '$state', '$controller',
+	'$stateParams', '$location', 'ShoppingList', 
+	'ItemManagementSrv', 'Product',
 	'PaginatedSearch', 'Cart', 'Authentication',
-	function ($scope, $state, $stateParams, $location, ShoppingList, ItemManagementSrv, Product, 
+	function ($scope, $state, $controller,
+		$stateParams, $location, ShoppingList, 
+		ItemManagementSrv, Product, 
 		PaginatedSearch, Cart, Authentication) {
+
+		$scope.$state = $state;
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		$scope.usersShoppingLists = new PaginatedSearch(ShoppingList);
 
@@ -45,6 +52,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 		};
 
 		$scope.saveOrUpdate = function () {
+			console.log(Authentication.getUserId());
 			if ($scope.shoppingList.id) {
 				ShoppingList.update($scope.shoppingList,
 					function (successResponse) {

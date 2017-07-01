@@ -10,29 +10,7 @@
 </style>
 
 
-<div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false">
-
-		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
-			<span class="menutoggle">
-				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
-				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
-			</span>
-		</a>
-		
-		<div class="pull-right fr">
-			<h2>Listar carritos</h2>
-		</div>
-		
-		<br>
-
-		<div class="jumbotron">
-
-			<div class="container">
-				
-				<div class="form-group">
+<div class="form-group">
 					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="name">Name</label>
 					<div class="col-md-5 col-sm-5 col-xs-12">
 						<input class="full-width" type="text" name="name" ng-model="product.name">
@@ -120,15 +98,6 @@
 							<img ng-src="{{ product.imageUrl }}">
 						</div>
 					</div>
-
-				</div>
-				
-			</div>
-		</div>
-
-
-	</snap-content>	
-</div>
 
 
 
