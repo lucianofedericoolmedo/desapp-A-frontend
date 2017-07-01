@@ -77,11 +77,9 @@ angular.module('core').service('authService',
         ,
         function(response){
           //setearse un id del profile
-          localStorage.setItem({'user' : {
-            'userId' : response.userId,
-            'roles' : response.roles}
-          });
-          //localStorage.setItem('userId', response);
+          localStorage.setItem('userId' , response.userId);
+          localStorage.setItem("roles", JSON.stringify(response.roles));
+
         }, 
         function(errorResponse){
 

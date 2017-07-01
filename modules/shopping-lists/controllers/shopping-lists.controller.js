@@ -9,6 +9,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl', [ '$scope', '$sta
 		$scope.usersShoppingLists = new PaginatedSearch(ShoppingList);
 
 		$scope.searchUsersShoppingLists = function () {
+			console.log(Authentication.getUserId());
 			$scope.usersShoppingLists.queryData.userId = Authentication.getUserId();
 			$scope.usersShoppingLists.search('pageByUser');
 		};
