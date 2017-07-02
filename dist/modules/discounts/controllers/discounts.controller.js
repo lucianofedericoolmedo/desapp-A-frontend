@@ -2,8 +2,10 @@
 
 angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', '$stateParams', 'Discount',
 	'PaginatedSearch', 'SweetAlert', '$state', 'PossibleDiscount', '$uibModal',
+	'Product', 'ProductCategory',
 	function ($scope, $controller, $stateParams, Discount, 
-		PaginatedSearch, SweetAlert, $state, PossibleDiscount, $uibModal) {
+		PaginatedSearch, SweetAlert, $state, PossibleDiscount, $uibModal,
+		Product, ProductCategory) {
 
 		var service = Discount;
 
@@ -12,6 +14,10 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 		$scope.priorities = Discount.getAllPriorities();
 
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
+
+		$scope.products = Product.getAll();
+
+		$scope.productCategories = ProductCategory.getAll();
 
 		$scope.search = new PaginatedSearch(service);
 
@@ -46,11 +52,6 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 		};
 
 		function sendEntityWithMethod (methodName, callback) {
-			if (!$scope.discount.name) {
-				SweetAlert.swal("Error", 
-						'Ingrese un nombre', "error");
-				return;
-			}
 			Discount[methodName]($scope.discount,
 				function (successResponse) {
 					callback(successResponse);
@@ -64,6 +65,7 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 				sendEntityWithMethod($scope.discount.postMethod, function (successResponse) {
 					SweetAlert.swal("Ok", 
 						"Se ha creado una oferta", "success");
+					$state.go('list-discount');
 					$scope.newInstance();
 				});
 			}
@@ -86,7 +88,7 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 			selectModal('modules/products/views/modal-product-selection.view.html', 'ProductSelectionModalCtrl', 'product');
 		};
 
-		$scope.selectProduct = function () {
+		$scope.selectProductCategory = function () {
 			selectModal('modules/product-categories/views/modal-product-category-selection.view.html', 'ProductCategorySelectionModalCtrl', 'productCategory');
 		};
 
