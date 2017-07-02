@@ -31,10 +31,10 @@ angular.module('app').controller('AppController', [
       };
 
 
-    /*
+    
     $rootScope.model = {selectedLocale: 'es'};
     $rootScope.$locale = $locale;
     $rootScope.changeLocale = tmhDynamicLocale.set;
-	*/
+	
   }
 ]);

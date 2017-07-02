@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('discount').service('Disocunt', function($resource, URLServer) {
+angular.module('discount').service('Discount', function($resource, URLServer) {
     return $resource(URLServer.url + '/services/discounts/:id', {'id': '@id'}, {
 
         get : {

@@ -8,13 +8,14 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl',
 	
 		$scope.showRedirection = false;
 		$scope.showCountdown = true;
-
+		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		function setCountdownInformation () {
 			if ($stateParams.currentTurn) {
 				var currentTurn = $stateParams.currentTurn;
 			} else if ($rootScope.currentTurn) {
+				console.log("En PaymentTurnCountdownCtrl ")
 				console.log($rootScope.currentTurn);
 				var currentTurn = $rootScope.currentTurn;
 			} else {

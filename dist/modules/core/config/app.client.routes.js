@@ -262,7 +262,7 @@ angular
 	        	data: {text: "Logout", visible: true }} },
 
 			{ name: 'discounts', 
-	        	state: {				
+	        	state: {
 				url: '/list-discount',
 				templateUrl: 'modules/discounts/views/list-discount.view.html',
 				controller: 'DiscountCtrl',

@@ -3,6 +3,7 @@
 angular.module('discount').config(['$stateProvider',
 	function($stateProvider) {
 
+		/*
 		$stateProvider.
 		state('create-discount', {
 			url: '/discount/create',
@@ -19,5 +20,6 @@ angular.module('discount').config(['$stateProvider',
 			templateUrl: 'modules/discounts/views/list-discount.view.html',
 			controller: 'DiscountCtrl'
 		});
+		*/
 
 }])

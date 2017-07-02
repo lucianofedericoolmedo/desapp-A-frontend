@@ -4,6 +4,7 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 	'$rootScope', '$state', 'uiGmapGoogleMapApi', '$uibModal',
 	function ($scope, $controller, $stateParams, Cart, $rootScope, $state, uiGmapGoogleMapApi,$uibModal) {
 	
+		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		$scope.turn = $stateParams.turn;
@@ -13,7 +14,10 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 		$scope.confirmTurn = function () {
 			Cart.confirmTurn($scope.turn, function () {
 				$rootScope.currentTurn = $scope.turn;
-				$state.go('payment-turn-countdown', { currentTurn : $scope.turn });
+				console.log("En ConfirmCartPurchaseCtrl");
+				console.log($rootScope.currentTurn);
+				$state.go('payment-turn-countdown', 
+					{ currentTurn : $scope.turn });
 			});
 		};
 
@@ -62,6 +66,7 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 			      	
 			      	$scope.verMapaAfiliado();
 			      }else{
+
 			      	console.log('El mapa no está disponible para estos datos de domicilio.');
 			      }
 			    });

@@ -8,8 +8,10 @@
  * Controller of core
  */
 angular.module('core')
-  .controller('DashboardCtrl', function($scope, $state) {
+  .controller('DashboardCtrl', function($scope, $state, $controller) {
     $scope.$state = $state;
+    //$controller('AppController', {$scope: $scope}); //This works
+
 
     $scope.menuItems = [];
     angular.forEach($state.get(), function (item) {

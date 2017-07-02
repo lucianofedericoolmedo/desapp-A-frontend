@@ -93,6 +93,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 
 		$scope.saveOrUpdate = function () {
 			
+			/*
 			if($scope.shoppingList.name !== undefined){
 				SweetAlert.swal("Error", 
 						'Ingrese un nombre', "error");
@@ -104,7 +105,7 @@ angular.module('shopping-list').controller('ShoppingListCtrl',
 						'Ingrese una description', "error");
 				return;
 			}
-			/*
+			
 			if(shoppingList.items !== undefined ||
 				shoppingList.items.length === 0){
 

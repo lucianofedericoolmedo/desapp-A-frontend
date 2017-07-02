@@ -6,6 +6,7 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope',
 	function ($scope, $controller ,Cart, $state, $timeout,
 		Authentication, $stateParams, $location, SweetAlert) {
 
+		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
 
 		var itemCheckInformation = {};
@@ -106,6 +107,8 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope',
 				$timeout(function () {}, 3000);
 			}
 			Cart.requestPurchaseTurn({ id : $scope.cart.id }, function (successResponse) {
+				console.log("En CheckItemsCartCtrl");
+				console.log(successResponse);
 				$state.go('confirm-cart-purchase', { turn : successResponse });
 			}, function (errorResponse) {
 				manageErrorResponseHelper(errorResponse);

@@ -143,6 +143,8 @@ angular.module('cart').controller('CartCtrl', [ '$scope',
 				$timeout(function () {}, 3000);
 			}
 			Cart.requestPurchaseTurn({ id : $scope.cart.id }, function (successResponse) {
+				console.log("En CartCtrl");
+				console.log(successResponse);
 				$state.go('confirm-cart-purchase', { turn : successResponse });
 			}, function (errorResponse) {
 				alert(errorResponse);
