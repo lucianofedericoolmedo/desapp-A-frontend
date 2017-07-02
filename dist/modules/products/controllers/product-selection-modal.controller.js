@@ -4,12 +4,14 @@ angular.module('product').controller('ProductSelectionModalCtrl', [ '$scope',
 	'$controller','$stateParams', 'Product',
 	'PaginatedSearch', '$uibModalInstance',
 	'SweetAlert', 
-	function ($scope, $controller, 
-		Product, PaginatedSearch, $uibModalInstance, 
+	function ($scope, $controller, Product, 
+		PaginatedSearch, $uibModalInstance, 
 		SweetAlert) {
 
 		var service = Product;
-		$scope.search = new PaginatedSearch(service);
+		$scope.search = new PaginatedSearch(service, 5);
+
+		console.log($scope.search);
 
 		$scope.findPage = function () {
 			$scope.search.search();

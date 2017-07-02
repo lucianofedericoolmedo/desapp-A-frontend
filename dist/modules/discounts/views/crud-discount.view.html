@@ -5,11 +5,16 @@
 			Discount Type
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
-			<select class="full-width" ng-model="selectedDiscountType"
-				ng-change="changedDiscountType(selectedDiscountType)"
-				ng-repeat="discount as discount.name for discount in discounts track by discount.name">
-				<option value="">Select a Discount Type</option>
-			</select>
+			<div ng-if="discount.id === undefined">
+				<select class="full-width" ng-model="selectedDiscountType"
+					ng-change="changedDiscountType(selectedDiscountType)"
+					ng-options="discount as discount.name for discount in discounts track by discount.name">
+					<option value="">Select a Discount Type</option>
+				</select>
+			</div>
+			<div ng-if="discount.id !== undefined">
+				<span>{{ discount.name }}</span>
+			</div>
 		</div>
 	</div>
 
@@ -18,8 +23,14 @@
 			Product
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
+			<!--
 			<input type="text" class="full-width" ng-model="discount.product.name"
 				readonly="readonly" ng-click="selectProduct()"/>
+			-->
+			<select class="full-width" ng-model="discount.product"
+				ng-options="product as product.name for product in products track by product.id">
+				<option value="">Select a product</option>
+			</select>
 		</div>
 	</div>
 
@@ -38,13 +49,19 @@
 			Product Category
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
+			<!--
 			<input type="text" class="full-width" 
 				ng-model="discount.productCategory.name"
 				readonly="readonly" ng-click="selectProductCategory()"/>
+			-->
+			<select class="full-width" ng-model="discount.productCategory"
+				ng-options="productCategory as productCategory.name for productCategory in productCategories track by productCategory.id">
+				<option value="">Select a product category</option>
+			</select>
 		</div>
 	</div>
 
-	<div class="form-group" ng-if="discount.usesQuantity">
+	<div class="form-group">
 		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="percentage">
 			Percentage to discount
 		</label>
@@ -54,22 +71,22 @@
 		</div>
 	</div>
 
-	<div class="form-group" ng-if="discount.usesQuantity">
+	<div class="form-group">
 		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="staring">
 			Starting validity date
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
-			<input type="number" class="full-width" name="starting" 
+			<input class="full-width" name="starting" 
 				ng-model="discount.startingDate"/>
 		</div>
 	</div>
 
-	<div class="form-group" ng-if="discount.usesQuantity">
+	<div class="form-group">
 		<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="finishing">
 			Finishing validity date
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
-			<input type="number" class="full-width" name="finishing" 
+			<input class="full-width" name="finishing" 
 				ng-model="discount.finishingDate"/>
 		</div>
 	</div>
@@ -80,7 +97,7 @@
 		</label>
 		<div class="col-md-5 col-sm-5 col-xs-12">
 			<select class="full-width" ng-model="discount.priority"
-				ng-repeat="priority as priority for priority in priorities">
+				ng-options="priority as priority for priority in priorities">
 				<option value="">Select a priority</option>
 			</select>
 		</div>
