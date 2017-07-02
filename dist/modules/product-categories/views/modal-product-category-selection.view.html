@@ -1,0 +1,57 @@
+<div class="modal-content">
+
+	<div class="modal-header">
+		
+	</div>
+
+	<div class="modal-body">
+		<div class="jumbotron" ng-init="findPage()">
+			<div class="table-responsive" ng-if="search.result.length > 0">
+				<table class="table table-condensed table-hover">
+					<thead>
+						<tr>
+							<th>Category</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="productCategory in search.result">
+						<tr>
+							<td>productCategory.name</td>
+							<td>
+								<div>
+									<button class="btn btn-success"
+										ng-click="select(productCategory)">
+										SELECT
+									</button>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div ng-if="search.result.length === 0">
+				<span>No product category to show</span>
+			</div>
+		</div>
+
+		<div class="col-md-12" ng-if="search.result.length > 0">
+			<ul uib-pagination total-items="search.totalSize" 
+				ng-change="findPage()"
+				ng-model="search.pageNumber" max-size="maxSize"
+				items-per-page="search.pageSize"
+				class="pagination-sm" boundary-links="true">
+			</ul>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	<div class="modal-footer">
+		<div>
+			<button class="btn btn-danger" ng-click="cancel()">
+				BACK
+			</button>
+		</div>
+	</div>
+	
+</div>
