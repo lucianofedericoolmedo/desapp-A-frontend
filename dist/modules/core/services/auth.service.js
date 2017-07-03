@@ -5,7 +5,7 @@ angular.module('core').service('authService',
   //authService);
 
 
-  function($state, angularAuth0, $timeout, UserAuthentication) {
+  function($state, angularAuth0, $timeout, UserAuthentication, $location) {
 
     var userProfile;
 
@@ -97,7 +97,8 @@ angular.module('core').service('authService',
       localStorage.removeItem('scopes');
       localStorage.removeItem('userId');
       localStorage.removeItem('roles');
-      $state.target('login');
+      $location.path('/login');
+      //$state.target('login');
     }
     
     function isAuthenticated() {

@@ -19,24 +19,37 @@
 				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
 			</span>
 		</a>
+
+		<br>
 		
+		
+
 		<div class="fr">
-		<h2>Bienvenido <small>Que desea hacer hoy?</small></h2>
+			<div class="language-select-class pull-right col-sm-3" ng-translate-language-select></div>
+
+			<div class="pull-left col-sm-3 btn btn-xs btn-white"
+				ng-click="logout()" >
+				Logout
+			</div>
+
+			<div class="col-sm-6" >
+				<h3>ComprandoALoLoco</h3>
+			</div>
+			
+
+		
 		</div>
 		<div class="jumbotron">
 			<div class="container">
 				
-				<div class="language-select-class pull-right col-sm-4" ng-translate-language-select></div>
+				<div class="col-md-12">
 
-				<div class="pull-left col-sm-4 btn btn-white"
-					ng-click="logout()" >
-					Logout
-				</div>
-
-				<a ui-sref="">Crear una lista</div>
+				
+				<a ui-sref="">Crear una lista</a>
 				<div>Ver ofertas </div>
 				<div>Ver productos </div>
 
+				</div>
 
 			</div>
 		</div>
