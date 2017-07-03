@@ -1,3 +1,13 @@
+<style type="text/css">
+	option {
+		background-color: red;
+	}
+
+	language-select-class {
+		background-color: blue;
+	}
+</style>
+
 <div>
 	<div ng-include="'menu.html'"></div>
 	<snap-dragger></snap-dragger>
@@ -11,13 +21,23 @@
 		</a>
 		
 		<div class="fr">
-		<h2>Overview <small>Why is Versatile Theme so awesome?</small></h2>
+		<h2>Bienvenido <small>Que desea hacer hoy?</small></h2>
 		</div>
 		<div class="jumbotron">
 			<div class="container">
 				
-				<div class="col-md-4" ng-translate-language-select></div>
-				
+				<div class="language-select-class pull-right col-sm-4" ng-translate-language-select></div>
+
+				<div class="pull-left col-sm-4 btn btn-white"
+					ng-click="logout()" >
+					Logout
+				</div>
+
+				<a ui-sref="">Crear una lista</div>
+				<div>Ver ofertas </div>
+				<div>Ver productos </div>
+
+
 			</div>
 		</div>
 	</snap-content>	

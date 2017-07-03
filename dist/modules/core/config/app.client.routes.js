@@ -208,7 +208,7 @@ angular
 
 			{ name: 'review-purchase', 
 	        	state: {				
-				url: '/purchase/history/',
+				url: '/purchase/history',
 				templateUrl: 'modules/purchases/views/purchase-detail.view.html',
 				controller: 'PurchaseCtrl',
 				params:{
@@ -256,11 +256,12 @@ angular
 
 
 			////////////////////
-			
+			/*
 	        { name: 'logout', 
 	        	state: { url: '/login', 
 	        	data: {text: "Logout", visible: true }} },
 
+			*/
 			{ name: 'discounts', 
 	        	state: {
 				url: '/list-discount',
@@ -276,7 +277,7 @@ angular
 
 
 
-
+	    /*
 		var firstView = function (){
 			var firstView = '/dashboard/overview';
 
@@ -287,12 +288,13 @@ angular
 			}
 			return firstView;
 		};
+		*/
 		
 		//console.log(localStorage.getItem('userId'))
 
-		$urlRouterProvider.when('/', firstView());
+		$urlRouterProvider.when('/', '/login');
 		$urlRouterProvider.when('/dashboard', '/dashboard/overview');
-	    //$urlRouterProvider.otherwise('/login');
+	    $urlRouterProvider.otherwise('/dashboard');
 
 
 

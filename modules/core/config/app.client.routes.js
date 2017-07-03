@@ -2,9 +2,6 @@
 
 // Setting up route
 
-
-
-
     	
 angular
     .module(ApplicationConfiguration.applicationModuleName).config(['$stateProvider', 
@@ -255,12 +252,6 @@ angular
 			},
 
 
-			////////////////////
-			
-	        { name: 'logout', 
-	        	state: { url: '/login', 
-	        	data: {text: "Logout", visible: true }} },
-
 			{ name: 'discounts', 
 	        	state: {
 				url: '/list-discount',
@@ -272,82 +263,16 @@ angular
 	    ];
 
 
-
-
-
-
-
-		var firstView = function (){
-			var firstView = '/dashboard/overview';
-
-			if (localStorage.getItem('userId') === undefined ||
-				localStorage.getItem('userId') === null
-				){
-				firstView = '/login'
-			}
-			return firstView;
-		};
-		
-		//console.log(localStorage.getItem('userId'))
-
-		$urlRouterProvider.when('/', firstView());
+		$urlRouterProvider.when('/', '/login');
 		$urlRouterProvider.when('/dashboard', '/dashboard/overview');
-	    //$urlRouterProvider.otherwise('/login');
+	    $urlRouterProvider.otherwise('/dashboard');
 
 
 
 	    angular.forEach(states, function (state) {
             $stateProvider.state(state.name, state.state);
         });
-            
-            
-
-
-	    /*
-	    $stateProvider
-	      .state('base', {
-	        abstract: true,
-	        url: '',
-	        templateUrl: 'modules/core/views/base.html'
-	      })
-	        .state('login', {
-	          url: '/login',
-	          parent: 'base',
-	          templateUrl: 'modules/core/views/login.html',
-	          controller: 'LoginCtrl'
-	        })
-	        .state('dashboard', {
-	          url: '/dashboard',
-	          parent: 'base',
-	          templateUrl: 'modules/core/views/dashboard.html',
-	          controller: 'DashboardCtrl'
-	        })
-	          .state('overview', {
-	            url: '/overview',
-	            parent: 'dashboard',
-	            templateUrl: 'modules/core/views/dashboard/overview.html'
-	          })
-	          .state('reports', {
-	            url: '/reports',
-	            parent: 'dashboard',
-	            templateUrl: 'modules/core/views/dashboard/reports.html'
-	          });
-
-	    */
-		// Home state routing
-		/*
-		$stateProvider.
-		state('app', {
-			url: '/',
-			controller: 'AppController',
-			templateUrl: 'modules/app/views/app.client.view.html'
-		}).
-		state('app2', {
-			url: '/nose',
-			templateUrl: 'modules/app/views/extra.html'
-		});
-		*/
-
+           
 
 		/*
 		To add auth0 to the app

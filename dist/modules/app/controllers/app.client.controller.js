@@ -25,6 +25,11 @@ angular.module('app').controller('AppController', [
       $scope.auth.login();
     };
 
+
+    $scope.logout = function(){
+      $scope.auth.logout();
+    }
+
     $rootScope.availableLocales = {
       'es': 'Español',
       'en': 'English'

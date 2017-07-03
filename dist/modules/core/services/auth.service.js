@@ -95,7 +95,9 @@ angular.module('core').service('authService',
       localStorage.removeItem('id_token');
       localStorage.removeItem('expires_at');
       localStorage.removeItem('scopes');
-      $state.target('home');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('roles');
+      $state.target('login');
     }
     
     function isAuthenticated() {
