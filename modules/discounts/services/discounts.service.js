@@ -43,6 +43,21 @@ angular.module('discount').service('Discount', function($resource, URLServer) {
         perProductQuantity : {
             method:'POST',
             url: URLServer.url + '/services/discounts/per-product-quantity',
+        },
+
+        perProductPut : {
+            method:'PUT',
+            url: URLServer.url + '/services/discounts/per-product',
+        },
+
+        perProductCategoryPut : {
+            method:'PUT',
+            url: URLServer.url + '/services/discounts/per-product-category',
+        },
+
+        perProductQuantityPut : {
+            method:'PUT',
+            url: URLServer.url + '/services/discounts/per-product-quantity',
         }
 
     });

@@ -54,19 +54,25 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 		function sendEntityWithMethod (methodName, callback) {
 			Discount[methodName]($scope.discount,
 				function (successResponse) {
+					console.log('Success Response');
 					callback(successResponse);
 				}, manageErrorResponse);
 		}
 
 		$scope.saveOrUpdate = function () {
 			if ($scope.discount.id) {
-				sendEntityWithMethod('update');
+				var putMethod = PossibleDiscount.postMethodByDiscountName[$scope.discount.name];
+				sendEntityWithMethod(putMethod, function (successResponse) {
+					SweetAlert.swal("Ok", 
+						"Se ha actualizado una oferta", "success");
+					$state.go('list-discount');
+				});
 			} else {
-				sendEntityWithMethod($scope.discount.postMethod, function (successResponse) {
+				var postMethod = $scope.discount.postMethod;
+				sendEntityWithMethod(postMethod, function (successResponse) {
 					SweetAlert.swal("Ok", 
 						"Se ha creado una oferta", "success");
 					$state.go('list-discount');
-					$scope.newInstance();
 				});
 			}
 		};

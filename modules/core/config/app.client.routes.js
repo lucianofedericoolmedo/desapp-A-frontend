@@ -208,7 +208,7 @@ angular
 
 			{ name: 'review-purchase', 
 	        	state: {				
-				url: '/purchase/history/',
+				url: '/purchase/history',
 				templateUrl: 'modules/purchases/views/purchase-detail.view.html',
 				controller: 'PurchaseCtrl',
 				params:{

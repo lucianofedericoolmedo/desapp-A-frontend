@@ -49,6 +49,8 @@
 								<thead>
 									<tr>
 										<th>Name</th>
+										<th>Starting Validity Date</th>
+										<th>Finishing Validity Date</th>
 										<th>Created at</th>
 									</tr>
 								</thead>
@@ -56,6 +58,12 @@
 									<tr>
 										<td>
 											{{ discount.name }}
+										</td>
+										<td>
+											{{ discount.startingDate }}
+										</td>
+										<td>
+											{{ discount.finishingDate }}
 										</td>
 										<td>
 											{{ discount.creationDate }}

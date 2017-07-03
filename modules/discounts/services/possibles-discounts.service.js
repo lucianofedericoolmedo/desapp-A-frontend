@@ -25,5 +25,11 @@ angular.module('discount').service('PossibleDiscount', [function () {
             postMethod : 'perProductCategory'
         }
     ];
+
+    this.postMethodByDiscountName = {
+        'Per Product' : 'perProductPut',
+        'Per Product Quantity' : 'perProductQuantityPut',
+        'Per Product Category' : 'perProductCategoryPut'
+    };
     
 }]);

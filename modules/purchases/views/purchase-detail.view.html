@@ -62,7 +62,35 @@
 							</tbody>
 						</table>
 					</div>
-					<h3 class="center">Total paid: ${{ totalPaid(purchase.items) }}</h3>
+					<h4 class="center">Sub total: ${{ subTotal(purchase.items) }}</h4>
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Product</th>
+									<th>Quantity</th>
+									<th>Product Category</th>
+									<th>Discount</th>
+								</tr>
+							</thead>
+							<tbody ng-repeat="discount in purchase.discounts">
+								<tr>
+									<td>{{discount.name}}</td>
+									<td>{{discount.product}}</td>
+									<td>{{discount.quantity}}</td>
+									<td>{{discount.productCategory}}</td>
+									<td>{{discount.totalDiscount}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4 class="center">
+						Total discount: ${{ totalDiscount(purchase.discounts) }}
+					</h4>
+					<h3 class="center">
+						Total: ${{ totalPaid(purchase.items, purchase.discounts) }}
+					</h3>
 				</div>
 
 				<div>

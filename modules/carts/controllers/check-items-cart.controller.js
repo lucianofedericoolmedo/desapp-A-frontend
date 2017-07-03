@@ -91,7 +91,7 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope',
 					itemCheckInformation[item.id] = false;
 				});
 			}
-			$timeout(sendRequest, 3000);
+			$timeout(sendRequest, 500);
 		};
 
 		function isSendingAnyItemCheckState() {
@@ -104,11 +104,9 @@ angular.module('cart').controller('CheckItemsCartCtrl', ['$scope',
 
 		$scope.requestPurchaseTurn = function () {
 			if (isSendingAnyItemCheckState()) {
-				$timeout(function () {}, 3000);
+				$timeout(function () {}, 500);
 			}
 			Cart.requestPurchaseTurn({ id : $scope.cart.id }, function (successResponse) {
-				console.log("En CheckItemsCartCtrl");
-				console.log(successResponse);
 				$state.go('confirm-cart-purchase', { turn : successResponse });
 			}, function (errorResponse) {
 				manageErrorResponseHelper(errorResponse);

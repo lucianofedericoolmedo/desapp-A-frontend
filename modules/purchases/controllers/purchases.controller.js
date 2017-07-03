@@ -33,12 +33,30 @@ angular.module('purchases').controller('PurchaseCtrl',
 			}, manageErrorResponse);
 		};
 
-		$scope.totalPaid = function (itemPurchaseDto) {
+		$scope.subTotal = function (itemPurchaseDto) {
 			var total = 0.00;
 			angular.forEach(itemPurchaseDto, function (item) {
 				total += item.historyProductPrice;
 			});
 			return total;
+		};
+
+		$scope.totalDiscount = function (itemDiscountDto) {
+			var total = 0.00;
+			angular.forEach(itemDiscountDto, function (item) {
+				total += item.totalDiscount;
+			});
+			return total;
+		};
+
+		$scope.totalPaid = function (itemPurchaseDto, itemDiscountDto) {
+			return $scope.subTotal(itemPurchaseDto) - $scope.totalDiscount(itemDiscountDto);
+		};
+
+		$scope.history = function (purchase) {
+			if (purchase) {
+				$state.go('review-purchase', { id : purchase.id });
+			}
 		};
 
 }]);
