@@ -26,6 +26,11 @@ angular.module('cart').service('Cart', function($resource, URLServer) {
             url: URLServer.url + '/services/carts/find-by-page'
         },
 
+        confirmDelivery : {
+            method: 'POST',
+            url: URLServer.url + '/services/carts/confirmDelivery'
+        },
+
         createCartFromShoppingList : {
             method: 'POST',
             url: URLServer.url + '/services/carts/create-from-shopping-list-for-user/:shoppingListId/:userId'

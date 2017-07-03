@@ -24,7 +24,6 @@ angular.module('cart').controller('GeolocalizarController', ['$scope', 'data', '
 		};
 
 		$scope.confirmarGeolocalizacion = function(){
-			data.direccion = $scope.direccion;
 			$scope.$close();
 		}
 

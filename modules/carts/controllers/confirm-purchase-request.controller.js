@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$controller','$stateParams', 'Cart',
-	'$rootScope', '$state', 'uiGmapGoogleMapApi', '$uibModal',
-	function ($scope, $controller, $stateParams, Cart, $rootScope, $state, uiGmapGoogleMapApi,$uibModal) {
+	'$rootScope', '$state', 'uiGmapGoogleMapApi', '$uibModal', 'SweetAlert',
+	function ($scope, $controller, $stateParams, Cart, $rootScope, 
+		$state, uiGmapGoogleMapApi,$uibModal, SweetAlert) {
 	
 		$scope.$state = $state;
 		$controller('DashboardCtrl', {$scope: $scope}); //This works
@@ -21,6 +22,10 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 			});
 		};
 
+		function manageErrorResponse (message) {
+			SweetAlert.swal("Error", 
+						message, "error");
+		}
 
 		$scope.verMapa = function (){
 			var templateUrl = 'modules/carts/views/geolocalizar.client.view.html';
@@ -32,7 +37,21 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 				   data : $scope
 				}
 			}).result.then(function () {
-				console.log("Cerrando ...");
+				Cart.confirmDelivery({'turn': $scope.turn , 
+						'shippingAddress' : {
+							'street' : $scope.direccion.calle,
+							'number' : $scope.direccion.numero,
+							'city' : $scope.direccion.localidad,
+							'province' : $scope.direccion.provincia
+						}},
+					function(data){
+						SweetAlert.swal("Se ha confirmado el pedido a domicilio", 
+							message, "success");
+					},
+					function(errorResponse){
+						manageErrorResponse("No se pudo concretar el envio a domicilio");
+					})
+
 				//.. Algo que involucre borrado del carrito ... (?)
 			});				
 		};	

@@ -18,10 +18,13 @@ angular.module('core')
         console.log(item);
         console.log(localStorage.getItem('roles').name);
         if (item.data && item.data.visible ) {
+            /*
             if (hasRole(item)){
-                $scope.menuItems.push({name: item.name, 
-                text: item.data.text});
-            }            
+                
+            } 
+            */         
+            $scope.menuItems.push({name: item.name, 
+                text: item.data.text});  
         }
     });
 
@@ -31,11 +34,10 @@ angular.module('core')
             return true;
         }
         var includesRole = false;
-        else{
-            for (var index = 0; index < roles.length; index ++){
-                includesRole = includesRole || roles[index].name === item.role;
-            }
+        
+        for (var index = 0; index < roles.length; index ++){
+            includesRole = includesRole || roles[index].name === item.role;
         }
         return includesRole;
     }
-  };
+  });
