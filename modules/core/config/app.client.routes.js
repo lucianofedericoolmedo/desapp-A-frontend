@@ -47,11 +47,12 @@ angular
 	        	templateUrl: 'modules/core/views/dashboard/overview.html', 
 	        	data: {text: "Overview", visible: true } } },
 
+	        /*
 	        { name: 'reports', 
 	        	state: { url: '/reports', parent: 'dashboard', 
 	        	templateUrl: 'modules/core/views/dashboard/reports.html', 
 	        	data: {text: "Reports", visible: true } } },
-
+			*/
 	        { name: 'create-cart', 
 	        	state: {
 				url: '/cart/create',
