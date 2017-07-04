@@ -11,7 +11,7 @@
 		</a>
 		
 		<div class="pull-right fr">
-			<h2>Crear carrito</h2>
+			<h2>{{"views.main.Carts" | translate}}</h2>
 		</div>
 		
 		
@@ -19,7 +19,7 @@
 			<div class="container" ng-init="queryAll()">
 				<div>
 					<a class="btn btn-info" href="#/product/create">
-						Create
+						{{"views.main.CREATE" | translate}}
 					</a>
 					<button type="file" class="btn btn-info" 
 						ngf-select="uploadFiles($file, $invalidFiles)" ngf-max-size="1MB"
@@ -44,10 +44,10 @@
 										<div class="btn-group">
 											<a class="btn btn-xs btn-info"
 												ui-sref="edit-product({id:product.id})">
-												<small>EDIT</small>
+												<small>{{"views.main.EDIT" | translate}}</small>
 											</a>
 											<div class="btn btn-xs btn-danger" ng-click="delete(product.id)">
-												<small>REMOVE</small>
+												<small>{{"views.main.Remove" | translate}}</small>
 											</div>
 										</div>
 									</div>

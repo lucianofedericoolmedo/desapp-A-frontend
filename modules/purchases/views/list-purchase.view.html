@@ -11,7 +11,7 @@
 		</a>
 		
 		<div class="pull-right fr">
-			<h2>Listar carritos</h2>
+			<h2>{{"views.main.PurchaseHistory" | translate}}</h2>
 		</div>
 		
 		<br>
@@ -28,9 +28,9 @@
 								<table>
 									<thead>
 										<tr class="row">
-											<th class="col-md-2">Purchase Date</th>
-											<th class="col-md-3">Used Shopping List</th>
-											<th class="col-md-4">Payment Type</th>
+											<th class="col-md-2">{{"views.main.Date" | translate}}</th>
+											<th class="col-md-3">{{"views.main.ShoppingList" | translate}}</th>
+											<th class="col-md-4">{{"views.main.Payment" | translate}}</th>
 											<th class="col-md-2 pull-right">Actions</th>
 										</tr>
 									</thead>
@@ -60,7 +60,7 @@
 						</div>
 
 						<div ng-if="search.result.length === 0">
-							<span>No purchase to show</span>
+							<span>No items</span>
 						</div>
 					</div>
 

@@ -8,6 +8,9 @@
   "views.main.GEOLOCALIZATION": "GEOLOCALIZATION",
   "views.main.getAddress" : "Enter your address",
   "views.main.Logout": "Logut",
+  "views.main.EDIT": "EDIT",
+  "views.main.CREATE": "CREATE",
+  "views.main.Remove": "Remove",
   "views.main.Name": "Name",
   "views.main.Date": "Date",
   "views.main.Home": "Home",
@@ -37,7 +40,7 @@
   "views.main.discount" : "discount",
   "views.main.Discounts" : "Discounts",
   "views.main.ProductsinShoppingList" : "Products in Shopping List",
-  
+  "views.main.Brand": "Brand",
   "views.main.Brands": "Brands",
   "views.main.ProductCategory" : "Product Category",
   "views.main.ProductCategories" : "Product Categories",
