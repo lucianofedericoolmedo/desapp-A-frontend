@@ -59,6 +59,7 @@ angular.module('core').service('authService',
       // use the scopes as requested. If no scopes were requested,
       // set it to nothing
       var scopes = authResult.scope || REQUESTED_SCOPES || '';
+      console.log(authResult);
       localStorage.setItem('email', authResult.idTokenPayload.nickname + '@gmail.com');
       localStorage.setItem('access_token', authResult.accessToken);
       localStorage.setItem('id_token', authResult.idToken);
