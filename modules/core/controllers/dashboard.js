@@ -13,24 +13,19 @@ angular.module('core')
     $controller('AppController', {$scope: $scope}); //This works
 
     $scope.menuItems = [];
-    console.log($state.get());
     angular.forEach($state.get(), function (item) {
-        console.log(item);
-        console.log(localStorage.getItem('roles').name);
         if (item.data && item.data.visible ) {
-            /*
             if (hasRole(item)){
-                
-            } 
-            */         
-            $scope.menuItems.push({name: item.name, 
+                $scope.menuItems.push({name: item.name, 
                 text: item.data.text});  
+            }        
+            
         }
     });
 
     function hasRole(item){
-        var roles = localStorage.getItem('roles');
-        if (item.role !== undefined){
+        var roles = JSON.parse(localStorage.getItem("roles"));
+        if (item.role === undefined){
             return true;
         }
         var includesRole = false;

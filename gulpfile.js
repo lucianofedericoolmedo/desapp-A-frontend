@@ -62,6 +62,39 @@ gulp.task('prepareCSS', function(){
     .pipe(browserSync.reload({stream:true}))
 });
 
+gulp.task('prepareFonts', function(){
+  return gulp.src('fonts/**')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(gulp.dest('dist/fonts'))
+    .pipe(browserSync.reload({stream:true}))
+});
+
+gulp.task('prepareImages', function(){
+  return gulp.src('images/**')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(gulp.dest('dist/images'))
+    .pipe(browserSync.reload({stream:true}))
+});
+
+gulp.task('prepareMenu', function(){
+  return gulp.src('menu.html')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({stream:true}))
+});
+
 gulp.task('prepareIndex', function(){
   return gulp.src('index.html')
     .pipe(plumber({
@@ -74,7 +107,6 @@ gulp.task('prepareIndex', function(){
 });
 
 gulp.task('prepareBaseModuleDev', function() {
-  console.log('En prepareBaseModule')
   return gulp.src(
     [
       'baseModule/**'
@@ -89,7 +121,6 @@ gulp.task('prepareBaseModuleDev', function() {
 });
 
 gulp.task('prepareBaseModule', function() {
-  console.log('En prepareBaseModule')
   return gulp.src(
     [
       '!baseModule/urlServer.js', // <== !
@@ -134,6 +165,17 @@ gulp.task('prepareApp', function(){
     .pipe(browserSync.reload({stream:true}))
 });
 
+gulp.task('prepareAppRun', function(){
+  return gulp.src('app.run.js')
+    .pipe(plumber({
+      errorHandler: function (error) {
+        console.log(error.message);
+        this.emit('end');
+    }}))
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({stream:true}))
+});
+
 gulp.task('prepareConfig', function(){
   return gulp.src('config.js')
     .pipe(plumber({
@@ -151,9 +193,15 @@ gulp.task('default', ['browser-sync'], function(){
 });
 
 //'prepareServer',  ,'bowerComponents'
-gulp.task('buildProd', ['scripts',  'prepareServer','prepareIndex', 'prepareApp', 'prepareConfig', 'prepareResources' ,'prepareCSS']);
+gulp.task('buildProd', ['scripts',  'prepareServer',
+  'prepareAppRun', 'prepareMenu','prepareImages', 'prepareFonts',
+  'prepareIndex', 'prepareApp', 'prepareConfig', 
+  'prepareResources' ,'prepareCSS']);
 
-gulp.task('buildDev', ['scripts', 'prepareBaseModuleDev', 'prepareIndex', 'prepareApp', 'prepareConfig', 'prepareResources' ,'prepareCSS']);
+gulp.task('buildDev', ['scripts', 
+  'prepareBaseModuleDev', 'prepareIndex', 'prepareApp', 
+  'prepareAppRun', 'prepareMenu','prepareImages', 'prepareFonts',
+  'prepareConfig', 'prepareResources' ,'prepareCSS']);
 
 gulp.task('local', [ 'buildDev'], function() {
   var server = gls.new('./server.js');

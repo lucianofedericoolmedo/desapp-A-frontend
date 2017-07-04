@@ -180,7 +180,7 @@ angular.module('product').controller('ProductCtrl', [ '$scope',
 				$scope.search.search();
 			};
 			var errorCallback = function (errorResponse) {
-				console.alert(errorResponse);
+				manageErrorResponse(errorResponse);
 			}
 			FileUpload.uploadFile(file, "", successCallback, errorCallback);
 		};

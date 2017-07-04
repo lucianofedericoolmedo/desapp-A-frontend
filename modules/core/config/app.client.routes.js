@@ -37,6 +37,7 @@ angular
 	        	state: { url: '/dashboard', parent: 'base', 
 	        	templateUrl: 'modules/core/views/dashboard.html', 
 	        	controller: 'DashboardCtrl', 
+
 	        	data: {text: "Dashboard", visible: false } } },
 
 	        { name: 'overview', 
@@ -112,6 +113,7 @@ angular
 			{ name: 'create-brand', 
 	        	state: {				
 				url: '/brand/create',
+				role : 'ADMIN',
 				templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 				controller: 'BrandCtrl',
 				data: {text: "Crear Marca", visible: false }}
@@ -120,6 +122,7 @@ angular
 			{ name: 'edit-brand', 
 	        	state: {				
 				url: '/brand/edit/:id',
+				role : 'ADMIN',
 				templateUrl: 'modules/brands/views/crud-actions-brand.view.html',
 				controller: 'BrandCtrl',
 				data: {text: "Editar Marca", visible: false }}
@@ -128,6 +131,7 @@ angular
 			{ name: 'list-brand', 
 	        	state: {				
 				url: '/brand/list',
+				role : 'ADMIN',
 				templateUrl: 'modules/brands/views/list-brand.view.html',
 				controller: 'BrandCtrl',
 				data: {text: "Listar Marcas", visible: true }}
@@ -139,6 +143,7 @@ angular
 			{ name: 'create-product-category', 
 	        	state: {				
 				url: '/product-category/create',
+				role : 'ADMIN',
 				templateUrl: 'modules/product-categories/views/crud-actions-product-category.view.html',
 				controller: 'BrandCtrl',
 				data: {text: "Crear Cat Prod", visible: false }}
@@ -147,6 +152,7 @@ angular
 			{ name: 'edit-product-category', 
 	        	state: {				
 				url: '/product-category/edit/',
+				role : 'ADMIN',
 				templateUrl: 'modules/product-categories/views/crud-actions-product-category.view.html',
 				controller: 'BrandCtrl',
 				params:{
@@ -161,6 +167,7 @@ angular
 			{ name: 'create-product', 
 	        	state: {				
 				url: '/product/create',
+				role : 'ADMIN',
 				templateUrl: 'modules/products/views/crud-actions-product.view.html',
 				controller: 'ProductCtrl',
 				data: {text: "Crear Prod", visible: false }}
@@ -169,6 +176,7 @@ angular
 			{ name: 'edit-product', 
 	        	state: {				
 				url: '/product/edit/',
+				role : 'ADMIN',
 				templateUrl: 'modules/products/views/crud-actions-product.view.html',
 				controller: 'ProductCtrl',
 				params:{
@@ -180,6 +188,7 @@ angular
 			{ name: 'list-product', 
 	        	state: {				
 				url: '/product/list',
+				role : 'ADMIN',
 				templateUrl: 'modules/products/views/list-product.view.html',
 				controller: 'ProductCtrl',
 				data: {text: "Listar Prod", visible: true }}
@@ -188,6 +197,7 @@ angular
 			{ name: 'crud-batch', 
 	        	state: {				
 				url: '/product/crud-batch',
+				role : 'ADMIN',
 				templateUrl: 'modules/products/views/batch-crud-product.view.html',
 				controller: 'ProductCtrl',
 				data: {text: "Crear Productos Por Batch", visible: false }}
@@ -198,6 +208,7 @@ angular
 			{ name: 'list-purchase', 
 	        	state: {				
 				url: '/purchase/history-list',
+				role : 'CLIENT',
 				templateUrl: 'modules/purchases/views/list-purchase.view.html',
 				controller: 'PurchaseCtrl',
 				data: {text: "Listar Purchase", visible: true }}
@@ -206,6 +217,7 @@ angular
 			{ name: 'review-purchase', 
 	        	state: {				
 				url: '/purchase/history',
+				role : 'CLIENT',
 				templateUrl: 'modules/purchases/views/purchase-detail.view.html',
 				controller: 'PurchaseCtrl',
 				params:{
@@ -219,6 +231,7 @@ angular
 			{ name: 'create-shopping-list', 
 	        	state: {				
 				url: '/shopping-list/create',
+				role : 'ADMIN',
 				templateUrl: 'modules/shopping-lists/views/crud-actions-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
 				data: {text: "Crear ShoppingList", visible: false }}
@@ -227,6 +240,7 @@ angular
 			{ name: 'edit-shopping-list', 
 	        	state: {				
 				url: '/shopping-list/edit/:id',
+				role : 'CLIENT',
 				templateUrl: 'modules/shopping-lists/views/crud-actions-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
 				data: {text: "Editar ShoppingList", visible: false }}
@@ -235,6 +249,7 @@ angular
 			{ name: 'list-shopping-list', 
 	        	state: {				
 				url: '/shopping-list/list',
+				role : 'CLIENT',
 				templateUrl: 'modules/shopping-lists/views/list-shopping-list.view.html',
 				controller: 'ShoppingListCtrl',
 				data: {text: "ShoppingList", visible: true }}
@@ -246,6 +261,7 @@ angular
 			{ name: 'edit-profile', 
 	        	state: {				
 				url: '/profile',
+				role : 'CLIENT',
 				templateUrl: 'modules/users-profiles/views/edit-actions.view.html',
 				controller: 'UserProfileCtrl',
 				data: {text: "Ver Perfil", visible: true }}
@@ -255,6 +271,7 @@ angular
 			{ name: 'discounts', 
 	        	state: {
 				url: '/list-discount',
+				role : 'ADMIN',
 				templateUrl: 'modules/discounts/views/list-discount.view.html',
 				controller: 'DiscountCtrl',
 				data: {text: "Ofertas", visible: true }}

@@ -15,8 +15,6 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl',
 			if ($stateParams.currentTurn) {
 				var currentTurn = $stateParams.currentTurn;
 			} else if ($rootScope.currentTurn) {
-				console.log("En PaymentTurnCountdownCtrl ")
-				console.log($rootScope.currentTurn);
 				var currentTurn = $rootScope.currentTurn;
 			} else {
 				$state.go('check-items-cart', { id : null, justCreatedCart : null });
@@ -45,6 +43,7 @@ angular.module('cart').controller('PaymentTurnCountdownCtrl',
 		$scope.finishedCountdown = function () {
 			$scope.showRedirection = true;
 			$scope.showCountdown = false;
+			
 			console.log('Termino el conteo.');
 			$rootScope.currentTurn = undefined;
 		};

@@ -1,17 +1,19 @@
 'use strict';
 
 angular.module('core').service('authService', 
-
-  //authService);
-
-
-  function($state, angularAuth0, $timeout, UserAuthentication, $location) {
+  function($state, angularAuth0, $timeout, UserAuthentication, $location, SweetAlert) {
 
     var userProfile;
 
     function login() {
       angularAuth0.authorize();
     }
+
+    function manageErrorResponse (message) {
+      SweetAlert.swal("Error", 
+            message, "error");
+    }
+
     
     function handleAuthentication() {
       angularAuth0.parseHash(function(err, authResult) {
@@ -22,8 +24,7 @@ angular.module('core').service('authService',
           $timeout(function() {
             $state.go('home');
           });
-          console.log(err);
-          alert('Error: ' + err.error + '. Check the console for further details.');
+          manageErrorResponse('Error: ' + err.error + '. Check the console for further details.');
         }
       });
     }
@@ -35,8 +36,6 @@ angular.module('core').service('authService',
       }
       angularAuth0.client.userInfo(accessToken, function(err, profile) {
         if (profile) {
-          console.log("SETEO PROFILE");
-          console.log(profile)
           setUserProfile(profile);
         }
         cb(err, profile);
@@ -60,7 +59,6 @@ angular.module('core').service('authService',
       // use the scopes as requested. If no scopes were requested,
       // set it to nothing
       var scopes = authResult.scope || REQUESTED_SCOPES || '';
-      console.log(authResult);
       localStorage.setItem('email', authResult.idTokenPayload.nickname + '@gmail.com');
       localStorage.setItem('access_token', authResult.accessToken);
       localStorage.setItem('id_token', authResult.idToken);
@@ -73,17 +71,13 @@ angular.module('core').service('authService',
          'surname' : authResult.idTokenPayload.family_name,
          'gender' : authResult.idTokenPayload.gender,
          'picture_url' : authResult.idTokenPayload.picture,
-        }
-        ,
+        },
         function(response){
-          //setearse un id del profile
           localStorage.setItem('userId' , response.userId);
           localStorage.setItem("roles", JSON.stringify(response.roles));
-
         }, 
         function(errorResponse){
-
-          console.log("Error la manqueaste no se pudo cargar el id");
+          manageErrorResponse("No pudo obtenerse el perfil de usuario, intente nuevamente");
         });
 
     }
@@ -98,7 +92,6 @@ angular.module('core').service('authService',
       localStorage.removeItem('userId');
       localStorage.removeItem('roles');
       $location.path('/login');
-      //$state.target('login');
     }
     
     function isAuthenticated() {

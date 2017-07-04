@@ -15,8 +15,6 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 		$scope.confirmTurn = function () {
 			Cart.confirmTurn($scope.turn, function () {
 				$rootScope.currentTurn = $scope.turn;
-				console.log("En ConfirmCartPurchaseCtrl");
-				console.log($rootScope.currentTurn);
 				$state.go('payment-turn-countdown', 
 					{ currentTurn : $scope.turn });
 			});
@@ -58,7 +56,6 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 
 
 		$scope.confirmarGeolocalizacion = function(){
-			console.log('confirmarGeolocalizacion');
 			geolocalizarHelper();
 		}
  
@@ -85,8 +82,7 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 			      	
 			      	$scope.verMapaAfiliado();
 			      }else{
-
-			      	console.log('El mapa no está disponible para estos datos de domicilio.');
+			      	manageErrorResponse('El mapa no está disponible para estos datos de domicilio.');
 			      }
 			    });
 			});
@@ -113,7 +109,6 @@ angular.module('cart').controller('ConfirmCartPurchaseCtrl', ['$scope', '$contro
 				   data : $scope
 				}
 			}).result.then(function () {
-				console.log("Cerrando ..");
 				geolocalizarHelper();
 			});
 		};
