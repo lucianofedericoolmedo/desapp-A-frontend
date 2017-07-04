@@ -10,12 +10,14 @@ angular
     '$httpProvider',
     'angularAuth0Provider',
     'jwtOptionsProvider',
+    'URLServer',
 	function($stateProvider, 
 		$urlRouterProvider, 
 		$locationProvider,
 		$httpProvider,
         angularAuth0Provider,
-        jwtOptionsProvider
+        jwtOptionsProvider,
+        URLServer
 		) {
 		// Redirect to home view when route not found
 		//$urlRouterProvider.otherwise('/dashboard/overview');
@@ -295,13 +297,20 @@ angular
 		To add auth0 to the app
 		*/
 
+		console.log(AUTH0_CALLBACK_URL);
+		var callback_uri = AUTH0_CALLBACK_URL;
+		if (URLServer.url === 'https://grupo-a-012017.herokuapp.com'){
+			callback_uri = 'https://group-a-comprando-a-lo-loco.herokuapp.com/#/'
+		}
+
+		console.log(callback_uri);
 		// Initialization for the angular-auth0 library
 	    angularAuth0Provider.init({
 	      clientID: AUTH0_CLIENT_ID,
 	      domain: AUTH0_DOMAIN,
 	      responseType: 'token id_token',
 	      audience: AUTH0_AUDIENCE,
-	      redirectUri: AUTH0_CALLBACK_URL,
+	      redirectUri: callback_uri,
 	      scope: REQUESTED_SCOPES
 	    });
 
