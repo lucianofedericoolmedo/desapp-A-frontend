@@ -25,6 +25,8 @@ angular.module('discount').controller('DiscountCtrl', [ '$scope','$controller', 
 			$scope.search.search();
 		};
 
+			
+
 		function manageErrorResponse (message) {
 			SweetAlert.swal("Error", 
 						message.data.message, "error");

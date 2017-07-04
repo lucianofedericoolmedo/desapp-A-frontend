@@ -21,19 +21,20 @@
 			<div class="container" ng-init="get()">
 
 				<div class="page-header">
-					<h3>Purchase History</h3>
+					<h3> {{"views.main.PurchaseHistory" | translate}}
+					</h3>
 				</div>
 
 				<div class="row">
 
 					<div class="col-md-6 col-xs-12">
-						<p><strong>Date:</strong> {{purchase.purchaseDate}}</p>
+						<p><strong>{{"views.main.Date" | translate}}:</strong> {{purchase.purchaseDate}}</p>
 					</div>
 					<div class="col-md-6 col-xs-12">
-						<p><strong>Used Shopping List:</strong> {{purchase.usedShoppingListName}}</p>
+						<p><strong>{{"views.main.ShoppingList" | translate}}:</strong> {{purchase.usedShoppingListName}}</p>
 					</div>
 					<div class="col-md-6 col-xs-12">
-						<p><strong>Payment:</strong> {{purchase.paymentType}}</p>
+						<p><strong>{{"views.main.Payment" | translate}} :</strong> {{purchase.paymentType}}</p>
 					</div>
 					<div class="col-md-6 col-xs-12">
 						<p><strong>Paid at Cash Register:</strong> {{purchase.paidAtCashRegister}}</p>
@@ -48,8 +49,8 @@
 						<table class="table table-hover table-condensed">
 							<thead>
 								<tr>
-									<th>Product</th>
-									<th>Quantity</th>
+									<th>{{"views.main.Product" | translate}}</th>
+									<th>{{"views.main.Quantity" | translate}}</th>
 									<th>History Price</th>
 								</tr>
 							</thead>
@@ -67,11 +68,12 @@
 						<table class="table table-hover table-condensed">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Product</th>
-									<th>Quantity</th>
-									<th>Product Category</th>
-									<th>Discount</th>
+									<th>{{"views.main.Name" | translate}}</th>
+									<th>{{"views.main.Product" | translate}}</th>
+									<th>{{"views.main.Quantity" | translate}}</th>
+									<th>{{"views.main.ProductCategory" | translate}}
+									</th>
+									<th>{{"views.main.discount" | translate}}</th>
 								</tr>
 							</thead>
 							<tbody ng-repeat="discount in purchase.discounts">
@@ -86,7 +88,7 @@
 						</table>
 					</div>
 					<h4 class="center">
-						Total discount: ${{ totalDiscount(purchase.discounts) }}
+						Total {{"views.main.discount" | translate}} : ${{ totalDiscount(purchase.discounts) }}
 					</h4>
 					<h3 class="center">
 						Total: ${{ totalPaid(purchase.items, purchase.discounts) }}
@@ -94,7 +96,7 @@
 				</div>
 
 				<div>
-					<a href="#/purchase/history-list" class="btn btn-primary">BACK</a>
+					<a href="#/purchase/history-list" class="btn btn-primary">{{"views.main.BACK " | translate }}</a>
 				</div>
 				
 			</div>

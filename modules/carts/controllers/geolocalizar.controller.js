@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('cart').controller('GeolocalizarController', ['$scope', 'data', 'uiGmapGoogleMapApi',
-	function ($scope, data, uiGmapGoogleMapApi) {
+angular.module('cart').controller('GeolocalizarController', ['$scope',
+ 'data', 'uiGmapGoogleMapApi', '$controller',
+	function ($scope, data, uiGmapGoogleMapApi,$controller) {
 
 		$scope.ok = $scope.$close;
 
+		$controller('DashboardCtrl', {$scope: $scope}); //This works
 		$scope.init = function(){
 
 			console.log(data.objetoAGeolocalizar);

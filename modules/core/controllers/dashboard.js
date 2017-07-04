@@ -8,7 +8,8 @@
  * Controller of core
  */
 angular.module('core')
-  .controller('DashboardCtrl', function($scope, $state, $controller) {
+  .controller('DashboardCtrl', function($scope, Product, PaginatedSearch,
+    $state, $controller) {
     $scope.$state = $state;
     $controller('AppController', {$scope: $scope}); //This works
 
@@ -22,6 +23,15 @@ angular.module('core')
             
         }
     });
+
+    var productService = Product;
+    $scope.search = new PaginatedSearch(productService);
+
+    $scope.findPageForProducts = function () {
+        $scope.search.search();
+    };
+
+    
 
     function hasRole(item){
         var roles = JSON.parse(localStorage.getItem("roles"));

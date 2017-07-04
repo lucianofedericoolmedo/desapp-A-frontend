@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stateParams', 'Brand',
-	'PaginatedSearch', 'SweetAlert',
+	'PaginatedSearch', 'SweetAlert', '$window', '$timeout',
 	function ($scope, $controller, $stateParams, Brand, 
-		PaginatedSearch, SweetAlert) {
+		PaginatedSearch, SweetAlert, $window, $timeout) {
 
 		var service = Brand;
 
@@ -19,6 +19,42 @@ angular.module('brand').controller('BrandCtrl', [ '$scope','$controller', '$stat
 			SweetAlert.swal("Error", 
 						message, "error");
 		}
+
+		$scope.delete = function(id) {
+			SweetAlert.swal({
+			   title: "Esta seguro?",
+			   text: "No podra recobrar los cambios una vez eliminado!",
+			   type: "warning",
+			   showCancelButton: true,
+			   confirmButtonColor: "#DD6B55",confirmButtonText: "Si, eliminelo!",
+			   cancelButtonText: "No, cancele por favor!",
+			   closeOnConfirm: false,
+			   closeOnCancel: false }, 
+			function(isConfirm){ 
+			   if (isConfirm) {
+			      helperRemove(id);
+			   } else {
+			      SweetAlert.swal("Cancelado", "Sigue teniendo la marca :)", "error");
+			   }
+			});
+		}
+
+		function reloadPage(){
+			$window.location.reload();
+		}
+
+		function helperRemove(id) {
+			service.remove({ id : id},
+				function(response){
+					SweetAlert.swal("Ok", 
+						"Se ha borrado la marca con exito!", "success");
+					$timeout(reloadPage, 500);					
+				}, 
+				function(errorResponse){
+					SweetAlert.swal("Error", 
+						"No se ha borrado la marca!", "error")
+				});
+		};
 
 		$scope.newInstance = function () {
 			$scope.brand = new Brand({

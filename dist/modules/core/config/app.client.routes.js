@@ -298,7 +298,6 @@ angular
 		*/
 
 		var callback_uri = AUTH0_CALLBACK_URL;
-		console.log(URLServerProvider.$get().url);
 		if (URLServerProvider.$get().url === 'https://grupo-a-012017.herokuapp.com'){
 			callback_uri = 'https://group-a-comprando-a-lo-loco.herokuapp.com/#/'
 		}

@@ -27,31 +27,41 @@
 		<div class="fr">
 			<div class="language-select-class pull-right col-sm-3" ng-translate-language-select></div>
 
-			<div class="pull-left col-sm-3 btn btn-xs btn-white"
-				ng-click="logout()" >
-				Logout
+			<div class="col-sm-4 pull-left ">
+				<div class="btn btn-xs btn-white"
+					ng-click="logout()" >
+					Logout
+				</div>
+
+				<div class="btn btn-xs btn-white"
+					ui-sref="edit-profile" >
+					Mi perfil
+				</div>
+
+				<div class="btn btn-xs btn-white"
+					ui-sref="list-cart" >
+					Mis listas
+				</div>
+
 			</div>
 
-			<div class="col-sm-6" >
+			<div class="col-sm-5" >
 				<h3>ComprandoALoLoco</h3>
 			</div>
 			
 
 		
 		</div>
-		<div class="jumbotron">
-			<div class="container">
+		<div class="container">
 				
 				<div class="col-md-12">
-
-				
-				<a ui-sref="">Crear una lista</a>
-				<div>Ver ofertas </div>
-				<div>Ver productos </div>
-
+					<div>Estos son algunos de nuestros productos, los queres? </div>
+					<div ui-sref="list-cart" >Armate una lista</div>
+					<div style="background-color: grey !important; color:blue !important"
+						ng-include="'modules/products/views/snippet-list-product.html'"
+						></div>
 				</div>
 
 			</div>
-		</div>
 	</snap-content>	
 </div>

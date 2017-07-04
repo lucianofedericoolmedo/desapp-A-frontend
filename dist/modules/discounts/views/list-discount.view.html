@@ -42,13 +42,18 @@
 					</a>
 				</div>
 
-				<div class="container jumbotron" ng-init="findPage()">
+				<div class="container jumbotron"  
+					ng-init="findPage()">
 					<div ng-if="search.result.length > 0">
 						<div class="table-responsive">
 							<table class="table table-condensed table-hover">
 								<thead>
 									<tr>
 										<th>Name</th>
+										<th >
+											Item
+										</th>
+
 										<th>Starting Validity Date</th>
 										<th>Finishing Validity Date</th>
 										<th>Created at</th>
@@ -59,6 +64,10 @@
 										<td>
 											{{ discount.name }}
 										</td>
+										<td ng-if="discount.name === 'Per Product'">
+											{{ discount.productForDiscount.name }}
+										</td>
+										
 										<td>
 											{{ discount.startingDate }}
 										</td>
