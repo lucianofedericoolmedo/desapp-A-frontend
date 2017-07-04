@@ -226,7 +226,7 @@ angular
 				params:{
 					id:undefined
 				},
-				data: {text: "Revisar Purchase", visible: true }}
+				data: {text: "Revisar Purchase", visible: false }}
 			},
 
 			/////////////////////
