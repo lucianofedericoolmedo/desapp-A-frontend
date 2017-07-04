@@ -1,0 +1,37 @@
+<div class="jumbotron" ng-init="findPageForProducts()">
+	<div class="container-fluid" ng-if="search.result.length > 0">
+		<div ng-repeat="product in search.result track by product.id">
+			<div class="col-md-2 col-sm-4 col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<!-- Product information -->
+						<div>
+							<img ng-src="{{ product.imageUrl ? product.imageUrl : noImageSrc }}">
+							<p>{{product.name }}</p>
+						</div>
+						<!-- Product actions -->
+						<div class="btn-group">
+							<a class="btn btn-xs btn-info">
+								<small>EDIT</small>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<div ng-if="search.result.length === 0">
+		<span>No product to show</span>
+	</div>
+</div>
+
+<div class="col-md-12" ng-if="search.result.length > 0">
+	<ul uib-pagination total-items="search.totalSize" 
+		ng-change="findPageForProducts()"
+		ng-model="search.pageNumber" max-size="maxSize"
+		items-per-page="search.pageSize"
+		class="pagination-sm" boundary-links="true">
+	</ul>
+</div>
